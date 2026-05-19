@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Spring Legal Consultancy</title>
+    <link rel="shortcut icon" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        :root {
+            --pink: #e91e8c; --pink-dark: #c2185b; --pink-light: #f8bbd0;
+            --pink-pale: #fce4ec; --pink-wash: #fdf2f8;
+            --bg: #f5f2f7; --bg-card: #ffffff; --bg-input: #faf8fb;
+            --border: rgba(233,30,140,0.10); --border-focus: rgba(233,30,140,0.35);
+            --text: #4a3d50; --text-dim: #8c7e94; --text-bright: #2d2429;
+            --radius: 12px; --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+            --green: #2e7d32; --red: #d32f2f;
+        }
+        html { scroll-behavior: smooth; }
+        body { font-family: "Inter", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+        /* ── Login Screen ── */
+        .login-overlay {
+            position: fixed; inset: 0; z-index: 1000; background: var(--bg);
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        .login-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .login-box {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+            padding: 48px 40px; width: 400px; max-width: 90vw; text-align: center;
+            box-shadow: 0 20px 60px rgba(233,30,140,0.08);
+        }
+        .login-box img { width: 56px; margin: 0 auto 16px; }
+        .login-box h1 { font-size: 1.4rem; font-weight: 800; color: var(--text-bright); margin-bottom: 6px; }
+        .login-box p { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 28px; }
+        .login-box input {
+            width: 100%; padding: 14px 16px; background: var(--bg-input); border: 1.5px solid var(--border);
+            border-radius: 10px; color: var(--text-bright); font: inherit; font-size: 0.92rem; outline: none;
+            margin-bottom: 16px; transition: border var(--transition);
+        }
+        .login-box input:focus { border-color: var(--pink); }
+        .login-box .btn-login {
+            width: 100%; padding: 14px; background: var(--pink); color: #fff; border: none;
+            border-radius: 10px; font: inherit; font-weight: 700; font-size: 0.95rem;
+            cursor: pointer; transition: all var(--transition);
+        }
+        .login-box .btn-login:hover { background: var(--pink-dark); transform: translateY(-2px); }
+        .login-error { color: var(--red); font-size: 0.82rem; margin-bottom: 12px; display: none; }
+
+        /* ── Sidebar ── */
+        .app { display: flex; min-height: 100vh; }
+        .sidebar {
+            width: 260px; background: var(--bg-card); border-right: 1px solid var(--border);
+            padding: 24px 0; position: fixed; top: 0; left: 0; bottom: 0; overflow-y: auto;
+            display: flex; flex-direction: column; box-shadow: 2px 0 12px rgba(233,30,140,0.04);
+        }
+        .sidebar-brand { display: flex; align-items: center; justify-content: center; padding: 16px 16px 14px; margin-bottom: 16px; border-bottom: 1px solid var(--border); }
+        .sidebar-brand img { width: 100%; height: 50px; object-fit: contain; }
+        .sidebar-nav { flex: 1; }
+        .sidebar-nav a {
+            display: flex; align-items: center; gap: 12px; padding: 11px 20px;
+            color: var(--text-dim); font-size: 0.86rem; font-weight: 600;
+            transition: all var(--transition); border-left: 3px solid transparent; text-decoration: none;
+        }
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            color: var(--pink); background: rgba(233,30,140,0.06); border-left-color: var(--pink);
+        }
+        .sidebar-nav a i { width: 18px; text-align: center; font-size: 0.9rem; }
+        .sidebar-footer { padding: 16px 20px; border-top: 1px solid var(--border); }
+        .sidebar-footer a {
+            display: flex; align-items: center; gap: 10px; color: var(--text-dim);
+            font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: color var(--transition);
+        }
+        .sidebar-footer a:hover { color: var(--red); }
+
+        /* ── Main ── */
+        .main { flex: 1; margin-left: 260px; padding: 32px 40px; }
+        .topbar {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+        }
+        .topbar h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-bright); }
+        .topbar-actions { display: flex; gap: 10px; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px;
+            border-radius: 10px; font: inherit; font-size: 0.85rem; font-weight: 700;
+            cursor: pointer; transition: all var(--transition); border: none;
+        }
+        .btn-pink { background: var(--pink); color: #fff; }
+        .btn-pink:hover { background: var(--pink-dark); transform: translateY(-1px); }
+        .btn-outline { background: transparent; color: var(--pink); border: 1.5px solid var(--border); }
+        .btn-outline:hover { border-color: var(--pink); background: rgba(233,30,140,0.06); }
+
+        /* ── Sections ── */
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px;
+            padding: 28px; margin-bottom: 20px; transition: border-color var(--transition);
+            box-shadow: 0 2px 12px rgba(233,30,140,0.04);
+        }
+        .card:hover { border-color: var(--border-focus); }
+        .card-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--border);
+        }
+        .card-header h3 { font-size: 1rem; font-weight: 700; color: var(--text-bright); }
+        .card-badge {
+            font-size: 0.68rem; font-weight: 700; padding: 4px 12px; border-radius: 20px;
+            background: rgba(233,30,140,0.1); color: var(--pink); letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .field { margin-bottom: 18px; }
+        .field:last-child { margin-bottom: 0; }
+        .field label {
+            display: block; font-size: 0.75rem; font-weight: 700; color: var(--text-dim);
+            text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;
+        }
+        .field input, .field textarea {
+            width: 100%; padding: 12px 14px; background: var(--bg-input); border: 1.5px solid var(--border);
+            border-radius: 10px; color: var(--text-bright); font: inherit; font-size: 0.9rem;
+            outline: none; transition: all var(--transition); resize: vertical;
+        }
+        .field input:focus, .field textarea:focus { border-color: var(--pink); box-shadow: 0 0 0 3px rgba(233,30,140,0.1); }
+        .field textarea { min-height: 100px; line-height: 1.6; }
+        .field-hint { font-size: 0.72rem; color: var(--text-dim); margin-top: 4px; font-style: italic; }
+        .save-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+
+        /* ── Toast ── */
+        .toast-container { position: fixed; top: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
+        .toast {
+            padding: 14px 22px; border-radius: 12px; font-size: 0.86rem; font-weight: 600;
+            color: #fff; display: flex; align-items: center; gap: 10px;
+            animation: toastIn 0.4s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            min-width: 280px;
+        }
+        .toast.success { background: linear-gradient(135deg, #2e7d32, #4caf50); }
+        .toast.error { background: linear-gradient(135deg, #c62828, #ef5350); }
+        .toast.out { animation: toastOut 0.3s ease forwards; }
+        @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes toastOut { to { opacity: 0; transform: translateX(40px); } }
+
+        /* ── Loading ── */
+        .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(233,30,140,0.2); border-top-color: var(--pink); border-radius: 50%; animation: spin 0.6s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .page-loader {
+            display: flex; align-items: center; justify-content: center; height: 60vh;
+            flex-direction: column; gap: 16px; color: var(--text-dim);
+        }
+        .page-loader .spinner { width: 32px; height: 32px; border-width: 3px; border-top-color: var(--pink); border-color: var(--border); border-top-color: var(--pink); }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .main { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div class="login-overlay" id="loginOverlay">
+    <div class="login-box">
+        <img src="logo.png" alt="Logo">
+        <h1>Admin Panel</h1>
+        <p>Enter your admin password to continue</p>
+        <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
+        <input type="password" id="loginPassword" placeholder="Admin Password" autofocus>
+        <button class="btn-login" id="loginBtn" onclick="attemptLogin()">Sign In</button>
+    </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div class="app" id="app" style="display:none;">
+    <aside class="sidebar">
+        <div class="sidebar-brand"><img src="logo.png" alt="Logo"></div>
+        <nav class="sidebar-nav" id="sidebarNav">
+            <a href="#" data-section="hero" class="active"><i class="fa-solid fa-home"></i> Hero Section</a>
+            <a href="#" data-section="about"><i class="fa-solid fa-info-circle"></i> About</a>
+            <a href="#" data-section="mission"><i class="fa-solid fa-bullseye"></i> Mission & Vision</a>
+            <a href="#" data-section="services"><i class="fa-solid fa-briefcase"></i> Practice Areas</a>
+            <a href="#" data-section="team"><i class="fa-solid fa-users"></i> Team</a>
+            <a href="#" data-section="contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+            <a href="#" data-section="footer"><i class="fa-solid fa-cog"></i> Footer</a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="Landing.html" target="_blank"><i class="fa-solid fa-external-link-alt"></i> View Live Site</a>
+            <a href="#" onclick="logout()" style="margin-top: 12px; color: var(--red);"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+        </div>
+    </aside>
+
+    <div class="main">
+        <div class="topbar">
+            <h2 id="sectionTitle">Hero Section</h2>
+            <div class="topbar-actions">
+                <button class="btn btn-outline" onclick="loadContent()"><i class="fa-solid fa-rotate"></i> Refresh</button>
+                <button class="btn btn-pink" id="saveAllBtn" onclick="saveCurrentSection()"><i class="fa-solid fa-cloud-arrow-up"></i> Save Changes</button>
+            </div>
+        </div>
+
+        <div id="contentArea">
+            <div class="page-loader"><div class="spinner"></div><span>Loading content...</span></div>
+        </div>
+    </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+    // ═══ CONFIG — No keys exposed, all requests go through server API ═══
+    let contentData = {};
+    let currentSection = 'hero';
+
+    // ═══ API HELPERS ═══
+    async function fetchContent() {
+        const res = await fetch('/api/get-content');
+        if (!res.ok) throw new Error('Failed to load content');
+        return res.json();
+    }
+
+    async function verifyPassword(pw) {
+        const rows = await fetchContent();
+        const pwRow = rows.find(r => r.section_key === 'admin_password');
+        return pwRow && pwRow.content === pw;
+    }
+
+    // ═══ LOGIN ═══
+    async function attemptLogin() {
+        const pw = document.getElementById('loginPassword').value;
+        try {
+            const valid = await verifyPassword(pw);
+            if (valid) {
+                document.getElementById('loginOverlay').classList.add('hidden');
+                document.getElementById('app').style.display = 'flex';
+                sessionStorage.setItem('slc_admin', '1');
+                sessionStorage.setItem('slc_pw', pw);
+                loadContent();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        } catch (e) {
+            showToast('Connection error: ' + e.message, 'error');
+        }
+    }
+
+    document.getElementById('loginPassword').addEventListener('keydown', e => { if (e.key === 'Enter') attemptLogin(); });
+
+    // Auto-login if session active
+    if (sessionStorage.getItem('slc_admin')) {
+        document.getElementById('loginOverlay').classList.add('hidden');
+        document.getElementById('app').style.display = 'flex';
+        loadContent();
+    }
+
+    // ═══ LOAD CONTENT ═══
+    async function loadContent() {
+        try {
+            const rows = await fetchContent();
+            contentData = {};
+            rows.forEach(r => contentData[r.section_key] = r.content);
+            renderSection(currentSection);
+            showToast('Content loaded successfully', 'success');
+        } catch (e) {
+            showToast('Failed to load: ' + e.message, 'error');
+        }
+    }
+
+    // ═══ SECTION DEFINITIONS ═══
+    const sections = {
+        hero: {
+            title: 'Hero Section',
+            cards: [{
+                title: 'Hero Content', badge: 'Above the fold',
+                fields: [
+                    { key: 'hero_badge', label: 'Badge Text', type: 'input' },
+                    { key: 'hero_title_line1', label: 'Headline — Line 1', type: 'input', hint: 'e.g. "Legal clarity for"' },
+                    { key: 'hero_title_highlight', label: 'Headline — Pink Highlighted Word', type: 'input', hint: 'This word appears in pink, e.g. "high-stakes"' },
+                    { key: 'hero_title_line2', label: 'Headline — Line 2', type: 'input', hint: 'e.g. "decisions."' },
+                    { key: 'hero_tagline', label: 'Tagline', type: 'input' },
+                    { key: 'hero_description', label: 'Description', type: 'textarea' },
+                ]
+            }, {
+                title: 'Statistics', badge: '3 stats',
+                fields: [
+                    { key: 'hero_stat_1_value', label: 'Stat 1 Value', type: 'input' },
+                    { key: 'hero_stat_1_label', label: 'Stat 1 Label', type: 'input' },
+                    { key: 'hero_stat_2_value', label: 'Stat 2 Value', type: 'input' },
+                    { key: 'hero_stat_2_label', label: 'Stat 2 Label', type: 'input' },
+                    { key: 'hero_stat_3_value', label: 'Stat 3 Value', type: 'input' },
+                    { key: 'hero_stat_3_label', label: 'Stat 3 Label', type: 'input' },
+                ]
+            }, {
+                title: 'Hero Card', badge: 'Right side',
+                fields: [
+                    { key: 'hero_card_title', label: 'Card Title', type: 'input' },
+                    { key: 'hero_card_desc', label: 'Card Description', type: 'textarea' },
+                ]
+            }]
+        },
+        about: {
+            title: 'About Section',
+            cards: [{
+                title: 'About Content', badge: 'Main',
+                fields: [
+                    { key: 'about_heading', label: 'Section Heading', type: 'input' },
+                    { key: 'about_para_1', label: 'Paragraph 1', type: 'textarea' },
+                    { key: 'about_para_2', label: 'Paragraph 2', type: 'textarea' },
+                ]
+            }]
+        },
+        mission: {
+            title: 'Mission & Vision',
+            cards: [{
+                title: 'Mission & Vision Statements', badge: 'Purpose',
+                fields: [
+                    { key: 'mission_text', label: 'Mission Statement', type: 'textarea' },
+                    { key: 'vision_text', label: 'Vision Statement', type: 'textarea' },
+                ]
+            }]
+        },
+        services: {
+            title: 'Practice Areas',
+            cards: [1,2,3,4,5,6,7,8,9].map(i => ({
+                title: `Service ${i}`, badge: `Area ${i}`,
+                fields: [
+                    { key: `service_${i}_title`, label: 'Service Name', type: 'input' },
+                    { key: `service_${i}_desc`, label: 'Service Description', type: 'textarea' },
+                ]
+            }))
+        },
+        team: {
+            title: 'Team Members',
+            cards: [
+                { n: 1, name: 'Member 1' },
+                { n: 2, name: 'Member 2' },
+                { n: 3, name: 'Member 3' },
+            ].map(m => ({
+                title: m.name, badge: 'Team',
+                fields: [
+                    { key: `team_${m.n}_name`, label: 'Full Name', type: 'input' },
+                    { key: `team_${m.n}_role`, label: 'Role / Title', type: 'input' },
+                    { key: `team_${m.n}_bio`, label: 'Biography', type: 'textarea' },
+                ]
+            }))
+        },
+        contact: {
+            title: 'Contact Section',
+            cards: [{
+                title: 'Contact Info', badge: 'Details',
+                fields: [
+                    { key: 'contact_heading', label: 'Section Heading', type: 'input' },
+                    { key: 'contact_subheading', label: 'Section Subheading', type: 'input' },
+                    { key: 'contact_address', label: 'Office Address', type: 'input' },
+                    { key: 'contact_phone', label: 'Phone Number', type: 'input' },
+                    { key: 'contact_email', label: 'Email Address', type: 'input' },
+                    { key: 'contact_hours', label: 'Office Hours', type: 'input' },
+                ]
+            }]
+        },
+        footer: {
+            title: 'Footer',
+            cards: [{
+                title: 'Footer Content', badge: 'Bottom',
+                fields: [
+                    { key: 'footer_description', label: 'Footer Description', type: 'textarea' },
+                ]
+            }]
+        }
+    };
+
+    // ═══ RENDER ═══
+    function renderSection(sectionId) {
+        const section = sections[sectionId];
+        if (!section) return;
+        let html = '';
+        section.cards.forEach(card => {
+            html += `<div class="card"><div class="card-header"><h3>${card.title}</h3><span class="card-badge">${card.badge}</span></div>`;
+            card.fields.forEach(f => {
+                const val = (contentData[f.key] || '').replace(/"/g, '&quot;');
+                html += `<div class="field"><label>${f.label}</label>`;
+                if (f.type === 'textarea') {
+                    html += `<textarea data-key="${f.key}">${contentData[f.key] || ''}</textarea>`;
+                } else {
+                    html += `<input type="text" data-key="${f.key}" value="${val}">`;
+                }
+                if (f.hint) html += `<div class="field-hint">${f.hint}</div>`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+        });
+        document.getElementById('contentArea').innerHTML = html;
+    }
+
+    // ═══ SAVE ═══
+    async function saveCurrentSection() {
+        const btn = document.getElementById('saveAllBtn');
+        btn.innerHTML = '<span class="spinner"></span> Saving...';
+        btn.disabled = true;
+
+        const fields = document.querySelectorAll('#contentArea [data-key]');
+        let saved = 0, errors = 0;
+        const updates = [];
+
+        for (const el of fields) {
+            const key = el.dataset.key;
+            const val = el.value;
+            if (contentData[key] === val) continue;
+            updates.push({ key, value: val });
+        }
+
+        if (updates.length === 0) {
+            btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Save Changes';
+            btn.disabled = false;
+            showToast('No changes to save', 'success');
+            return;
+        }
+
+        try {
+            const res = await fetch('/api/update-content', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ password: sessionStorage.getItem('slc_pw'), updates })
+            });
+            const result = await res.json();
+            if (!res.ok) throw new Error(result.error);
+            updates.forEach(u => contentData[u.key] = u.value);
+            saved = result.saved;
+            errors = result.errors;
+        } catch (e) {
+            errors = updates.length;
+        }
+
+        btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Save Changes';
+        btn.disabled = false;
+
+        if (errors > 0) {
+            showToast(`Saved ${saved} fields, ${errors} failed`, 'error');
+        } else if (saved > 0) {
+            showToast(`${saved} field${saved > 1 ? 's' : ''} updated successfully!`, 'success');
+        } else {
+            showToast('No changes to save', 'success');
+        }
+    }
+
+    // ═══ SIDEBAR NAV ═══
+    document.getElementById('sidebarNav').addEventListener('click', e => {
+        const a = e.target.closest('a[data-section]');
+        if (!a) return;
+        e.preventDefault();
+        document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
+        a.classList.add('active');
+        currentSection = a.dataset.section;
+        document.getElementById('sectionTitle').textContent = sections[currentSection].title;
+        renderSection(currentSection);
+    });
+
+    // ═══ TOAST ═══
+    function showToast(msg, type = 'success') {
+        const container = document.getElementById('toastContainer');
+        const toast = document.createElement('div');
+        toast.className = `toast ${type}`;
+        toast.innerHTML = `<i class="fa-solid fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i> ${msg}`;
+        container.appendChild(toast);
+        setTimeout(() => { toast.classList.add('out'); setTimeout(() => toast.remove(), 300); }, 3000);
+    }
+
+    // ═══ LOGOUT ═══
+    function logout() {
+        sessionStorage.removeItem('slc_admin');
+        sessionStorage.removeItem('slc_pw');
+        window.location.href = 'admin.html';
+    }
+</script>
+</body>
+</html>

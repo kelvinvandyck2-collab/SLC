@@ -1,0 +1,6 @@
+.env
+node_modules/
+setup-db.js
+_add-fields.js
+package.json
+package-lock.json

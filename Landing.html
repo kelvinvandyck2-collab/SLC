@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="description"
+        content="Spring Legal Consultancy — full-service corporate law firm in Accra, Ghana. Corporate, aviation, litigation, real estate and private client law.">
+    <title>Spring Legal Consultancy | Accra, Ghana</title>
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* ─── Reset & Design Tokens ──────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --pink: #e91e8c;
+            --pink-dark: #c2185b;
+            --pink-light: #f8bbd0;
+            --pink-pale: #fce4ec;
+            --pink-wash: #fdf2f8;
+            --white: #ffffff;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e0e4;
+            --gray-400: #9e8d96;
+            --gray-600: #5a4d55;
+            --gray-800: #2d2429;
+            --navy-text: #1a1a2e;
+            --shadow-xs: 0 2px 8px rgba(233, 30, 140, 0.04);
+            --shadow-sm: 0 6px 20px rgba(233, 30, 140, 0.07);
+            --shadow-md: 0 14px 36px rgba(233, 30, 140, 0.12);
+            --shadow-lg: 0 22px 52px rgba(233, 30, 140, 0.18);
+            --radius-xs: 6px;
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 22px;
+            --radius-xl: 28px;
+            --radius-full: 9999px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: "Inter", Arial, sans-serif;
+            color: var(--gray-800);
+            background: var(--white);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1140px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+
+        /* ─── Typography ─────────────────────────────────────────── */
+        .serif {
+            font-family: "Playfair Display", Georgia, serif;
+        }
+
+        .section-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--pink-dark);
+            margin-bottom: 14px;
+            background: var(--pink-pale);
+            padding: 7px 18px;
+            border-radius: var(--radius-full);
+            border: 1px solid rgba(233, 30, 140, 0.12);
+        }
+
+        .section-tag::before {
+            content: "";
+            display: block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--pink);
+            flex-shrink: 0;
+        }
+
+        /* ─── Buttons ────────────────────────────────────────────── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 30px;
+            height: 52px;
+            border-radius: var(--radius-full);
+            font-size: 0.92rem;
+            font-weight: 700;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all var(--transition);
+            white-space: nowrap;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary {
+            background: var(--pink);
+            color: var(--white);
+            box-shadow: 0 8px 26px rgba(233, 30, 140, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: var(--pink-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 16px 38px rgba(233, 30, 140, 0.45);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--pink);
+            border-color: var(--pink);
+        }
+
+        .btn-outline:hover {
+            background: var(--pink);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(233, 30, 140, 0.28);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--pink);
+            border-color: var(--white);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-white:hover {
+            background: var(--pink-pale);
+            border-color: var(--pink-pale);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ─── Header ─────────────────────────────────────────────── */
+        .site-header {
+            position: fixed;
+            inset: 0 0 auto;
+            z-index: 100;
+            height: 74px;
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid rgba(233, 30, 140, 0.08);
+            backdrop-filter: blur(18px);
+            transition: box-shadow var(--transition);
+        }
+
+        .site-header.scrolled {
+            box-shadow: 0 2px 20px rgba(233, 30, 140, 0.06);
+        }
+
+        .nav {
+            height: 74px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .brand img {
+            width: 140px;
+            height: 44px;
+            object-fit: contain;
+            transition: transform var(--transition);
+        }
+
+        .brand:hover img {
+            transform: scale(1.06);
+        }
+
+        .brand-text {
+            display: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 4px;
+        }
+
+        .nav-links a {
+            display: inline-flex;
+            align-items: center;
+            height: 40px;
+            padding: 0 16px;
+            border-radius: var(--radius-full);
+            color: var(--gray-600);
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: all var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--pink);
+            background: var(--pink-pale);
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        /* ─── Hero ───────────────────────────────────────────────── */
+        .hero {
+            min-height: 100vh;
+            padding: 120px 0 80px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--white);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 80% 25%, rgba(233, 30, 140, 0.05) 0%, transparent 55%),
+                radial-gradient(ellipse at 20% 75%, rgba(233, 30, 140, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-accent-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--pink), var(--pink-light), transparent);
+            opacity: 0.7;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeSlideUp 0.8s ease both;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            border: 1px solid rgba(233, 30, 140, 0.22);
+            border-radius: var(--radius-full);
+            background: rgba(233, 30, 140, 0.04);
+            font-size: 0.71rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--pink-dark);
+            margin-bottom: 26px;
+        }
+
+        .hero-badge .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--pink);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(233, 30, 140, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 0 0 10px rgba(233, 30, 140, 0);
+            }
+        }
+
+        .hero h1 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(2.5rem, 5vw, 4.8rem);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+            color: var(--gray-800);
+            margin-bottom: 22px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--pink);
+            position: relative;
+        }
+
+        .hero h1 .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 6px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: rgba(233, 30, 140, 0.18);
+            border-radius: 2px;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--gray-400);
+            font-weight: 500;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.04rem;
+            color: var(--gray-600);
+            max-width: 480px;
+            margin-bottom: 34px;
+            line-height: 1.7;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 44px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 0;
+            border: 1px solid rgba(233, 30, 140, 0.1);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+        }
+
+        .hero-stat {
+            flex: 1;
+            padding: 18px 22px;
+            border-right: 1px solid rgba(233, 30, 140, 0.08);
+            transition: background var(--transition);
+        }
+
+        .hero-stat:last-child {
+            border-right: none;
+        }
+
+        .hero-stat:hover {
+            background: var(--pink-pale);
+        }
+
+        .hero-stat strong {
+            display: block;
+            font-family: "Playfair Display", serif;
+            font-size: 1.9rem;
+            color: var(--pink);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .hero-stat span {
+            font-size: 0.73rem;
+            color: var(--gray-400);
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .hero-visual {
+            animation: fadeSlideUp 0.9s ease 0.2s both;
+        }
+
+        .hero-card {
+            background: var(--white);
+            border: 1px solid rgba(233, 30, 140, 0.1);
+            border-radius: var(--radius-xl);
+            padding: 34px 30px;
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition), box-shadow var(--transition);
+        }
+
+        .hero-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 28px 56px rgba(233, 30, 140, 0.22);
+        }
+
+        .hero-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-md);
+            background: var(--pink-pale);
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            color: var(--pink);
+            margin-bottom: 18px;
+        }
+
+        .hero-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 6px;
+        }
+
+        .hero-card p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            margin-bottom: 22px;
+            line-height: 1.6;
+        }
+
+        .hero-card-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+        }
+
+        .hero-card-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.86rem;
+            color: var(--gray-600);
+            font-weight: 500;
+        }
+
+        .hero-card-list li i {
+            color: var(--pink);
+            font-size: 0.7rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        /* ─── Trust Bar ──────────────────────────────────────────── */
+        .trust-bar {
+            background: var(--pink-wash);
+            padding: 18px 0;
+            border-top: 1px solid rgba(233, 30, 140, 0.06);
+            border-bottom: 1px solid rgba(233, 30, 140, 0.06);
+        }
+
+        .trust-inner {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--pink-dark);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        .trust-item i {
+            color: var(--pink);
+            font-size: 0.88rem;
+        }
+
+        .trust-sep {
+            width: 1px;
+            height: 18px;
+            background: rgba(233, 30, 140, 0.15);
+            flex-shrink: 0;
+        }
+
+        /* ─── Sections ───────────────────────────────────────────── */
+        .section {
+            padding: 96px 0;
+        }
+
+        .section-light {
+            background: var(--pink-wash);
+        }
+
+        .section-white {
+            background: var(--white);
+        }
+
+        .section-head {
+            max-width: 660px;
+            margin: 0 auto 54px;
+            text-align: center;
+        }
+
+        .section-head h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(1.8rem, 3.6vw, 3rem);
+            font-weight: 800;
+            color: var(--gray-800);
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+
+        .section-head p {
+            color: var(--gray-400);
+            font-size: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* ─── About ──────────────────────────────────────────────── */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+        }
+
+        .about-main-img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(233, 30, 140, 0.06);
+        }
+
+        .about-accent-img {
+            position: absolute;
+            width: 50%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            border: 5px solid var(--white);
+            box-shadow: var(--shadow-lg);
+            bottom: -30px;
+            right: -24px;
+        }
+
+        .about-badge {
+            position: absolute;
+            top: 24px;
+            left: -18px;
+            background: var(--pink);
+            color: var(--white);
+            padding: 13px 18px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 10px 28px rgba(233, 30, 140, 0.35);
+            font-size: 0.82rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .about-badge strong {
+            display: block;
+            font-family: "Playfair Display", serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .about-content h2 {
+            font-family: "Playfair Display", serif;
+            font-size: clamp(1.7rem, 3vw, 2.6rem);
+            font-weight: 800;
+            color: var(--gray-800);
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .about-content p {
+            color: var(--gray-600);
+            margin-bottom: 14px;
+            font-size: 0.98rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 26px 0 32px;
+        }
+
+        .value-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .value-item i {
+            margin-top: 3px;
+            color: var(--pink);
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .value-item strong {
+            color: var(--pink-dark);
+        }
+
+        /* ─── Services ───────────────────────────────────────────── */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border: 1px solid rgba(233, 30, 140, 0.08);
+            border-radius: var(--radius-lg);
+            padding: 28px 24px;
+            transition: all var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--pink);
+            opacity: 0;
+            transition: opacity var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(233, 30, 140, 0.2);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: var(--pink-pale);
+            display: grid;
+            place-items: center;
+            font-size: 1.05rem;
+            color: var(--pink);
+            margin-bottom: 18px;
+            transition: all var(--transition);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--pink);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .service-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 8px;
+        }
+
+        .service-card p {
+            color: var(--gray-400);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--pink);
+            transition: gap var(--transition);
+        }
+
+        .service-link:hover {
+            gap: 12px;
+            color: var(--pink-dark);
+        }
+
+        /* ─── Mission/Vision ─────────────────────────────────────── */
+        .mv-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+        }
+
+        .mv-card {
+            background: var(--white);
+            border: 1px solid rgba(233, 30, 140, 0.08);
+            border-radius: var(--radius-xl);
+            padding: 34px 30px;
+            text-align: center;
+            transition: all var(--transition);
+        }
+
+        .mv-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mv-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--pink-pale);
+            display: grid;
+            place-items: center;
+            margin: 0 auto 16px;
+            font-size: 1.2rem;
+            color: var(--pink);
+        }
+
+        .mv-card h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 10px;
+        }
+
+        .mv-card p {
+            color: var(--gray-600);
+            font-size: 0.94rem;
+            line-height: 1.6;
+        }
+
+        /* ─── Team ───────────────────────────────────────────────── */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 26px;
+        }
+
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            border: 1px solid rgba(233, 30, 140, 0.08);
+            transition: all var(--transition);
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .team-img-wrap {
+            position: relative;
+            overflow: hidden;
+            background: var(--pink-pale);
+        }
+
+        .team-img-wrap img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-card:hover .team-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .team-body {
+            padding: 22px 22px 26px;
+        }
+
+        .team-body h3 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.08rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 4px;
+            line-height: 1.2;
+        }
+
+        .team-role {
+            display: block;
+            font-size: 0.73rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--pink);
+            margin-bottom: 10px;
+        }
+
+        .team-body p {
+            color: var(--gray-400);
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        /* ─── Contact ────────────────────────────────────────────── */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 36px;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: var(--pink-pale);
+            border-radius: var(--radius-xl);
+            padding: 40px 32px;
+            border: 1px solid rgba(233, 30, 140, 0.06);
+        }
+
+        .contact-info h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: 10px;
+        }
+
+        .contact-info>p {
+            color: var(--gray-600);
+            font-size: 0.93rem;
+            margin-bottom: 26px;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            display: grid;
+            place-items: center;
+            color: var(--pink);
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-label {
+            font-size: 0.66rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--pink-dark);
+            margin-bottom: 2px;
+        }
+
+        .contact-detail-value {
+            font-size: 0.9rem;
+            color: var(--gray-800);
+            font-weight: 500;
+        }
+
+        .contact-form {
+            background: var(--white);
+            border: 1px solid rgba(233, 30, 140, 0.1);
+            border-radius: var(--radius-xl);
+            padding: 40px 32px;
+            box-shadow: var(--shadow-xs);
+        }
+
+        .contact-form h2 {
+            font-family: "Playfair Display", serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gray-800);
+            margin-bottom: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 14px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 13px 15px;
+            border: 1.5px solid var(--gray-200);
+            border-radius: var(--radius-sm);
+            font: inherit;
+            font-size: 0.92rem;
+            color: var(--gray-800);
+            background: var(--gray-50);
+            outline: none;
+            transition: all var(--transition);
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--pink);
+            box-shadow: 0 0 0 4px rgba(233, 30, 140, 0.06);
+            background: var(--white);
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        /* ─── Footer ─────────────────────────────────────────────── */
+        .site-footer {
+            background: var(--white);
+            border-top: 1px solid rgba(233, 30, 140, 0.08);
+            padding: 56px 0 26px;
+            color: var(--gray-600);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr;
+            gap: 40px;
+            padding-bottom: 36px;
+            border-bottom: 1px solid rgba(233, 30, 140, 0.06);
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-brand img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .footer-brand-name {
+            font-family: "Playfair Display", serif;
+            font-weight: 700;
+            font-size: 0.98rem;
+            color: var(--gray-800);
+        }
+
+        .footer-tagline {
+            display: block;
+            font-size: 0.68rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--pink);
+        }
+
+        .footer-description {
+            font-size: 0.86rem;
+            color: var(--gray-400);
+            line-height: 1.6;
+        }
+
+        .footer-col h4 {
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--pink-dark);
+            margin-bottom: 12px;
+        }
+
+        .footer-links {
+            list-style: none;
+            display: grid;
+            gap: 7px;
+        }
+
+        .footer-links a {
+            font-size: 0.88rem;
+            color: var(--gray-400);
+            transition: color var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--pink);
+        }
+
+        .footer-bottom {
+            padding-top: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.81rem;
+            color: var(--gray-400);
+        }
+
+        .footer-bottom a {
+            color: var(--gray-400);
+            transition: color var(--transition);
+        }
+
+        .footer-bottom a:hover {
+            color: var(--pink);
+        }
+
+        /* ─── Animations ─────────────────────────────────────────── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ─── Responsive ─────────────────────────────────────────── */
+        @media (max-width: 1020px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-visual {
+                max-width: 460px;
+                margin: 0 auto;
+            }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid,
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .mv-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links,
+            .nav-actions .btn-outline {
+                display: none;
+            }
+
+            .about-accent-img {
+                right: -12px;
+            }
+
+            .about-badge {
+                left: -8px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                width: min(100% - 26px, 1140px);
+            }
+
+            .hero {
+                padding: 100px 0 56px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 10vw, 3rem);
+            }
+
+            .hero-stats {
+                flex-direction: column;
+            }
+
+            .hero-stat {
+                border-right: none;
+                border-bottom: 1px solid rgba(233, 30, 140, 0.08);
+            }
+
+            .hero-stat:last-child {
+                border-bottom: none;
+            }
+
+            .services-grid,
+            .team-grid,
+            .footer-grid,
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .about-accent-img {
+                position: static;
+                width: 100%;
+                height: 160px;
+                margin-top: 10px;
+                border: none;
+            }
+
+            .about-badge {
+                top: 8px;
+                left: 6px;
+            }
+
+            .trust-sep {
+                display: none;
+            }
+
+            .trust-inner {
+                gap: 12px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═════════════════════ HEADER ═════════════════════ -->
+    <header class="site-header" id="siteHeader">
+        <div class="container">
+            <nav class="nav" aria-label="Primary navigation">
+                <a class="brand" href="#home" aria-label="Spring Legal Consultancy - Home">
+                    <img src="logo.png" alt="Spring Legal Consultancy Logo">
+                </a>
+                <ul class="nav-links" role="list">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Practice Areas</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-actions">
+                    <a class="btn btn-outline" href="tel:+2330302201530">
+                        <i class="fa-solid fa-phone"></i> Call Us
+                    </a>
+                    <a class="btn btn-primary" href="#contact">Consult a Lawyer</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- ═════════════════════ HERO ═══════════════════════ -->
+        <section id="home" class="hero" aria-label="Hero section">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="hero-accent-line" aria-hidden="true"></div>
+            <div class="container">
+                <div class="hero-inner">
+                    <div class="hero-content">
+                        <div class="hero-badge" data-cms="hero_badge">
+                            <span class="dot" aria-hidden="true"></span>
+                            Delivering Legal Excellence Since 2012
+                        </div>
+                        <h1 data-cms="hero_title">Legal clarity for<br><span
+                                class="highlight">high-stakes</span><br>decisions.</h1>
+                        <p class="hero-tagline" data-cms="hero_tagline">Precision. Integrity. Results.</p>
+                        <p class="hero-description" data-cms="hero_description">
+                            Spring Legal Consultancy is a full-service corporate law firm in Accra, Ghana. We serve
+                            companies,
+                            institutions and private clients across corporate, aviation, litigation and regulatory
+                            matters —
+                            with bespoke solutions aligned to your strategic objectives.
+                        </p>
+                        <div class="hero-ctas">
+                            <a class="btn btn-primary" href="#contact">
+                                Request a Consultation <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+                            <a class="btn btn-outline" href="#services">
+                                Explore Practice Areas
+                            </a>
+                        </div>
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <strong data-cms="hero_stat_1_value">2012</strong>
+                                <span data-cms="hero_stat_1_label">Established</span>
+                            </div>
+                            <div class="hero-stat">
+                                <strong data-cms="hero_stat_2_value">12+</strong>
+                                <span data-cms="hero_stat_2_label">Practice Areas</span>
+                            </div>
+                            <div class="hero-stat">
+                                <strong data-cms="hero_stat_3_value">20+</strong>
+                                <span data-cms="hero_stat_3_label">Yrs. Senior Counsel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-visual">
+                        <div class="hero-card">
+                            <div class="hero-card-icon">
+                                <i class="fa-solid fa-scale-balanced"></i>
+                            </div>
+                            <h3 data-cms="hero_card_title">Full-Service Corporate Law</h3>
+                            <p data-cms="hero_card_desc">Headquartered in Accra, Ghana — trusted legal advisors to
+                                businesses, financial
+                                institutions and private clients.</p>
+                            <ul class="hero-card-list">
+                                <li><i class="fa-solid fa-check-circle"></i> Corporate governance & commercial
+                                    transactions</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Aviation law & regulatory compliance</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Civil litigation & dispute resolution</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Real estate, banking & insolvency</li>
+                                <li><i class="fa-solid fa-check-circle"></i> Private client, family & succession law
+                                </li>
+                                <li><i class="fa-solid fa-check-circle"></i> Notarial services by qualified Notaries
+                                    Public</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═════════════════════ TRUST BAR ═══════════════════ -->
+        <div class="trust-bar" aria-label="Firm credentials">
+            <div class="container">
+                <div class="trust-inner">
+                    <div class="trust-item">
+                        <i class="fa-solid fa-shield-halved"></i> Ghana Bar Association
+                    </div>
+                    <div class="trust-sep" aria-hidden="true"></div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-certificate"></i> Notaries Public
+                    </div>
+                    <div class="trust-sep" aria-hidden="true"></div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-plane"></i> Aviation Law Specialists
+                    </div>
+                    <div class="trust-sep" aria-hidden="true"></div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-scale-balanced"></i> Litigation & Arbitration
+                    </div>
+                    <div class="trust-sep" aria-hidden="true"></div>
+                    <div class="trust-item">
+                        <i class="fa-solid fa-building-columns"></i> Corporate & Banking Law
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ═════════════════════ ABOUT ═══════════════════════ -->
+        <section id="about" class="section section-white">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image-wrapper reveal">
+                        <img class="about-main-img" src="img/content/about-04.jpg"
+                            alt="Spring Legal Consultancy office">
+                        <img class="about-accent-img" src="img/content/about-05.jpg" alt="Legal strategy discussion">
+                        <div class="about-badge">
+                            <strong>Est.</strong> 2012
+                        </div>
+                    </div>
+                    <div class="about-content reveal">
+                        <span class="section-tag">About SLC</span>
+                        <h2 data-cms="about_heading">A full-service corporate law firm built on integrity and results.
+                        </h2>
+                        <p data-cms="about_para_1">
+                            Spring Legal Consultancy (SLC) has evolved from a sole practitioner practice established in
+                            2012
+                            into a reputable partnership serving a broad and diverse clientele. We are guided by the
+                            highest
+                            standards of integrity, fairness, and professionalism, which define our approach to client
+                            service
+                            and legal practice.
+                        </p>
+                        <p data-cms="about_para_2">
+                            Our multidisciplinary team of legal consultants and paralegals delivers bespoke legal
+                            solutions
+                            aligned with our clients' strategic and commercial objectives. We adopt a proactive,
+                            solutions-oriented
+                            approach, combining technical expertise with practical insight to achieve optimal outcomes.
+                        </p>
+                        <div class="values-grid">
+                            <div class="value-item">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span><strong>Integrity</strong> — highest ethical standards</span>
+                            </div>
+                            <div class="value-item">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span><strong>Professional Excellence</strong> — continuous learning</span>
+                            </div>
+                            <div class="value-item">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span><strong>Client-Centered</strong> — tailored solutions</span>
+                            </div>
+                            <div class="value-item">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span><strong>Respect & Fairness</strong> — dignity and impartiality</span>
+                            </div>
+                            <div class="value-item">
+                                <i class="fa-solid fa-check-circle"></i>
+                                <span><strong>Results-Driven</strong> — practical, efficient outcomes</span>
+                            </div>
+                        </div>
+                        <a class="btn btn-primary" href="#contact">
+                            Schedule a Consultation <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═════════════════ MISSION / VISION ═══════════════ -->
+        <section class="section section-light">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-tag">Our Purpose</span>
+                    <h2>Guided by a clear mission and vision.</h2>
+                </div>
+                <div class="mv-grid">
+                    <div class="mv-card reveal">
+                        <div class="mv-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <h3>Our Mission</h3>
+                        <p data-cms="mission_text">To deliver high-quality, ethical, and client-focused legal services
+                            that protect our clients'
+                            interests, support business growth, and provide practical solutions to complex legal
+                            challenges.</p>
+                    </div>
+                    <div class="mv-card reveal">
+                        <div class="mv-icon"><i class="fa-solid fa-star"></i></div>
+                        <h3>Our Vision</h3>
+                        <p data-cms="vision_text">To be a leading and trusted legal consultancy recognized for
+                            excellence, innovation, and
+                            professionalism, setting the benchmark for premium legal service delivery in the region.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═════════════════ PRACTICE AREAS ═══════════════════ -->
+        <section id="services" class="section section-white">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-tag">Practice Areas</span>
+                    <h2 data-cms="services_heading">Comprehensive legal support across core business risks.</h2>
+                    <p data-cms="services_subheading">Each area is designed to move clients from uncertainty to
+                        confident, informed action.</p>
+                </div>
+                <div class="services-grid">
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-plane"></i></div>
+                        <h3 data-cms="service_1_title">Aviation Law</h3>
+                        <p data-cms="service_1_desc">Specialized legal advisory for aviation stakeholders including
+                            regulatory compliance,
+                            contracts, and dispute resolution.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
+                        <h3 data-cms="service_2_title">Corporate & Commercial</h3>
+                        <p data-cms="service_2_desc">Legal support for company formation, governance, mergers,
+                            contracts, and commercial
+                            transactions.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-gavel"></i></div>
+                        <h3 data-cms="service_3_title">Dispute Resolution</h3>
+                        <p data-cms="service_3_desc">Strategic representation in civil and commercial disputes at all
+                            court levels, plus
+                            arbitration.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-building"></i></div>
+                        <h3 data-cms="service_4_title">Real Estate & Property</h3>
+                        <p data-cms="service_4_desc">Legal support for property transactions, leasing, conveyancing, and
+                            land dispute resolution.
+                        </p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-users"></i></div>
+                        <h3 data-cms="service_5_title">Private Client & Family</h3>
+                        <p data-cms="service_5_desc">Sensitive handling of matrimonial matters, custody, adoptions,
+                            wills, and succession
+                            planning.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-landmark"></i></div>
+                        <h3 data-cms="service_6_title">Banking & Finance</h3>
+                        <p data-cms="service_6_desc">Debt recovery, credit facilities, insolvency, trusts, and corporate
+                            recovery for financial
+                            institutions.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-hard-hat"></i></div>
+                        <h3 data-cms="service_7_title">Civil Construction</h3>
+                        <p data-cms="service_7_desc">Contracts, advisory and dispute resolution for contractors,
+                            developers, and infrastructure
+                            projects.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-file-shield"></i></div>
+                        <h3 data-cms="service_8_title">Insurance Claims</h3>
+                        <p data-cms="service_8_desc">Professional handling of insurance disputes and claims settlements
+                            for corporate and
+                            individual clients.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                    <article class="service-card reveal">
+                        <div class="service-icon"><i class="fa-solid fa-leaf"></i></div>
+                        <h3 data-cms="service_9_title">Natural Resources Law</h3>
+                        <p data-cms="service_9_desc">Legal advisory services for energy, mining, and resource
+                            development projects in Ghana.</p>
+                        <a class="service-link" href="#">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════ TEAM ══════════════════════════ -->
+        <section id="team" class="section section-light">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-tag">Leadership</span>
+                    <h2 data-cms="team_heading">Experienced lawyers for complex legal matters.</h2>
+                    <p data-cms="team_subheading">Senior counsel with decades of combined practice across commercial,
+                        regulatory and litigation
+                        work.</p>
+                </div>
+                <div class="team-grid">
+                    <!-- Mrs. Ruby Akua Aglagoh -->
+                    <article class="team-card reveal">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-09.jpg" alt="Mrs. Ruby Akua Aglagoh">
+                        </div>
+                        <div class="team-body">
+                            <h3 data-cms="team_1_name">Mrs. Ruby Akua Aglagoh</h3>
+                            <span class="team-role" data-cms="team_1_role">Founder/Partner | Notary Public | Human
+                                Rights Advocate</span>
+                            <p data-cms="team_1_bio">Called to the Ghana Bar in 2001. Extensive experience in corporate
+                                governance,
+                                litigation, debt recovery, family law, aviation, real estate, and construction. Adjunct
+                                Lecturer at Ensign Global University. Holds LLB (Ghana), BL (Ghana School of Law), and
+                                LLM (Research) from Edith Cowan University, Australia.</p>
+                        </div>
+                    </article>
+                    <!-- Alexander Nii Kwartey Owoo -->
+                    <article class="team-card reveal">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-10.jpg" alt="Alexander Nii Kwartey Owoo">
+                        </div>
+                        <div class="team-body">
+                            <h3 data-cms="team_2_name">Alexander Nii Kwartey Owoo, Esq.</h3>
+                            <span class="team-role" data-cms="team_2_role">Managing Partner | Barrister & Solicitor |
+                                Notary Public</span>
+                            <p data-cms="team_2_bio">Over two decades of experience in corporate law, banking, finance,
+                                trusts, family law,
+                                and insurance. Former Head of Legal at HFC Bank. Lecturer in Law of Trusts and Business
+                                Law. Holds LLB (Ghana) and LLM in International Commercial and Corporate Law (London).
+                                Licensed Insolvency Practitioner.</p>
+                        </div>
+                    </article>
+                    <!-- Ernest Assie -->
+                    <article class="team-card reveal">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-11.jpg" alt="Ernest Assie">
+                        </div>
+                        <div class="team-body">
+                            <h3 data-cms="team_3_name">Ernest Assie, Esq.</h3>
+                            <span class="team-role" data-cms="team_3_role">Junior Partner | Barrister & Solicitor</span>
+                            <p data-cms="team_3_bio">Called to the Ghana Bar in 2017. Over 16 years of prior experience
+                                in recovery and debt
+                                management, client service, and banking operations. Formerly with Republic Bank Ghana
+                                PLC. Successfully handled high-profile cases in court and before statutory bodies. Holds
+                                BA (KNUST), LLB (Mountcrest), and BL (Ghana School of Law).</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════ CONTACT ═══════════════════════ -->
+        <section id="contact" class="section section-white">
+            <div class="container">
+                <div class="section-head reveal">
+                    <span class="section-tag">Get In Touch</span>
+                    <h2 data-cms="contact_heading">Bring your matter to a team that moves with purpose.</h2>
+                    <p data-cms="contact_subheading">Share a few details and the SLC team will follow up promptly with
+                        next steps.</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info reveal">
+                        <h2>We're ready to advise you.</h2>
+                        <p>For urgent matters, please call the office directly during business hours.</p>
+                        <div class="contact-detail-item">
+                            <div class="contact-icon"><i class="fa-solid fa-location-dot"></i></div>
+                            <div>
+                                <div class="contact-detail-label">Office</div>
+                                <div class="contact-detail-value" data-cms="contact_address">16 Odanta Street, Asylum
+                                    Down, Accra, Ghana</div>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                            <div>
+                                <div class="contact-detail-label">Telephone</div>
+                                <div class="contact-detail-value" data-cms="contact_phone">(+233) 030 220 1530</div>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+                            <div>
+                                <div class="contact-detail-label">Email</div>
+                                <div class="contact-detail-value" data-cms="contact_email">info@springlegal.com.gh</div>
+                            </div>
+                        </div>
+                        <div class="contact-detail-item">
+                            <div class="contact-icon"><i class="fa-regular fa-clock"></i></div>
+                            <div>
+                                <div class="contact-detail-label">Office Hours</div>
+                                <div class="contact-detail-value" data-cms="contact_hours">Monday – Friday, 8 AM – 5 PM
+                                    GMT</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form reveal">
+                        <h2>Request a Consultation</h2>
+                        <form id="consultForm" novalidate>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" name="name" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="Email Address" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="tel" name="phone" placeholder="Phone Number">
+                                </div>
+                                <div class="form-group">
+                                    <select name="area">
+                                        <option value="">Select Practice Area…</option>
+                                        <option>Aviation Law</option>
+                                        <option>Corporate & Commercial</option>
+                                        <option>Dispute Resolution</option>
+                                        <option>Property & Real Estate</option>
+                                        <option>Private Client & Family</option>
+                                        <option>Banking & Finance</option>
+                                        <option>Civil Construction</option>
+                                        <option>Insurance Claims</option>
+                                        <option>Natural Resources Law</option>
+                                        <option>Debt Recovery</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="message" placeholder="Briefly describe your legal matter…"
+                                    required></textarea>
+                            </div>
+                            <button class="btn btn-primary" type="submit" style="width:100%; justify-content:center;">
+                                Send Enquiry <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═════════════════════ FOOTER ═══════════════════════ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">
+                        <img src="logo.png" alt="Spring Legal Consultancy Logo">
+                        <div>
+                            <span class="footer-brand-name">Spring Legal Consultancy</span>
+                            <span class="footer-tagline">Precision · Integrity · Results</span>
+                        </div>
+                    </div>
+                    <p class="footer-description" data-cms="footer_description">
+                        Full-service corporate law firm delivering legal excellence since 2012.
+                        Headquartered in Accra, Ghana, serving clients locally and internationally.
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>Firm</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">About SLC</a></li>
+                        <li><a href="#services">Practice Areas</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+2330302201530">(+233) 030 220 1530</a></li>
+                        <li><a href="mailto:info@springlegal.com.gh">info@springlegal.com.gh</a></li>
+                        <li>16 Odanta Street</li>
+                        <li>Asylum Down, Accra</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Spring Legal Consultancy. All rights reserved.</span>
+                <span>
+                    <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+                    <a href="#">Terms of Use</a>
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        /* ── Scroll Reveal ────────────────────────────────────────── */
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.08 });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+        /* ── Active Navigation Highlight ──────────────────────────── */
+        const sections = [...document.querySelectorAll('main section[id]')];
+        const navLinks = [...document.querySelectorAll('.nav-links a')];
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY + 110;
+            let currentSection = sections[0]?.id || 'home';
+            sections.forEach(section => {
+                if (scrollY >= section.offsetTop) {
+                    currentSection = section.id;
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`);
+            });
+        }, { passive: true });
+
+        /* ── Header Shadow on Scroll ──────────────────────────────── */
+        const header = document.getElementById('siteHeader');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 15);
+        }, { passive: true });
+
+        /* ── Contact Form ─────────────────────────────────────────── */
+        const form = document.getElementById('consultForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert(
+                'Thank you for contacting Spring Legal Consultancy.\n\nYour consultation request has been received. A member of our team will be in touch shortly.');
+            form.reset();
+        });
+
+        /* ── CMS: Load Dynamic Content from Supabase ─────────────── */
+        (async function loadCMS() {
+            try {
+                const SUPABASE_URL = 'https://uwhujavrrdzzwxunrlzu.supabase.co';
+                const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3aHVqYXZycmR6end4dW5ybHp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MzE1MDAsImV4cCI6MjA4NjUwNzUwMH0.l9qlQDGwJLKcyiq0saQamT91s44qHT3MDnG8s2FINvk';
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/site_content?select=section_key,content`, {
+                    headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
+                });
+                if (!res.ok) return;
+                const rows = await res.json();
+                const data = {};
+                rows.forEach(r => data[r.section_key] = r.content);
+                document.querySelectorAll('[data-cms]').forEach(el => {
+                    const key = el.dataset.cms;
+                    if (data[key] !== undefined && data[key] !== '') {
+                        // For hero_badge, preserve the dot span
+                        if (key === 'hero_badge') {
+                            const dot = el.querySelector('.dot');
+                            el.innerHTML = '';
+                            if (dot) el.appendChild(dot);
+                            el.appendChild(document.createTextNode(' ' + data[key]));
+                        } else {
+                            el.textContent = data[key];
+                        }
+                    }
+                });
+                // Build hero title from 3 plain-text fields
+                const h1 = document.querySelector('[data-cms="hero_title"]');
+                if (h1 && data.hero_title_line1) {
+                    h1.innerHTML = data.hero_title_line1 + '<br><span class="highlight">' + (data.hero_title_highlight || '') + '</span><br>' + (data.hero_title_line2 || '');
+                }
+            } catch (e) { /* Silently fail — static content remains */ }
+        })();
+    </script>
+</body>
+
+</html>
