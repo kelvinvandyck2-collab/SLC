@@ -37,6 +37,10 @@
             --gray-400: #9e8d96;
             --gray-600: #5a4d55;
             --gray-800: #2d2429;
+            --navy: #1a3a6b;
+            --navy-light: #2a4f8f;
+            --navy-pale: #e8edf5;
+            --navy-wash: #f3f5f9;
             --navy-text: #1a1a2e;
             --shadow-xs: 0 2px 8px rgba(233, 30, 140, 0.04);
             --shadow-sm: 0 6px 20px rgba(233, 30, 140, 0.07);
@@ -330,7 +334,7 @@
             font-weight: 800;
             line-height: 1.05;
             letter-spacing: -0.02em;
-            color: var(--gray-800);
+            color: var(--navy);
             margin-bottom: 22px;
         }
 
@@ -400,7 +404,7 @@
             display: block;
             font-family: "Playfair Display", serif;
             font-size: 1.9rem;
-            color: var(--pink);
+            color: var(--navy);
             line-height: 1;
             margin-bottom: 5px;
         }
@@ -435,11 +439,11 @@
             width: 50px;
             height: 50px;
             border-radius: var(--radius-md);
-            background: var(--pink-pale);
+            background: var(--navy-pale);
             display: grid;
             place-items: center;
             font-size: 1.3rem;
-            color: var(--pink);
+            color: var(--navy);
             margin-bottom: 18px;
         }
 
@@ -482,10 +486,10 @@
 
         /* ─── Trust Bar ──────────────────────────────────────────── */
         .trust-bar {
-            background: var(--pink-wash);
+            background: var(--navy);
             padding: 18px 0;
-            border-top: 1px solid rgba(233, 30, 140, 0.06);
-            border-bottom: 1px solid rgba(233, 30, 140, 0.06);
+            border-top: 1px solid rgba(26, 58, 107, 0.15);
+            border-bottom: 1px solid rgba(26, 58, 107, 0.15);
         }
 
         .trust-inner {
@@ -500,14 +504,14 @@
             display: flex;
             align-items: center;
             gap: 9px;
-            color: var(--pink-dark);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 0.82rem;
             font-weight: 600;
             letter-spacing: 0.03em;
         }
 
         .trust-item i {
-            color: var(--pink);
+            color: var(--pink-light);
             font-size: 0.88rem;
         }
 
@@ -673,7 +677,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: var(--pink);
+            background: linear-gradient(90deg, var(--navy), var(--pink));
             opacity: 0;
             transition: opacity var(--transition);
         }
@@ -696,13 +700,13 @@
             display: grid;
             place-items: center;
             font-size: 1.05rem;
-            color: var(--pink);
+            color: var(--navy);
             margin-bottom: 18px;
             transition: all var(--transition);
         }
 
         .service-card:hover .service-icon {
-            background: var(--pink);
+            background: var(--navy);
             color: var(--white);
             transform: scale(1.05);
         }
