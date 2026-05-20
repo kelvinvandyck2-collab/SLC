@@ -39,7 +39,32 @@
         .login-box input {
             width: 100%; padding: 14px 16px; background: var(--bg-input); border: 1.5px solid var(--border);
             border-radius: 10px; color: var(--text-bright); font: inherit; font-size: 0.92rem; outline: none;
-            margin-bottom: 16px; transition: border var(--transition);
+            transition: border var(--transition);
+        }
+        .password-container {
+            position: relative;
+            margin-bottom: 16px;
+        }
+        .password-container input {
+            padding-right: 44px;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-dim);
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            transition: color var(--transition);
+        }
+        .password-toggle:hover {
+            color: var(--pink);
         }
         .login-box input:focus { border-color: var(--pink); }
         .login-box .btn-login {
@@ -167,7 +192,12 @@
         <h1>Admin Panel</h1>
         <p>Enter your admin password to continue</p>
         <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
-        <input type="password" id="loginPassword" placeholder="Admin Password" autofocus>
+        <div class="password-container">
+            <input type="password" id="loginPassword" placeholder="Admin Password" autofocus>
+            <button type="button" class="password-toggle" onclick="togglePasswordVisibility()" aria-label="Toggle Password Visibility">
+                <i class="fa-solid fa-eye" id="passwordEyeIcon"></i>
+            </button>
+        </div>
         <button class="btn-login" id="loginBtn" onclick="attemptLogin()">Sign In</button>
     </div>
 </div>
@@ -476,6 +506,21 @@
         sessionStorage.removeItem('slc_admin');
         sessionStorage.removeItem('slc_pw');
         window.location.href = 'admin';
+    }
+
+    // ═══ PASSWORD VISIBILITY TOGGLE ═══
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('loginPassword');
+        const eyeIcon = document.getElementById('passwordEyeIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.classList.remove('fa-eye');
+            eyeIcon.classList.add('fa-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.classList.remove('fa-eye-slash');
+            eyeIcon.classList.add('fa-eye');
+        }
     }
 </script>
 </body>
