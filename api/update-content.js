@@ -30,6 +30,10 @@ export default async function handler(req, res) {
   // Apply updates
   let saved = 0, errors = 0;
   for (const { key, value } of updates) {
+    if (key === 'admin_password') {
+      errors++;
+      continue;
+    }
     try {
       const r = await fetch(`${SUPABASE_URL}/rest/v1/site_content?section_key=eq.${key}`, {
         method: 'PATCH',
