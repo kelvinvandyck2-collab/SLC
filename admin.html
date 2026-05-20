@@ -186,7 +186,7 @@
             <a href="#" data-section="footer"><i class="fa-solid fa-cog"></i> Footer</a>
         </nav>
         <div class="sidebar-footer">
-            <a href="Landing.html" target="_blank"><i class="fa-solid fa-external-link-alt"></i> View Live Site</a>
+            <a href="/" target="_blank"><i class="fa-solid fa-external-link-alt"></i> View Live Site</a>
             <a href="#" onclick="logout()" style="margin-top: 12px; color: var(--red);"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
         </div>
     </aside>
@@ -475,7 +475,7 @@
     function logout() {
         sessionStorage.removeItem('slc_admin');
         sessionStorage.removeItem('slc_pw');
-        window.location.href = 'admin.html';
+        window.location.href = 'admin';
     }
 </script>
 </body>
