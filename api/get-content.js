@@ -11,7 +11,10 @@ export default async function handler(req, res) {
     const r = await fetch(`${SUPABASE_URL}/rest/v1/site_content?select=section_key,content`, {
       headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
     });
-    const data = await r.json();
+    let data = await r.json();
+    if (Array.isArray(data)) {
+      data = data.filter(row => row.section_key !== 'admin_password');
+    }
     return res.status(200).json(data);
   } catch (e) {
     return res.status(500).json({ error: 'Failed to fetch content' });

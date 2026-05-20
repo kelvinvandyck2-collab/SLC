@@ -221,9 +221,14 @@
     }
 
     async function verifyPassword(pw) {
-        const rows = await fetchContent();
-        const pwRow = rows.find(r => r.section_key === 'admin_password');
-        return pwRow && pwRow.content === pw;
+        const res = await fetch('/api/verify-password', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: pw })
+        });
+        if (!res.ok) return false;
+        const data = await res.json();
+        return data.success === true;
     }
 
     // ═══ LOGIN ═══

@@ -1756,11 +1756,11 @@
         });
 
         /* ── CMS: Load Dynamic Content from Supabase ─────────────── */
-        (async function loadCMS() {
+        async function loadCMS() {
             try {
                 const SUPABASE_URL = 'https://uwhujavrrdzzwxunrlzu.supabase.co';
                 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3aHVqYXZycmR6end4dW5ybHp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MzE1MDAsImV4cCI6MjA4NjUwNzUwMH0.l9qlQDGwJLKcyiq0saQamT91s44qHT3MDnG8s2FINvk';
-                const res = await fetch(`${SUPABASE_URL}/rest/v1/site_content?select=section_key,content`, {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/site_content?section_key=neq.admin_password&select=section_key,content`, {
                     headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` }
                 });
                 if (!res.ok) return;
@@ -1787,7 +1787,9 @@
                     h1.innerHTML = data.hero_title_line1 + '<br><span class="highlight">' + (data.hero_title_highlight || '') + '</span><br>' + (data.hero_title_line2 || '');
                 }
             } catch (e) { /* Silently fail — static content remains */ }
-        })();
+        }
+        loadCMS();
+        setInterval(loadCMS, 5000);
     </script>
 </body>
 
