@@ -1349,17 +1349,17 @@
                     <li class="mobile-only-item">
                         <div class="nav-mobile-actions">
                             <a class="btn btn-outline" href="tel:+2330302201530" style="display: inline-flex; width: 100%; margin-bottom: 10px;">
-                                <i class="fa-solid fa-phone"></i> Call Us
+                                <i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span>
                             </a>
-                            <a class="btn btn-primary" href="#contact" style="display: inline-flex; width: 100%;">Consult</a>
+                            <a class="btn btn-primary" href="#contact" style="display: inline-flex; width: 100%;" data-cms="header_consult_text">Consult</a>
                         </div>
                     </li>
                 </ul>
                 <div class="nav-actions">
                     <a class="btn btn-outline" href="tel:+2330302201530">
-                        <i class="fa-solid fa-phone"></i> Call Us
+                        <i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span>
                     </a>
-                    <a class="btn btn-primary" href="#contact">Consult</a>
+                    <a class="btn btn-primary" href="#contact" data-cms="header_consult_text">Consult</a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span>
                         <span class="bar"></span>
@@ -1399,9 +1399,9 @@
                         </p>
                         <div class="hero-ctas">
                             <a class="btn btn-primary" href="#contact">
-                                Request a Consultation <i class="fa-solid fa-arrow-right"></i>
+                                <span data-cms="hero_cta_consult">Request a Consultation</span> <i class="fa-solid fa-arrow-right"></i>
                             </a>
-                            <a class="btn btn-outline-white" href="#services">
+                            <a class="btn btn-outline-white" href="#services" data-cms="hero_cta_explore">
                                 Explore Practice Areas
                             </a>
                         </div>
@@ -1421,8 +1421,8 @@
                             <i class="fa-solid fa-briefcase"></i>
                         </div>
                         <div class="card-info">
-                            <h3>Corporate &amp; Commercial</h3>
-                            <p>Bespoke legal counsel for company transactions, governance, and business operations.</p>
+                            <h3 data-cms="overlap_card_1_title">Corporate &amp; Commercial</h3>
+                            <p data-cms="overlap_card_1_desc">Bespoke legal counsel for company transactions, governance, and business operations.</p>
                         </div>
                         <i class="fa-solid fa-briefcase watermark-icon"></i>
                     </a>
@@ -1431,8 +1431,8 @@
                             <i class="fa-solid fa-plane"></i>
                         </div>
                         <div class="card-info">
-                            <h3>Aviation Law</h3>
-                            <p>Specialized regulatory advice and litigation support for aviation sector stakeholders.</p>
+                            <h3 data-cms="overlap_card_2_title">Aviation Law</h3>
+                            <p data-cms="overlap_card_2_desc">Specialized regulatory advice and litigation support for aviation sector stakeholders.</p>
                         </div>
                         <i class="fa-solid fa-plane watermark-icon"></i>
                     </a>
@@ -1441,8 +1441,8 @@
                             <i class="fa-solid fa-gavel"></i>
                         </div>
                         <div class="card-info">
-                            <h3>Dispute Resolution</h3>
-                            <p>Strategic representation and mediation in high-stakes civil and commercial disputes.</p>
+                            <h3 data-cms="overlap_card_3_title">Dispute Resolution</h3>
+                            <p data-cms="overlap_card_3_desc">Strategic representation and mediation in high-stakes civil and commercial disputes.</p>
                         </div>
                         <i class="fa-solid fa-gavel watermark-icon"></i>
                     </a>
@@ -1454,7 +1454,7 @@
         <section id="about" class="section section-white">
             <div class="container">
                 <div class="about-overview reveal">
-                    <span class="section-tag-centered">About SLC</span>
+                    <span class="section-tag-centered" data-cms="about_tag">About SLC</span>
                     <h2 class="serif centered-title" data-cms="about_heading">A full-service corporate law firm built on integrity and results.</h2>
                     <div class="about-text-centered">
                         <p data-cms="about_para_1">
@@ -1471,27 +1471,27 @@
                     </div>
                     
                     <div class="values-centered-wrap">
-                        <h3 class="serif values-title">Our Core Values</h3>
+                        <h3 class="serif values-title" data-cms="about_values_title">Our Core Values</h3>
                         <div class="values-centered-grid">
                             <div class="value-item-centered">
                                 <i class="fa-solid fa-check"></i>
-                                <span><strong>Integrity</strong> — highest ethical standards</span>
+                                <span><strong data-cms="about_value_1_title">Integrity</strong> — <span data-cms="about_value_1_desc">highest ethical standards</span></span>
                             </div>
                             <div class="value-item-centered">
                                 <i class="fa-solid fa-check"></i>
-                                <span><strong>Professional Excellence</strong> — continuous learning</span>
+                                <span><strong data-cms="about_value_2_title">Professional Excellence</strong> — <span data-cms="about_value_2_desc">continuous learning</span></span>
                             </div>
                             <div class="value-item-centered">
                                 <i class="fa-solid fa-check"></i>
-                                <span><strong>Client-Centered</strong> — tailored solutions</span>
+                                <span><strong data-cms="about_value_3_title">Client-Centered</strong> — <span data-cms="about_value_3_desc">tailored solutions</span></span>
                             </div>
                             <div class="value-item-centered">
                                 <i class="fa-solid fa-check"></i>
-                                <span><strong>Respect &amp; Fairness</strong> — dignity and impartiality</span>
+                                <span><strong data-cms="about_value_4_title">Respect &amp; Fairness</strong> — <span data-cms="about_value_4_desc">dignity and impartiality</span></span>
                             </div>
                             <div class="value-item-centered">
                                 <i class="fa-solid fa-check"></i>
-                                <span><strong>Results-Driven</strong> — practical, efficient outcomes</span>
+                                <span><strong data-cms="about_value_5_title">Results-Driven</strong> — <span data-cms="about_value_5_desc">practical, efficient outcomes</span></span>
                             </div>
                         </div>
                     </div>
@@ -1503,7 +1503,7 @@
         <section id="services" class="section section-light">
             <div class="container">
                 <div class="section-header-left reveal">
-                    <h2 class="serif" data-cms="services_heading">Expertise</h2>
+                    <h2 class="serif" data-cms="services_heading">Each area is designed to move clients from uncertainty to confident, informed action.</h2>
                     <p data-cms="services_subheading">Comprehensive legal support across core business risks.</p>
                 </div>
                 
@@ -1516,7 +1516,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_1_title">Aviation Law</h3>
                             <p data-cms="service_1_desc">Specialized legal advisory for aviation stakeholders including regulatory compliance, contracts, and dispute resolution.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_1_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1528,7 +1528,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_2_title">Corporate &amp; Commercial</h3>
                             <p data-cms="service_2_desc">Legal support for company formation, governance, mergers, contracts, and commercial transactions.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_2_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1540,7 +1540,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_3_title">Dispute Resolution</h3>
                             <p data-cms="service_3_desc">Strategic representation in civil and commercial disputes at all court levels, plus arbitration.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_3_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1552,7 +1552,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_4_title">Real Estate &amp; Property</h3>
                             <p data-cms="service_4_desc">Legal support for property transactions, leasing, conveyancing, and land dispute resolution.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_4_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1564,7 +1564,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_5_title">Private Client &amp; Family</h3>
                             <p data-cms="service_5_desc">Sensitive handling of matrimonial matters, custody, adoptions, wills, and succession planning.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_5_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1576,7 +1576,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_6_title">Banking &amp; Finance</h3>
                             <p data-cms="service_6_desc">Debt recovery, credit facilities, insolvency, trusts, and corporate recovery for financial institutions.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_6_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1588,7 +1588,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_7_title">Civil Construction</h3>
                             <p data-cms="service_7_desc">Contracts, advisory and dispute resolution for contractors, developers, and infrastructure projects.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_7_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1600,7 +1600,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_8_title">Insurance Claims</h3>
                             <p data-cms="service_8_desc">Professional handling of insurance disputes and claims settlements for corporate and individual clients.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_8_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
 
@@ -1612,7 +1612,7 @@
                         <div class="service-card-content">
                             <h3 data-cms="service_9_title">Natural Resources Law</h3>
                             <p data-cms="service_9_desc">Legal advisory services for energy, mining, and resource development projects in Ghana.</p>
-                            <a class="service-card-link" href="#contact">Read More <i class="fa-solid fa-arrow-right"></i></a>
+                            <a class="service-card-link" href="#contact"><span data-cms="service_9_btn">Read More</span> <i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </article>
                 </div>
@@ -1624,9 +1624,9 @@
             <div class="container">
                 <div class="navy-split-grid reveal">
                     <div class="navy-split-left">
-                        <span class="navy-tag">SLC Commitments</span>
-                        <h2 class="serif white-title">Our Purpose &amp; Credentials</h2>
-                        <p class="navy-split-desc">
+                        <span class="navy-tag" data-cms="navy_tag">SLC Commitments</span>
+                        <h2 class="serif white-title" data-cms="navy_heading">Our Purpose &amp; Credentials</h2>
+                        <p class="navy-split-desc" data-cms="navy_desc">
                             Spring Legal Consultancy is dedicated to providing high-caliber, ethical, and client-focused legal services
                             that protect our clients' interests and foster sustainable business growth in Ghana and internationally.
                         </p>
@@ -1634,31 +1634,31 @@
                         <div class="navy-credentials">
                             <div class="navy-cred-item">
                                 <i class="fa-solid fa-shield-halved"></i>
-                                <span>Ghana Bar Association Certified Counsel</span>
+                                <span data-cms="navy_cred_1">Ghana Bar Association Certified Counsel</span>
                             </div>
                             <div class="navy-cred-item">
                                 <i class="fa-solid fa-certificate"></i>
-                                <span>Qualified Notaries Public</span>
+                                <span data-cms="navy_cred_2">Qualified Notaries Public</span>
                             </div>
                             <div class="navy-cred-item">
                                 <i class="fa-solid fa-plane"></i>
-                                <span>Aviation Law Specialists</span>
+                                <span data-cms="navy_cred_3">Aviation Law Specialists</span>
                             </div>
                             <div class="navy-cred-item">
                                 <i class="fa-solid fa-scale-balanced"></i>
-                                <span>Experienced Civil Litigation &amp; Dispute Resolution</span>
+                                <span data-cms="navy_cred_4">Experienced Civil Litigation &amp; Dispute Resolution</span>
                             </div>
                         </div>
                     </div>
                     <div class="navy-split-right">
                         <div class="purpose-card">
                             <div class="purpose-icon-wrap"><i class="fa-solid fa-bullseye"></i></div>
-                            <h3>Our Mission</h3>
+                            <h3 data-cms="mission_title">Our Mission</h3>
                             <p data-cms="mission_text">To deliver high-quality, ethical, and client-focused legal services that protect our clients' interests, support business growth, and provide practical solutions to complex legal challenges.</p>
                         </div>
                         <div class="purpose-card">
                             <div class="purpose-icon-wrap"><i class="fa-solid fa-star"></i></div>
-                            <h3>Our Vision</h3>
+                            <h3 data-cms="vision_title">Our Vision</h3>
                             <p data-cms="vision_text">To be a leading and trusted legal consultancy recognized for excellence, innovation, and professionalism, setting the benchmark for premium legal service delivery in the region.</p>
                         </div>
                     </div>
@@ -1670,8 +1670,8 @@
         <section id="team" class="section section-white">
             <div class="container">
                 <div class="section-header-left reveal">
-                    <h2 class="serif" data-cms="team_heading">Meet Our People</h2>
-                    <p data-cms="team_subheading">Senior counsel with decades of combined practice across commercial, regulatory and litigation work.</p>
+                    <span class="section-tag" data-cms="team_tag">Experienced lawyers for complex legal matters.</span>
+                    <h2 class="serif" data-cms="team_heading">Senior counsel with decades of combined practice across commercial, regulatory and litigation work.</h2>
                 </div>
                 
                 <div class="team-grid-abdavid">
@@ -1681,7 +1681,7 @@
                             <img src="img/team/team-09.jpg" alt="Mrs. Ruby Akua Aglagoh" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%\' height=\'100%\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
                         </div>
                         <div class="team-card-info">
-                            <span class="team-card-location">Accra, Ghana</span>
+                            <span class="team-card-location" data-cms="team_1_location">Accra, Ghana</span>
                             <h3 class="team-card-name" data-cms="team_1_name">Mrs. Ruby Akua Aglagoh</h3>
                             <span class="team-card-role" data-cms="team_1_role">Founder/Partner | Notary Public | Human Rights Advocate</span>
                             <p class="team-card-bio" data-cms="team_1_bio">Called to the Ghana Bar in 2001. Extensive experience in corporate governance, litigation, debt recovery, family law, aviation, real estate, and construction. Adjunct Lecturer at Ensign Global University. Holds LLB (Ghana), BL (Ghana School of Law), and LLM (Research) from Edith Cowan University, Australia.</p>
@@ -1694,7 +1694,7 @@
                             <img src="img/team/team-10.jpg" alt="Alexander Nii Kwartey Owoo" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%\' height=\'100%\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
                         </div>
                         <div class="team-card-info">
-                            <span class="team-card-location">Accra, Ghana</span>
+                            <span class="team-card-location" data-cms="team_2_location">Accra, Ghana</span>
                             <h3 class="team-card-name" data-cms="team_2_name">Alexander Nii Kwartey Owoo, Esq.</h3>
                             <span class="team-card-role" data-cms="team_2_role">Managing Partner | Barrister &amp; Solicitor | Notary Public</span>
                             <p class="team-card-bio" data-cms="team_2_bio">Over two decades of experience in corporate law, banking, finance, trusts, family law, and insurance. Former Head of Legal at HFC Bank. Lecturer in Law of Trusts and Business Law. Holds LLB (Ghana) and LLM in International Commercial and Corporate Law (London). Licensed Insolvency Practitioner.</p>
@@ -1707,7 +1707,7 @@
                             <img src="img/team/team-11.jpg" alt="Ernest Assie" onerror="this.onerror=null; this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%\' height=\'100%\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
                         </div>
                         <div class="team-card-info">
-                            <span class="team-card-location">Accra, Ghana</span>
+                            <span class="team-card-location" data-cms="team_3_location">Accra, Ghana</span>
                             <h3 class="team-card-name" data-cms="team_3_name">Ernest Assie, Esq.</h3>
                             <span class="team-card-role" data-cms="team_3_role">Junior Partner | Barrister &amp; Solicitor</span>
                             <p class="team-card-bio" data-cms="team_3_bio">Called to the Ghana Bar in 2017. Over 16 years of prior experience in recovery and debt management, client service, and banking operations. Formerly with Republic Bank Ghana PLC. Successfully handled high-profile cases in court and before statutory bodies. Holds BA (KNUST), LLB (Mountcrest), and BL (Ghana School of Law).</p>
@@ -1721,8 +1721,8 @@
         <section id="contact" class="section section-light">
             <div class="container">
                 <div class="section-header-left reveal">
-                    <h2 class="serif" data-cms="contact_heading">Contact Us</h2>
-                    <p data-cms="contact_subheading">Bring your matter to a team that moves with purpose. Share a few details and the SLC team will follow up promptly.</p>
+                    <h2 class="serif" data-cms="contact_heading">Bring your matter to a team that moves with purpose.</h2>
+                    <p data-cms="contact_subheading">Share a few details and the SLC team will follow up promptly with next steps.</p>
                 </div>
                 
                 <div class="contact-grid-abdavid">
@@ -1731,7 +1731,7 @@
                         <div class="contact-card-item">
                             <div class="contact-card-icon"><i class="fa-solid fa-location-dot"></i></div>
                             <div class="contact-card-text">
-                                <h4>Office Location</h4>
+                                <h4 data-cms="contact_address_title">Office Location</h4>
                                 <p data-cms="contact_address">16 Odanta Street, Asylum Down, Accra, Ghana</p>
                             </div>
                         </div>
@@ -1740,7 +1740,7 @@
                         <div class="contact-card-item">
                             <div class="contact-card-icon"><i class="fa-solid fa-phone"></i></div>
                             <div class="contact-card-text">
-                                <h4>Telephone</h4>
+                                <h4 data-cms="contact_phone_title">Telephone</h4>
                                 <p data-cms="contact_phone">(+233) 030 220 1530</p>
                             </div>
                         </div>
@@ -1749,7 +1749,7 @@
                         <div class="contact-card-item">
                             <div class="contact-card-icon"><i class="fa-solid fa-envelope"></i></div>
                             <div class="contact-card-text">
-                                <h4>Email Address</h4>
+                                <h4 data-cms="contact_email_title">Email Address</h4>
                                 <p data-cms="contact_email">info@springlegal.com.gh</p>
                             </div>
                         </div>
@@ -1758,14 +1758,14 @@
                         <div class="contact-card-item">
                             <div class="contact-card-icon"><i class="fa-regular fa-clock"></i></div>
                             <div class="contact-card-text">
-                                <h4>Office Hours</h4>
+                                <h4 data-cms="contact_hours_title">Office Hours</h4>
                                 <p data-cms="contact_hours">Monday – Friday, 8 AM – 5 PM GMT</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="contact-form-abdavid reveal">
-                        <h3>Request a Consultation</h3>
+                        <h3 data-cms="contact_form_title">Request a Consultation</h3>
                         <form id="consultForm" novalidate>
                             <div class="form-row">
                                 <div class="form-group">
@@ -1781,7 +1781,7 @@
                                 </div>
                                 <div class="form-group">
                                     <select name="area">
-                                        <option value="">Select Practice Area…</option>
+                                        <option value="" data-cms="contact_select_default">Select Practice Area…</option>
                                         <option>Aviation Law</option>
                                         <option>Corporate &amp; Commercial</option>
                                         <option>Dispute Resolution</option>
@@ -1800,7 +1800,7 @@
                                 <textarea name="message" placeholder="Briefly describe your legal matter…" required></textarea>
                             </div>
                             <button class="btn btn-primary" type="submit" style="width: 100%;">
-                                Send Enquiry <i class="fa-solid fa-paper-plane"></i>
+                                <span data-cms="contact_form_btn">Send Enquiry</span> <i class="fa-solid fa-paper-plane"></i>
                             </button>
                         </form>
                     </div>
@@ -1854,7 +1854,7 @@
             </div>
             
             <div class="footer-bottom">
-                <span>&copy; 2026 Spring Legal Consultancy. All rights reserved.</span>
+                <span data-cms="footer_copyright">&copy; 2026 Spring Legal Consultancy. All rights reserved.</span>
                 <span>
                     <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
                     <a href="#">Terms of Use</a>

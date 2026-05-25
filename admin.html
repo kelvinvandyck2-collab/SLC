@@ -207,13 +207,14 @@
     <aside class="sidebar">
         <div class="sidebar-brand"><img src="logo.png" alt="Logo"></div>
         <nav class="sidebar-nav" id="sidebarNav">
-            <a href="#" data-section="hero" class="active"><i class="fa-solid fa-home"></i> Hero Section</a>
-            <a href="#" data-section="about"><i class="fa-solid fa-info-circle"></i> About</a>
-            <a href="#" data-section="mission"><i class="fa-solid fa-bullseye"></i> Mission & Vision</a>
+            <a href="#" data-section="general" class="active"><i class="fa-solid fa-bars"></i> Navigation &amp; Logo</a>
+            <a href="#" data-section="hero"><i class="fa-solid fa-home"></i> Hero Section</a>
+            <a href="#" data-section="about"><i class="fa-solid fa-info-circle"></i> About SLC</a>
+            <a href="#" data-section="mission"><i class="fa-solid fa-bullseye"></i> Commitments (Navy Split)</a>
             <a href="#" data-section="services"><i class="fa-solid fa-briefcase"></i> Practice Areas</a>
-            <a href="#" data-section="team"><i class="fa-solid fa-users"></i> Team</a>
-            <a href="#" data-section="contact"><i class="fa-solid fa-envelope"></i> Contact</a>
-            <a href="#" data-section="footer"><i class="fa-solid fa-cog"></i> Footer</a>
+            <a href="#" data-section="team"><i class="fa-solid fa-users"></i> Team Members</a>
+            <a href="#" data-section="contact"><i class="fa-solid fa-envelope"></i> Contact &amp; Consult</a>
+            <a href="#" data-section="footer"><i class="fa-solid fa-cog"></i> Footer Details</a>
         </nav>
         <div class="sidebar-footer">
             <a href="/" target="_blank"><i class="fa-solid fa-external-link-alt"></i> View Live Site</a>
@@ -241,7 +242,7 @@
 <script>
     // ═══ CONFIG — No keys exposed, all requests go through server API ═══
     let contentData = {};
-    let currentSection = 'hero';
+    let currentSection = 'general';
 
     // ═══ API HELPERS ═══
     async function fetchContent() {
@@ -304,86 +305,165 @@
 
     // ═══ SECTION DEFINITIONS ═══
     const sections = {
+        general: {
+            title: 'Navigation & Logo Actions',
+            cards: [{
+                title: 'Header Buttons Text', badge: 'Top Navigation',
+                fields: [
+                    { key: 'header_call_text', label: 'Call Us Button Text', type: 'input' },
+                    { key: 'header_consult_text', label: 'Consult/Request Button Text', type: 'input' },
+                ]
+            }]
+        },
         hero: {
             title: 'Hero Section',
             cards: [{
-                title: 'Hero Content', badge: 'Above the fold',
+                title: 'Hero Main Content', badge: 'Slider Content',
                 fields: [
-                    { key: 'hero_badge', label: 'Badge Text', type: 'input' },
-                    { key: 'hero_title_line1', label: 'Headline — Line 1', type: 'input', hint: 'e.g. "Legal clarity for"' },
-                    { key: 'hero_title_highlight', label: 'Headline — Pink Highlighted Word', type: 'input', hint: 'This word appears in pink, e.g. "high-stakes"' },
-                    { key: 'hero_title_line2', label: 'Headline — Line 2', type: 'input', hint: 'e.g. "decisions."' },
-                    { key: 'hero_tagline', label: 'Tagline', type: 'input' },
-                    { key: 'hero_description', label: 'Description', type: 'textarea' },
+                    { key: 'hero_badge', label: 'Top Small Badge Text', type: 'input' },
+                    { key: 'hero_title_line1', label: 'Headline - Line 1', type: 'input', hint: 'e.g. "Legal clarity for"' },
+                    { key: 'hero_title_highlight', label: 'Headline - Pink Highlighted Word', type: 'input', hint: 'e.g. "high-stakes"' },
+                    { key: 'hero_title_line2', label: 'Headline - Line 2', type: 'input', hint: 'e.g. "decisions."' },
+                    { key: 'hero_tagline', label: 'Tagline (Slogan)', type: 'input' },
+                    { key: 'hero_description', label: 'Main Description Paragraph', type: 'textarea' },
+                    { key: 'hero_cta_consult', label: 'Primary CTA Button (Consult)', type: 'input' },
+                    { key: 'hero_cta_explore', label: 'Secondary CTA Button (Explore)', type: 'input' },
+                ]
+            }, {
+                title: 'Overlapping Quick-Link Cards', badge: 'Features Grid',
+                fields: [
+                    { key: 'overlap_card_1_title', label: 'Card 1 - Title', type: 'input' },
+                    { key: 'overlap_card_1_desc', label: 'Card 1 - Description', type: 'textarea' },
+                    { key: 'overlap_card_2_title', label: 'Card 2 - Title', type: 'input' },
+                    { key: 'overlap_card_2_desc', label: 'Card 2 - Description', type: 'textarea' },
+                    { key: 'overlap_card_3_title', label: 'Card 3 - Title', type: 'input' },
+                    { key: 'overlap_card_3_desc', label: 'Card 3 - Description', type: 'textarea' },
                 ]
             }]
         },
         about: {
-            title: 'About Section',
+            title: 'About SLC Overview',
             cards: [{
-                title: 'About Content', badge: 'Main',
+                title: 'Firm Overview Details', badge: 'Main Content',
                 fields: [
-                    { key: 'about_heading', label: 'Section Heading', type: 'input' },
-                    { key: 'about_para_1', label: 'Paragraph 1', type: 'textarea' },
-                    { key: 'about_para_2', label: 'Paragraph 2', type: 'textarea' },
+                    { key: 'about_tag', label: 'Section Small Tag', type: 'input' },
+                    { key: 'about_heading', label: 'Main Heading', type: 'input' },
+                    { key: 'about_para_1', label: 'Description Paragraph 1', type: 'textarea' },
+                    { key: 'about_para_2', label: 'Description Paragraph 2', type: 'textarea' },
+                ]
+            }, {
+                title: 'Our Core Values List', badge: 'Values List',
+                fields: [
+                    { key: 'about_values_title', label: 'Values Box Heading', type: 'input' },
+                    { key: 'about_value_1_title', label: 'Value 1 - Name', type: 'input' },
+                    { key: 'about_value_1_desc', label: 'Value 1 - Description', type: 'input' },
+                    { key: 'about_value_2_title', label: 'Value 2 - Name', type: 'input' },
+                    { key: 'about_value_2_desc', label: 'Value 2 - Description', type: 'input' },
+                    { key: 'about_value_3_title', label: 'Value 3 - Name', type: 'input' },
+                    { key: 'about_value_3_desc', label: 'Value 3 - Description', type: 'input' },
+                    { key: 'about_value_4_title', label: 'Value 4 - Name', type: 'input' },
+                    { key: 'about_value_4_desc', label: 'Value 4 - Description', type: 'input' },
+                    { key: 'about_value_5_title', label: 'Value 5 - Name', type: 'input' },
+                    { key: 'about_value_5_desc', label: 'Value 5 - Description', type: 'input' },
                 ]
             }]
         },
         mission: {
-            title: 'Mission & Vision',
+            title: 'SLC Commitments',
             cards: [{
-                title: 'Mission & Vision Statements', badge: 'Purpose',
+                title: 'Credentials & Accomplishments', badge: 'Navy Left Card',
                 fields: [
-                    { key: 'mission_text', label: 'Mission Statement', type: 'textarea' },
-                    { key: 'vision_text', label: 'Vision Statement', type: 'textarea' },
+                    { key: 'navy_tag', label: 'Commitment Small Tag', type: 'input' },
+                    { key: 'navy_heading', label: 'Accomplishments Heading', type: 'input' },
+                    { key: 'navy_desc', label: 'Accomplishments Description', type: 'textarea' },
+                    { key: 'navy_cred_1', label: 'Credential Item 1', type: 'input' },
+                    { key: 'navy_cred_2', label: 'Credential Item 2', type: 'input' },
+                    { key: 'navy_cred_3', label: 'Credential Item 3', type: 'input' },
+                    { key: 'navy_cred_4', label: 'Credential Item 4', type: 'input' },
+                ]
+            }, {
+                title: 'Mission & Vision Statements', badge: 'Navy Right Card',
+                fields: [
+                    { key: 'mission_title', label: 'Mission Title', type: 'input' },
+                    { key: 'mission_text', label: 'Mission Statement Text', type: 'textarea' },
+                    { key: 'vision_title', label: 'Vision Title', type: 'input' },
+                    { key: 'vision_text', label: 'Vision Statement Text', type: 'textarea' },
                 ]
             }]
         },
         services: {
             title: 'Practice Areas',
-            cards: [1,2,3,4,5,6,7,8,9].map(i => ({
-                title: `Service ${i}`, badge: `Area ${i}`,
+            cards: [
+                { i: 1, name: 'Aviation Law' },
+                { i: 2, name: 'Corporate & Commercial' },
+                { i: 3, name: 'Dispute Resolution' },
+                { i: 4, name: 'Real Estate & Property' },
+                { i: 5, name: 'Private Client & Family' },
+                { i: 6, name: 'Banking & Finance' },
+                { i: 7, name: 'Civil Construction' },
+                { i: 8, name: 'Insurance Claims' },
+                { i: 9, name: 'Natural Resources Law' },
+            ].map(s => ({
+                title: `${s.i}. ${s.name}`, badge: 'Practice Card',
                 fields: [
-                    { key: `service_${i}_title`, label: 'Service Name', type: 'input' },
-                    { key: `service_${i}_desc`, label: 'Service Description', type: 'textarea' },
+                    { key: `service_${s.i}_title`, label: 'Practice Area Title', type: 'input' },
+                    { key: `service_${s.i}_desc`, label: 'Description Paragraph', type: 'textarea' },
+                    { key: `service_${s.i}_btn`, label: 'Read More Text', type: 'input' },
                 ]
             }))
         },
         team: {
             title: 'Team Members',
             cards: [
-                { n: 1, name: 'Member 1' },
-                { n: 2, name: 'Member 2' },
-                { n: 3, name: 'Member 3' },
+                { n: 1, name: 'Mrs. Ruby Akua Aglagoh' },
+                { n: 2, name: 'Alexander Nii Kwartey Owoo' },
+                { n: 3, name: 'Ernest Assie' },
             ].map(m => ({
-                title: m.name, badge: 'Team',
+                title: m.name, badge: `Member ${m.n}`,
                 fields: [
+                    { key: `team_${m.n}_location`, label: 'Location Tag', type: 'input' },
                     { key: `team_${m.n}_name`, label: 'Full Name', type: 'input' },
-                    { key: `team_${m.n}_role`, label: 'Role / Title', type: 'input' },
-                    { key: `team_${m.n}_bio`, label: 'Biography', type: 'textarea' },
+                    { key: `team_${m.n}_role`, label: 'Role & Titles', type: 'input' },
+                    { key: `team_${m.n}_bio`, label: 'Detailed Biography', type: 'textarea' },
                 ]
             }))
         },
         contact: {
-            title: 'Contact Section',
+            title: 'Contact Details & Consultations',
             cards: [{
-                title: 'Contact Info', badge: 'Details',
+                title: 'Contact Header Content', badge: 'Layout Title',
                 fields: [
-                    { key: 'contact_heading', label: 'Section Heading', type: 'input' },
-                    { key: 'contact_subheading', label: 'Section Subheading', type: 'input' },
-                    { key: 'contact_address', label: 'Office Address', type: 'input' },
-                    { key: 'contact_phone', label: 'Phone Number', type: 'input' },
-                    { key: 'contact_email', label: 'Email Address', type: 'input' },
-                    { key: 'contact_hours', label: 'Office Hours', type: 'input' },
+                    { key: 'contact_heading', label: 'Section Main Heading', type: 'input' },
+                    { key: 'contact_subheading', label: 'Section Subheading Text', type: 'textarea' },
+                ]
+            }, {
+                title: 'Quick Info Block Labels', badge: 'Contact Boxes',
+                fields: [
+                    { key: 'contact_address_title', label: 'Address Card Title', type: 'input' },
+                    { key: 'contact_address', label: 'Office Address Text', type: 'input' },
+                    { key: 'contact_phone_title', label: 'Phone Card Title', type: 'input' },
+                    { key: 'contact_phone', label: 'Phone Number Text', type: 'input' },
+                    { key: 'contact_email_title', label: 'Email Card Title', type: 'input' },
+                    { key: 'contact_email', label: 'Email Address Text', type: 'input' },
+                    { key: 'contact_hours_title', label: 'Hours Card Title', type: 'input' },
+                    { key: 'contact_hours', label: 'Office Hours Text', type: 'input' },
+                ]
+            }, {
+                title: 'Consultation Form Labels', badge: 'Form Setup',
+                fields: [
+                    { key: 'contact_form_title', label: 'Form Box Heading', type: 'input' },
+                    { key: 'contact_select_default', label: 'Practice Dropdown First Choice label', type: 'input' },
+                    { key: 'contact_form_btn', label: 'Submission Button text', type: 'input' },
                 ]
             }]
         },
         footer: {
-            title: 'Footer',
+            title: 'Footer Branding details',
             cards: [{
-                title: 'Footer Content', badge: 'Bottom',
+                title: 'Footer Content Options', badge: 'Bottom Layout',
                 fields: [
-                    { key: 'footer_description', label: 'Footer Description', type: 'textarea' },
+                    { key: 'footer_description', label: 'Short Firm Bio Paragraph', type: 'textarea' },
+                    { key: 'footer_copyright', label: 'Footer Copyright Statement', type: 'input' },
                 ]
             }]
         }
