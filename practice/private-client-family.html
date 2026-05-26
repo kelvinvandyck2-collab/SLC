@@ -20,7 +20,20 @@
                 <ul class="nav-links" role="list">
                     <li><a href="../index.html">Home</a></li>
                     <li><a href="../index.html#about">About</a></li>
-                    <li><a href="../index.html#services" class="active">Practice Areas</a></li>
+                    <li class="has-dropdown">
+                        <a href="../index.html#services" class="active dropdown-toggle">Practice Areas <i class="fa-solid fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="aviation-law.html">Aviation Law</a></li>
+                            <li><a href="corporate-commercial.html">Corporate &amp; Commercial</a></li>
+                            <li><a href="dispute-resolution.html">Dispute Resolution</a></li>
+                            <li><a href="real-estate-property.html">Real Estate &amp; Property</a></li>
+                            <li><a href="private-client-family.html" class="current">Private Client &amp; Family</a></li>
+                            <li><a href="banking-finance.html">Banking &amp; Finance</a></li>
+                            <li><a href="civil-construction.html">Civil Construction</a></li>
+                            <li><a href="insurance-claims.html">Insurance Claims</a></li>
+                            <li><a href="natural-resources-law.html">Natural Resources Law</a></li>
+                        </ul>
+                    </li>
                     <li><a href="../index.html#team">Team</a></li>
                     <li><a href="../index.html#contact">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
@@ -87,7 +100,7 @@
                                 <li><a href="corporate-commercial.html">Corporate &amp; Commercial</a></li>
                                 <li><a href="dispute-resolution.html">Dispute Resolution</a></li>
                                 <li><a href="real-estate-property.html">Real Estate &amp; Property</a></li>
-                                <li class="active"><a href="private-client-family.html">Private Client &amp; Family</a></li>
+                                <li class="active"><a href="private-client-family.html" class="current">Private Client &amp; Family</a></li>
                                 <li><a href="banking-finance.html">Banking &amp; Finance</a></li>
                                 <li><a href="civil-construction.html">Civil Construction</a></li>
                                 <li><a href="insurance-claims.html">Insurance Claims</a></li>
@@ -138,9 +151,20 @@
     <script>
         const t=document.getElementById('menuToggle'),n=document.querySelector('.nav-links');
         t.addEventListener('click',()=>{t.classList.toggle('active');n.classList.toggle('active');});
-        document.querySelectorAll('.nav-links a').forEach(l=>l.addEventListener('click',()=>{t.classList.remove('active');n.classList.remove('active');}));
+        // Dropdown accordion on mobile
+        document.querySelectorAll('.has-dropdown').forEach(item => {
+            const toggle = item.querySelector('.dropdown-toggle');
+            toggle.addEventListener('click', e => {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    item.classList.toggle('open');
+                }
+            });
+        });
+        document.querySelectorAll('.nav-links a:not(.dropdown-toggle)').forEach(l=>l.addEventListener('click',()=>{t.classList.remove('active');n.classList.remove('active');}));
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
 </body>
 </html>
+

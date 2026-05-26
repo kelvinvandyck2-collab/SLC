@@ -60,6 +60,32 @@ a { color: inherit; text-decoration: none; }
 .menu-toggle.active .bar:nth-child(4) { opacity: 0; transform: scaleX(0); }
 .mobile-only-item { display: none; }
 
+/* ─── Practice Areas Dropdown ──────────────────────────────────── */
+.has-dropdown { position: relative; }
+.dropdown-toggle { gap: 6px; }
+.dropdown-icon { font-size: 0.65rem !important; transition: transform var(--transition); }
+.has-dropdown:hover .dropdown-icon { transform: rotate(180deg); }
+.dropdown-menu {
+    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%);
+    background: var(--white); border: 1px solid var(--navy-pale);
+    border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+    padding: 10px 0; min-width: 240px; z-index: 300;
+    opacity: 0; visibility: hidden; transform: translateX(-50%) translateY(-6px);
+    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+    list-style: none;
+}
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+}
+.dropdown-menu li a {
+    display: block; padding: 10px 20px; font-size: 0.86rem; font-weight: 600;
+    color: var(--gray-600); border-radius: 0; height: auto;
+    transition: all var(--transition); border-left: 3px solid transparent;
+}
+.dropdown-menu li a:hover { color: var(--pink); background: var(--pink-pale); border-left-color: var(--pink); }
+.dropdown-menu li a.current { color: var(--navy); background: var(--navy-wash); border-left-color: var(--navy); font-weight: 700; }
+
+
 /* ─── Page Banner ──────────────────────────────────────────────── */
 .page-banner {
     position: relative; height: 380px; display: flex; align-items: center;
@@ -169,6 +195,20 @@ a { color: inherit; text-decoration: none; }
     .mobile-only-item { display: block; padding: 16px 30px; }
     .nav-mobile-actions { display: flex; flex-direction: column; gap: 10px; }
     .nav-mobile-actions .btn { width: 100%; height: 44px; }
+    /* Mobile dropdown accordion */
+    .has-dropdown .dropdown-toggle { justify-content: space-between; }
+    .dropdown-menu {
+        position: static; transform: none; opacity: 1; visibility: visible;
+        box-shadow: none; border: none; border-radius: 0; padding: 0;
+        background: var(--navy-wash); min-width: auto;
+        max-height: 0; overflow: hidden;
+        transition: max-height 0.35s ease;
+    }
+    .has-dropdown.open .dropdown-menu { max-height: 600px; }
+    .has-dropdown.open .dropdown-icon { transform: rotate(180deg); }
+    .dropdown-menu li a { padding: 11px 44px; height: auto; font-size: 0.9rem; border-left: none; border-bottom: 1px solid rgba(26,58,107,0.06); }
+    .dropdown-menu li:last-child a { border-bottom: none; }
+
     .content-grid { grid-template-columns: 1fr; gap: 40px; }
     .content-sidebar { order: -1; }
     .sidebar-nav-list { display: grid; grid-template-columns: repeat(2, 1fr); }

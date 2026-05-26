@@ -255,6 +255,32 @@
             background: var(--navy-pale);
         }
 
+        /* ─── Practice Areas Dropdown ────────────────────────────── */
+        .has-dropdown { position: relative; }
+        .dropdown-toggle { gap: 6px; }
+        .dropdown-icon { font-size: 0.65rem !important; transition: transform var(--transition); }
+        .has-dropdown:hover .dropdown-icon { transform: rotate(180deg); }
+        .dropdown-menu {
+            position: absolute; top: calc(100% + 8px); left: 50%;
+            transform: translateX(-50%) translateY(-6px);
+            background: var(--white); border: 1px solid var(--navy-pale);
+            border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+            padding: 10px 0; min-width: 240px; z-index: 300;
+            opacity: 0; visibility: hidden;
+            transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+            list-style: none;
+        }
+        .has-dropdown:hover .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0);
+        }
+        .dropdown-menu li a {
+            display: block; padding: 10px 20px; font-size: 0.86rem; font-weight: 600;
+            color: var(--gray-600); height: auto; border-radius: 0;
+            transition: all var(--transition); border-left: 3px solid transparent;
+        }
+        .dropdown-menu li a:hover { color: var(--pink); background: var(--pink-pale); border-left-color: var(--pink); }
+
+
         .nav-actions {
             display: flex;
             gap: 12px;
@@ -1249,6 +1275,19 @@
                 background: var(--navy-wash);
                 color: var(--pink);
             }
+            /* Mobile dropdown accordion */
+            .has-dropdown .dropdown-toggle { justify-content: space-between; padding-right: 30px; }
+            .dropdown-menu {
+                position: static; transform: none; opacity: 1; visibility: visible;
+                box-shadow: none; border: none; border-radius: 0; padding: 0;
+                background: var(--navy-wash); min-width: auto;
+                max-height: 0; overflow: hidden;
+                transition: max-height 0.35s ease;
+            }
+            .has-dropdown.open .dropdown-menu { max-height: 600px; }
+            .has-dropdown.open .dropdown-icon { transform: rotate(180deg); }
+            .dropdown-menu li a { padding: 11px 48px; height: auto; font-size: 0.9rem; border-left: none; border-bottom: 1px solid rgba(26,58,107,0.06); }
+            .dropdown-menu li:last-child a { border-bottom: none; }
 
             .mobile-only-item {
                 display: block;
@@ -1391,7 +1430,20 @@
                 <ul class="nav-links" role="list">
                     <li><a href="#home" class="active">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#services">Practice Areas</a></li>
+                    <li class="has-dropdown">
+                        <a href="#services" class="dropdown-toggle">Practice Areas <i class="fa-solid fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="practice/aviation-law.html">Aviation Law</a></li>
+                            <li><a href="practice/corporate-commercial.html">Corporate &amp; Commercial</a></li>
+                            <li><a href="practice/dispute-resolution.html">Dispute Resolution</a></li>
+                            <li><a href="practice/real-estate-property.html">Real Estate &amp; Property</a></li>
+                            <li><a href="practice/private-client-family.html">Private Client &amp; Family</a></li>
+                            <li><a href="practice/banking-finance.html">Banking &amp; Finance</a></li>
+                            <li><a href="practice/civil-construction.html">Civil Construction</a></li>
+                            <li><a href="practice/insurance-claims.html">Insurance Claims</a></li>
+                            <li><a href="practice/natural-resources-law.html">Natural Resources Law</a></li>
+                        </ul>
+                    </li>
                     <li><a href="#team">Team</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li class="mobile-only-item">
@@ -1910,7 +1962,7 @@
     </footer>
 
     <script>
-        /* ── Mobile Menu Toggle ────────────────────────────────────── */
+        /* ── Mobile Menu Toggle ─────────────────────────────────────── */
         const menuToggle = document.getElementById('menuToggle');
         const navLinksContainer = document.querySelector('.nav-links');
 
