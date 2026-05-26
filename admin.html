@@ -208,11 +208,17 @@
             background: rgba(233,30,140,0.06);
             color: var(--pink);
         }
-        .mobile-brand {
-            font-weight: 700;
-            color: var(--text-bright);
-            font-size: 1.1rem;
-            letter-spacing: 0.05em;
+        .mobile-logo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 38px;
+            max-width: 160px;
+        }
+        .mobile-header-logo {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
         }
         .btn-save-mobile {
             padding: 8px 12px;
@@ -278,6 +284,9 @@
                 flex: 1;
                 justify-content: center;
             }
+            .topbar-actions #saveAllBtn {
+                display: none !important;
+            }
             .card {
                 padding: 18px;
             }
@@ -309,7 +318,9 @@
         <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
             <i class="fa-solid fa-bars"></i>
         </button>
-        <span class="mobile-brand">SLC Admin</span>
+        <div class="mobile-logo-wrap">
+            <img src="logo.png" alt="Logo" class="mobile-header-logo">
+        </div>
         <button class="btn btn-pink btn-save-mobile" onclick="saveCurrentSection()" aria-label="Save Changes">
             <i class="fa-solid fa-cloud-arrow-up"></i> Save
         </button>
