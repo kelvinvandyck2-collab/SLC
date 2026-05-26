@@ -37,13 +37,13 @@
                     <li><a href="../team.html">Team</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
-                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                        <a class="btn btn-primary" href="../contact.html">Consult</a>
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                        <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     </div></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a class="btn btn-primary" href="../contact.html">Consult</a>
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                    <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
                     </button>
@@ -61,8 +61,8 @@
                         <a href="aviation-law.html">Practice Areas</a><i class="fa-solid fa-chevron-right"></i>
                         <span>Banking & Finance</span>
                     </nav>
-                    <h1 class="serif banner-title">Banking &amp; Finance</h1>
-                    <p class="banner-sub">Debt recovery, credit facilities, insolvency, and financial regulatory advisory.</p>
+                    <h1 class="serif banner-title" data-cms="practice_6_banner_title">Banking &amp; Finance</h1>
+                    <p class="banner-sub" data-cms="practice_6_banner_sub">Debt recovery, credit facilities, insolvency, and financial regulatory advisory.</p>
                 </div>
             </div>
         </section>
@@ -70,11 +70,11 @@
             <div class="container">
                 <div class="content-grid">
                     <div class="content-main">
-                        <h2 class="serif section-h2">Our Banking &amp; Finance Practice</h2>
-                        <p>Spring Legal Consultancy provides specialist legal services to banks, financial institutions, corporate borrowers, and insolvency practitioners. Our team advises on the full lifecycle of financial transactions — from structuring credit facilities to enforcement and recovery.</p>
-                        <p>With our managing partner's background as Head of Legal at HFC Bank and his qualifications as a Licensed Insolvency Practitioner, SLC brings insider institutional knowledge to every banking and finance mandate.</p>
+                        <h2 class="serif section-h2" data-cms="practice_6_heading">Our Banking &amp; Finance Practice</h2>
+                        <p data-cms="practice_6_p1">Spring Legal Consultancy provides specialist legal services to banks, financial institutions, corporate borrowers, and insolvency practitioners. Our team advises on the full lifecycle of financial transactions — from structuring credit facilities to enforcement and recovery.</p>
+                        <p data-cms="practice_6_p2">With our managing partner's background as Head of Legal at HFC Bank and his qualifications as a Licensed Insolvency Practitioner, SLC brings insider institutional knowledge to every banking and finance mandate.</p>
                         <h3 class="serif">Areas of Expertise</h3>
-                        <ul class="service-list">
+                        <ul class="service-list" data-cms="practice_6_bullets">
                             <li><i class="fa-solid fa-check"></i> Debt recovery and enforcement actions</li>
                             <li><i class="fa-solid fa-check"></i> Credit facility structuring and documentation</li>
                             <li><i class="fa-solid fa-check"></i> Insolvency, winding-up, and corporate recovery</li>
@@ -85,10 +85,10 @@
                             <li><i class="fa-solid fa-check"></i> Letters of credit, guarantees, and surety arrangements</li>
                         </ul>
                         <h3 class="serif">Why SLC?</h3>
-                        <p>Alexander Nii Kwartey Owoo's dual qualifications in law and his LLM in International Commercial and Corporate Law from London, combined with hands-on experience as legal head of a major Ghanaian bank, mean SLC can provide banking advice that is both commercially savvy and technically rigorous.</p>
+                        <p data-cms="practice_6_why">Alexander Nii Kwartey Owoo's dual qualifications in law and his LLM in International Commercial and Corporate Law from London, combined with hands-on experience as legal head of a major Ghanaian bank, mean SLC can provide banking advice that is both commercially savvy and technically rigorous.</p>
                         <div class="cta-box">
-                            <h4 class="serif">Need Banking or Finance Legal Support?</h4>
-                            <p>Our team is ready to assist with debt recovery, transactions, and regulatory matters.</p>
+                            <h4 class="serif" data-cms="practice_6_cta_title">Need Banking or Finance Legal Support?</h4>
+                            <p data-cms="practice_6_cta_text">Our team is ready to assist with debt recovery, transactions, and regulatory matters.</p>
                             <a href="../contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
                         </div>
                     </div>
@@ -189,6 +189,7 @@
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
+    <script src="../cms-loader.js"></script>
 </body>
 </html>
 

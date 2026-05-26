@@ -37,13 +37,13 @@
                     <li><a href="../team.html">Team</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
-                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                        <a class="btn btn-primary" href="../contact.html">Consult</a>
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                        <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     </div></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a class="btn btn-primary" href="../contact.html">Consult</a>
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                    <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
                     </button>
@@ -61,8 +61,8 @@
                         <a href="aviation-law.html">Practice Areas</a><i class="fa-solid fa-chevron-right"></i>
                         <span>Dispute Resolution</span>
                     </nav>
-                    <h1 class="serif banner-title">Dispute Resolution</h1>
-                    <p class="banner-sub">Strategic representation and advocacy in civil and commercial disputes at all court levels.</p>
+                    <h1 class="serif banner-title" data-cms="practice_3_banner_title">Dispute Resolution</h1>
+                    <p class="banner-sub" data-cms="practice_3_banner_sub">Strategic representation and advocacy in civil and commercial disputes at all court levels.</p>
                 </div>
             </div>
         </section>
@@ -70,11 +70,11 @@
             <div class="container">
                 <div class="content-grid">
                     <div class="content-main">
-                        <h2 class="serif section-h2">Our Dispute Resolution Practice</h2>
-                        <p>When disputes arise, Spring Legal Consultancy provides tenacious, strategic representation to protect our clients' interests. Our litigators bring decades of combined courtroom experience, handling disputes across the full range of civil and commercial matters.</p>
-                        <p>We pursue resolution through the most effective route — whether that is litigation, arbitration, mediation, or negotiation — always with our client's commercial objectives firmly in view.</p>
+                        <h2 class="serif section-h2" data-cms="practice_3_heading">Our Dispute Resolution Practice</h2>
+                        <p data-cms="practice_3_p1">When disputes arise, Spring Legal Consultancy provides tenacious, strategic representation to protect our clients' interests. Our litigators bring decades of combined courtroom experience, handling disputes across the full range of civil and commercial matters.</p>
+                        <p data-cms="practice_3_p2">We pursue resolution through the most effective route — whether that is litigation, arbitration, mediation, or negotiation — always with our client's commercial objectives firmly in view.</p>
                         <h3 class="serif">Areas of Expertise</h3>
-                        <ul class="service-list">
+                        <ul class="service-list" data-cms="practice_3_bullets">
                             <li><i class="fa-solid fa-check"></i> High court civil and commercial litigation</li>
                             <li><i class="fa-solid fa-check"></i> Alternative dispute resolution (arbitration and mediation)</li>
                             <li><i class="fa-solid fa-check"></i> Debt recovery and enforcement proceedings</li>
@@ -85,10 +85,10 @@
                             <li><i class="fa-solid fa-check"></i> Cross-border dispute resolution and international arbitration</li>
                         </ul>
                         <h3 class="serif">Why SLC?</h3>
-                        <p>Ernest Assie, our junior partner, has built a track record of handling high-profile cases before the courts and statutory bodies. Combined with Mrs. Aglagoh's extensive litigation background, SLC offers a formidable courtroom team capable of managing complex, multi-party disputes.</p>
+                        <p data-cms="practice_3_why">Ernest Assie, our junior partner, has built a track record of handling high-profile cases before the courts and statutory bodies. Combined with Mrs. Aglagoh's extensive litigation background, SLC offers a formidable courtroom team capable of managing complex, multi-party disputes.</p>
                         <div class="cta-box">
-                            <h4 class="serif">Facing a Legal Dispute?</h4>
-                            <p>Our litigators are ready to assess your matter and advise on the best path forward.</p>
+                            <h4 class="serif" data-cms="practice_3_cta_title">Facing a Legal Dispute?</h4>
+                            <p data-cms="practice_3_cta_text">Our litigators are ready to assess your matter and advise on the best path forward.</p>
                             <a href="../contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
                         </div>
                     </div>
@@ -189,6 +189,7 @@
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
+    <script src="../cms-loader.js"></script>
 </body>
 </html>
 

@@ -37,13 +37,13 @@
                     <li><a href="../team.html">Team</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
-                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                        <a class="btn btn-primary" href="../contact.html">Consult</a>
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                        <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     </div></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a class="btn btn-primary" href="../contact.html">Consult</a>
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                    <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
                     </button>
@@ -61,8 +61,8 @@
                         <a href="aviation-law.html">Practice Areas</a><i class="fa-solid fa-chevron-right"></i>
                         <span>Private Client & Family</span>
                     </nav>
-                    <h1 class="serif banner-title">Private Client &amp; Family</h1>
-                    <p class="banner-sub">Sensitive and expert handling of family, succession, and private client legal matters.</p>
+                    <h1 class="serif banner-title" data-cms="practice_5_banner_title">Private Client &amp; Family</h1>
+                    <p class="banner-sub" data-cms="practice_5_banner_sub">Sensitive and expert handling of family, succession, and private client legal matters.</p>
                 </div>
             </div>
         </section>
@@ -70,11 +70,11 @@
             <div class="container">
                 <div class="content-grid">
                     <div class="content-main">
-                        <h2 class="serif section-h2">Our Private Client &amp; Family Practice</h2>
-                        <p>Spring Legal Consultancy handles the most sensitive personal legal matters with discretion, empathy, and expertise. Our private client team understands that these matters often involve deeply personal circumstances, and we provide counsel that is not only legally sound but also compassionate.</p>
-                        <p>We guide individuals and families through significant life events — from drafting a will to navigating a complex divorce — ensuring their rights and interests are protected throughout.</p>
+                        <h2 class="serif section-h2" data-cms="practice_5_heading">Our Private Client &amp; Family Practice</h2>
+                        <p data-cms="practice_5_p1">Spring Legal Consultancy handles the most sensitive personal legal matters with discretion, empathy, and expertise. Our private client team understands that these matters often involve deeply personal circumstances, and we provide counsel that is not only legally sound but also compassionate.</p>
+                        <p data-cms="practice_5_p2">We guide individuals and families through significant life events — from drafting a will to navigating a complex divorce — ensuring their rights and interests are protected throughout.</p>
                         <h3 class="serif">Areas of Expertise</h3>
-                        <ul class="service-list">
+                        <ul class="service-list" data-cms="practice_5_bullets">
                             <li><i class="fa-solid fa-check"></i> Matrimonial disputes and divorce proceedings</li>
                             <li><i class="fa-solid fa-check"></i> Child custody, maintenance, and access arrangements</li>
                             <li><i class="fa-solid fa-check"></i> Adoption proceedings</li>
@@ -85,10 +85,10 @@
                             <li><i class="fa-solid fa-check"></i> Prenuptial and cohabitation agreements</li>
                         </ul>
                         <h3 class="serif">Why SLC?</h3>
-                        <p>Mrs. Ruby Akua Aglagoh, a Human Rights Advocate with over two decades of experience, leads our private client practice. Her background ensures that sensitive matters — particularly those involving vulnerable clients, children, or complex family dynamics — are handled with the highest level of care and professional judgment.</p>
+                        <p data-cms="practice_5_why">Mrs. Ruby Akua Aglagoh, a Human Rights Advocate with over two decades of experience, leads our private client practice. Her background ensures that sensitive matters — particularly those involving vulnerable clients, children, or complex family dynamics — are handled with the highest level of care and professional judgment.</p>
                         <div class="cta-box">
-                            <h4 class="serif">Dealing with a Family Legal Matter?</h4>
-                            <p>Our team approaches every private client matter with care, discretion, and expertise.</p>
+                            <h4 class="serif" data-cms="practice_5_cta_title">Dealing with a Family Legal Matter?</h4>
+                            <p data-cms="practice_5_cta_text">Our team approaches every private client matter with care, discretion, and expertise.</p>
                             <a href="../contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
                         </div>
                     </div>
@@ -189,6 +189,7 @@
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
+    <script src="../cms-loader.js"></script>
 </body>
 </html>
 

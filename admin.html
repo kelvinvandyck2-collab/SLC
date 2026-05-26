@@ -376,14 +376,18 @@
     <aside class="sidebar">
         <div class="sidebar-brand"><img src="logo.png" alt="Logo"></div>
         <nav class="sidebar-nav" id="sidebarNav">
+            <div style="padding: 6px 20px 4px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); opacity: 0.5;">Homepage</div>
             <a href="#" data-section="general" class="active"><i class="fa-solid fa-bars"></i> Navigation &amp; Logo</a>
-            <a href="#" data-section="hero"><i class="fa-solid fa-home"></i> Hero Section</a>
-            <a href="#" data-section="about"><i class="fa-solid fa-info-circle"></i> About SLC</a>
-            <a href="#" data-section="mission"><i class="fa-solid fa-bullseye"></i> Commitments (Navy Split)</a>
-            <a href="#" data-section="services"><i class="fa-solid fa-briefcase"></i> Practice Areas</a>
-            <a href="#" data-section="team"><i class="fa-solid fa-users"></i> Team Members</a>
-            <a href="#" data-section="contact"><i class="fa-solid fa-envelope"></i> Contact &amp; Consult</a>
-            <a href="#" data-section="footer"><i class="fa-solid fa-cog"></i> Footer Details</a>
+            <a href="#" data-section="hero"><i class="fa-solid fa-home"></i> Hero / Banner</a>
+            <a href="#" data-section="about"><i class="fa-solid fa-info-circle"></i> About Blurb</a>
+            <div style="padding: 10px 20px 4px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); opacity: 0.5;">Full Pages</div>
+            <a href="#" data-section="aboutpage"><i class="fa-solid fa-building-columns"></i> About Page</a>
+            <a href="#" data-section="mission"><i class="fa-solid fa-bullseye"></i> SLC Commitments</a>
+            <a href="#" data-section="services"><i class="fa-solid fa-briefcase"></i> Practice Area Pages</a>
+            <a href="#" data-section="team"><i class="fa-solid fa-users"></i> Team Page</a>
+            <a href="#" data-section="contact"><i class="fa-solid fa-envelope"></i> Contact Page</a>
+            <div style="padding: 10px 20px 4px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); opacity: 0.5;">Sitewide</div>
+            <a href="#" data-section="footer"><i class="fa-solid fa-cog"></i> Footer / Global</a>
         </nav>
         <div class="sidebar-footer">
             <a href="/" target="_blank"><i class="fa-solid fa-external-link-alt"></i> View Live Site</a>
@@ -489,83 +493,108 @@
             }]
         },
         hero: {
-            title: 'Hero Section',
+            title: 'Homepage — Hero / Banner',
             cards: [{
-                title: 'Hero Main Content', badge: 'Slider Content',
+                title: 'Hero Main Content', badge: 'Homepage Slider',
                 fields: [
-                    { key: 'hero_badge', label: 'Top Small Badge Text', type: 'input' },
-                    { key: 'hero_title_line1', label: 'Headline - Line 1', type: 'input', hint: 'e.g. "Legal clarity for"' },
-                    { key: 'hero_title_highlight', label: 'Headline - Pink Highlighted Word', type: 'input', hint: 'e.g. "high-stakes"' },
-                    { key: 'hero_title_line2', label: 'Headline - Line 2', type: 'input', hint: 'e.g. "decisions."' },
-                    { key: 'hero_tagline', label: 'Tagline (Slogan)', type: 'input' },
-                    { key: 'hero_description', label: 'Main Description Paragraph', type: 'textarea' },
-                    { key: 'hero_cta_consult', label: 'Primary CTA Button (Consult)', type: 'input' },
-                    { key: 'hero_cta_explore', label: 'Secondary CTA Button (Explore)', type: 'input' },
+                    { key: 'hero_badge', label: 'Top Badge Text', type: 'input', hint: 'e.g. "Delivering Legal Excellence Since 2012"' },
+                    { key: 'hero_title', label: 'Hero Headline (HTML allowed)', type: 'textarea', hint: 'Use <br> for line breaks and <span class="highlight">word</span> for pink text' },
+                    { key: 'hero_tagline', label: 'Tagline / Slogan', type: 'input' },
+                    { key: 'hero_description', label: 'Hero Description Paragraph', type: 'textarea' },
+                    { key: 'hero_cta_consult', label: 'Primary Button Text', type: 'input' },
+                    { key: 'hero_cta_explore', label: 'Secondary Button Text', type: 'input' },
                 ]
             }, {
-                title: 'Overlapping Quick-Link Cards', badge: 'Features Grid',
+                title: 'Quick-Link Cards (Below Hero)', badge: 'Homepage Grid',
                 fields: [
-                    { key: 'overlap_card_1_title', label: 'Card 1 - Title', type: 'input' },
-                    { key: 'overlap_card_1_desc', label: 'Card 1 - Description', type: 'textarea' },
-                    { key: 'overlap_card_2_title', label: 'Card 2 - Title', type: 'input' },
-                    { key: 'overlap_card_2_desc', label: 'Card 2 - Description', type: 'textarea' },
-                    { key: 'overlap_card_3_title', label: 'Card 3 - Title', type: 'input' },
-                    { key: 'overlap_card_3_desc', label: 'Card 3 - Description', type: 'textarea' },
+                    { key: 'overlap_card_1_title', label: 'Card 1 — Title', type: 'input' },
+                    { key: 'overlap_card_1_desc', label: 'Card 1 — Description', type: 'textarea' },
+                    { key: 'overlap_card_2_title', label: 'Card 2 — Title', type: 'input' },
+                    { key: 'overlap_card_2_desc', label: 'Card 2 — Description', type: 'textarea' },
+                    { key: 'overlap_card_3_title', label: 'Card 3 — Title', type: 'input' },
+                    { key: 'overlap_card_3_desc', label: 'Card 3 — Description', type: 'textarea' },
                 ]
             }]
         },
         about: {
-            title: 'About SLC Overview',
+            title: 'Homepage — About Blurb',
             cards: [{
-                title: 'Firm Overview Details', badge: 'Main Content',
+                title: 'About Blurb (Homepage)', badge: 'Homepage Section',
                 fields: [
-                    { key: 'about_tag', label: 'Section Small Tag', type: 'input' },
-                    { key: 'about_heading', label: 'Main Heading', type: 'input' },
-                    { key: 'about_para_1', label: 'Description Paragraph 1', type: 'textarea' },
-                    { key: 'about_para_2', label: 'Description Paragraph 2', type: 'textarea' },
+                    { key: 'about_tag', label: 'Small Section Tag', type: 'input', hint: 'e.g. "About SLC" — shown on both homepage and About page' },
+                    { key: 'about_heading', label: 'Section Heading', type: 'input', hint: 'Shown on homepage and About page' },
+                    { key: 'about_para_1', label: 'First Paragraph', type: 'textarea', hint: 'Shown on homepage and About page' },
+                ]
+            }]
+        },
+        aboutpage: {
+            title: 'About Page — Full Details',
+            cards: [{
+                title: 'Page Banner', badge: 'About Page',
+                fields: [
+                    { key: 'about_banner_title', label: 'Banner Title', type: 'input' },
+                    { key: 'about_banner_sub', label: 'Banner Subtitle', type: 'input' },
                 ]
             }, {
-                title: 'Our Core Values List', badge: 'Values List',
+                title: 'Body Paragraphs', badge: 'Main Content',
+                fields: [
+                    { key: 'about_para_2', label: 'Paragraph 2', type: 'textarea' },
+                    { key: 'about_para_3', label: 'Paragraph 3', type: 'textarea' },
+                ]
+            }, {
+                title: 'Stats Row', badge: 'Key Numbers',
+                fields: [
+                    { key: 'about_stat_1_num', label: 'Stat 1 — Number', type: 'input' },
+                    { key: 'about_stat_1_label', label: 'Stat 1 — Label', type: 'input' },
+                    { key: 'about_stat_2_num', label: 'Stat 2 — Number', type: 'input' },
+                    { key: 'about_stat_2_label', label: 'Stat 2 — Label', type: 'input' },
+                    { key: 'about_stat_3_num', label: 'Stat 3 — Number', type: 'input' },
+                    { key: 'about_stat_3_label', label: 'Stat 3 — Label', type: 'input' },
+                    { key: 'about_stat_4_num', label: 'Stat 4 — Number', type: 'input' },
+                    { key: 'about_stat_4_label', label: 'Stat 4 — Label', type: 'input' },
+                ]
+            }, {
+                title: 'Core Values List', badge: 'Values',
                 fields: [
                     { key: 'about_values_title', label: 'Values Box Heading', type: 'input' },
-                    { key: 'about_value_1_title', label: 'Value 1 - Name', type: 'input' },
-                    { key: 'about_value_1_desc', label: 'Value 1 - Description', type: 'input' },
-                    { key: 'about_value_2_title', label: 'Value 2 - Name', type: 'input' },
-                    { key: 'about_value_2_desc', label: 'Value 2 - Description', type: 'input' },
-                    { key: 'about_value_3_title', label: 'Value 3 - Name', type: 'input' },
-                    { key: 'about_value_3_desc', label: 'Value 3 - Description', type: 'input' },
-                    { key: 'about_value_4_title', label: 'Value 4 - Name', type: 'input' },
-                    { key: 'about_value_4_desc', label: 'Value 4 - Description', type: 'input' },
-                    { key: 'about_value_5_title', label: 'Value 5 - Name', type: 'input' },
-                    { key: 'about_value_5_desc', label: 'Value 5 - Description', type: 'input' },
+                    { key: 'about_value_1_title', label: 'Value 1 — Name', type: 'input' },
+                    { key: 'about_value_1_desc', label: 'Value 1 — Description', type: 'input' },
+                    { key: 'about_value_2_title', label: 'Value 2 — Name', type: 'input' },
+                    { key: 'about_value_2_desc', label: 'Value 2 — Description', type: 'input' },
+                    { key: 'about_value_3_title', label: 'Value 3 — Name', type: 'input' },
+                    { key: 'about_value_3_desc', label: 'Value 3 — Description', type: 'input' },
+                    { key: 'about_value_4_title', label: 'Value 4 — Name', type: 'input' },
+                    { key: 'about_value_4_desc', label: 'Value 4 — Description', type: 'input' },
+                    { key: 'about_value_5_title', label: 'Value 5 — Name', type: 'input' },
+                    { key: 'about_value_5_desc', label: 'Value 5 — Description', type: 'input' },
                 ]
             }]
         },
         mission: {
-            title: 'SLC Commitments',
+            title: 'About Page — SLC Commitments',
             cards: [{
-                title: 'Credentials & Accomplishments', badge: 'Navy Left Card',
+                title: 'Credentials & Credentials', badge: 'Left Card',
                 fields: [
-                    { key: 'navy_tag', label: 'Commitment Small Tag', type: 'input' },
-                    { key: 'navy_heading', label: 'Accomplishments Heading', type: 'input' },
-                    { key: 'navy_desc', label: 'Accomplishments Description', type: 'textarea' },
-                    { key: 'navy_cred_1', label: 'Credential Item 1', type: 'input' },
-                    { key: 'navy_cred_2', label: 'Credential Item 2', type: 'input' },
-                    { key: 'navy_cred_3', label: 'Credential Item 3', type: 'input' },
-                    { key: 'navy_cred_4', label: 'Credential Item 4', type: 'input' },
+                    { key: 'navy_tag', label: 'Section Tag', type: 'input' },
+                    { key: 'navy_heading', label: 'Heading', type: 'input' },
+                    { key: 'navy_desc', label: 'Description Paragraph', type: 'textarea' },
+                    { key: 'navy_cred_1', label: 'Credential 1', type: 'input' },
+                    { key: 'navy_cred_2', label: 'Credential 2', type: 'input' },
+                    { key: 'navy_cred_3', label: 'Credential 3', type: 'input' },
+                    { key: 'navy_cred_4', label: 'Credential 4', type: 'input' },
                 ]
             }, {
-                title: 'Mission & Vision Statements', badge: 'Navy Right Card',
+                title: 'Mission & Vision', badge: 'Right Card',
                 fields: [
                     { key: 'mission_title', label: 'Mission Title', type: 'input' },
-                    { key: 'mission_text', label: 'Mission Statement Text', type: 'textarea' },
+                    { key: 'mission_text', label: 'Mission Statement', type: 'textarea' },
                     { key: 'vision_title', label: 'Vision Title', type: 'input' },
-                    { key: 'vision_text', label: 'Vision Statement Text', type: 'textarea' },
+                    { key: 'vision_text', label: 'Vision Statement', type: 'textarea' },
                 ]
             }]
         },
         services: {
-            title: 'Practice Areas',
+            title: 'Practice Area Pages',
             cards: [
                 { i: 1, name: 'Aviation Law' },
                 { i: 2, name: 'Corporate & Commercial' },
@@ -577,17 +606,31 @@
                 { i: 8, name: 'Insurance Claims' },
                 { i: 9, name: 'Natural Resources Law' },
             ].map(s => ({
-                title: `${s.i}. ${s.name}`, badge: 'Practice Card',
+                title: `${s.i}. ${s.name} Page Content`, badge: 'Subpage',
                 fields: [
-                    { key: `service_${s.i}_title`, label: 'Practice Area Title', type: 'input' },
-                    { key: `service_${s.i}_desc`, label: 'Description Paragraph', type: 'textarea' },
-                    { key: `service_${s.i}_btn`, label: 'Read More Text', type: 'input' },
+                    { key: `practice_${s.i}_banner_title`, label: 'Banner Title', type: 'input' },
+                    { key: `practice_${s.i}_banner_sub`, label: 'Banner Subtitle', type: 'input' },
+                    { key: `practice_${s.i}_heading`, label: 'Page Section Heading', type: 'input' },
+                    { key: `practice_${s.i}_p1`, label: 'Description Paragraph 1', type: 'textarea' },
+                    { key: `practice_${s.i}_p2`, label: 'Description Paragraph 2', type: 'textarea' },
+                    { key: `practice_${s.i}_bullets`, label: 'Expertise Bullets (One per line)', type: 'textarea', hint: 'Type each expertise on a new line.' },
+                    { key: `practice_${s.i}_why`, label: 'Why Choose Us Section Text', type: 'textarea' },
+                    { key: `practice_${s.i}_cta_title`, label: 'CTA Box Title', type: 'input' },
+                    { key: `practice_${s.i}_cta_text`, label: 'CTA Box Text', type: 'textarea' },
                 ]
             }))
         },
         team: {
-            title: 'Team Members',
-            cards: [
+            title: 'Team Page & Members',
+            cards: [{
+                title: 'Team Page Banner & Intro', badge: 'Team Page',
+                fields: [
+                    { key: 'team_banner_title', label: 'Banner Title', type: 'input' },
+                    { key: 'team_banner_sub', label: 'Banner Subtitle', type: 'input' },
+                    { key: 'team_heading', label: 'Section Heading', type: 'input' },
+                    { key: 'team_subheading', label: 'Intro Paragraph', type: 'textarea' },
+                ]
+            }, ...[
                 { n: 1, name: 'Mrs. Ruby Akua Aglagoh' },
                 { n: 2, name: 'Alexander Nii Kwartey Owoo' },
                 { n: 3, name: 'Ernest Assie' },
@@ -599,44 +642,52 @@
                     { key: `team_${m.n}_role`, label: 'Role & Titles', type: 'input' },
                     { key: `team_${m.n}_bio`, label: 'Detailed Biography', type: 'textarea' },
                 ]
-            }))
+            }))]
         },
         contact: {
-            title: 'Contact Details & Consultations',
+            title: 'Contact Page',
             cards: [{
-                title: 'Contact Header Content', badge: 'Layout Title',
+                title: 'Page Banner', badge: 'Contact Page',
                 fields: [
-                    { key: 'contact_heading', label: 'Section Main Heading', type: 'input' },
-                    { key: 'contact_subheading', label: 'Section Subheading Text', type: 'textarea' },
+                    { key: 'contact_banner_title', label: 'Banner Title', type: 'input' },
+                    { key: 'contact_banner_sub', label: 'Banner Subtitle', type: 'input' },
+                    { key: 'contact_heading', label: 'Section Heading', type: 'input' },
+                    { key: 'contact_subheading', label: 'Section Intro Text', type: 'textarea' },
                 ]
             }, {
-                title: 'Quick Info Block Labels', badge: 'Contact Boxes',
+                title: 'Contact Info Cards', badge: 'Info Boxes',
                 fields: [
                     { key: 'contact_address_title', label: 'Address Card Title', type: 'input' },
-                    { key: 'contact_address', label: 'Office Address Text', type: 'input' },
+                    { key: 'contact_address', label: 'Office Address', type: 'input' },
                     { key: 'contact_phone_title', label: 'Phone Card Title', type: 'input' },
-                    { key: 'contact_phone', label: 'Phone Number Text', type: 'input' },
+                    { key: 'contact_phone', label: 'Phone Number', type: 'input' },
                     { key: 'contact_email_title', label: 'Email Card Title', type: 'input' },
-                    { key: 'contact_email', label: 'Email Address Text', type: 'input' },
-                    { key: 'contact_hours_title', label: 'Hours Card Title', type: 'input' },
-                    { key: 'contact_hours', label: 'Office Hours Text', type: 'input' },
+                    { key: 'contact_email', label: 'Email Address', type: 'input' },
+                    { key: 'contact_hours_title', label: 'Office Hours Title', type: 'input' },
+                    { key: 'contact_hours', label: 'Office Hours', type: 'input' },
                 ]
             }, {
-                title: 'Consultation Form Labels', badge: 'Form Setup',
+                title: 'Consultation Form', badge: 'Form Labels',
                 fields: [
-                    { key: 'contact_form_title', label: 'Form Box Heading', type: 'input' },
-                    { key: 'contact_select_default', label: 'Practice Dropdown First Choice label', type: 'input' },
-                    { key: 'contact_form_btn', label: 'Submission Button text', type: 'input' },
+                    { key: 'contact_form_title', label: 'Form Heading', type: 'input' },
+                    { key: 'contact_select_default', label: 'Practice Area Dropdown Default', type: 'input' },
+                    { key: 'contact_form_btn', label: 'Submit Button Text', type: 'input' },
                 ]
             }]
         },
         footer: {
-            title: 'Footer Branding details',
+            title: 'Footer & Global Settings',
             cards: [{
-                title: 'Footer Content Options', badge: 'Bottom Layout',
+                title: 'Footer Content (All Pages)', badge: 'Sitewide',
                 fields: [
-                    { key: 'footer_description', label: 'Short Firm Bio Paragraph', type: 'textarea' },
-                    { key: 'footer_copyright', label: 'Footer Copyright Statement', type: 'input' },
+                    { key: 'footer_description', label: 'Firm Short Bio', type: 'textarea' },
+                    { key: 'footer_copyright', label: 'Copyright Text', type: 'input' },
+                ]
+            }, {
+                title: 'Header Button Labels (All Pages)', badge: 'Sitewide',
+                fields: [
+                    { key: 'header_call_text', label: 'Call Us Button Text', type: 'input' },
+                    { key: 'header_consult_text', label: 'Consult Button Text', type: 'input' },
                 ]
             }]
         }

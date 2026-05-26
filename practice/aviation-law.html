@@ -37,13 +37,13 @@
                     <li><a href="../team.html">Team</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
-                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                        <a class="btn btn-primary" href="../contact.html">Consult</a>
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                        <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     </div></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a class="btn btn-primary" href="../contact.html">Consult</a>
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                    <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
                     </button>
@@ -62,8 +62,8 @@
                         <a href="aviation-law.html">Practice Areas</a><i class="fa-solid fa-chevron-right"></i>
                         <span>Aviation Law</span>
                     </nav>
-                    <h1 class="serif banner-title">Aviation Law</h1>
-                    <p class="banner-sub">Specialized regulatory and transactional legal support for the aviation sector.</p>
+                    <h1 class="serif banner-title" data-cms="practice_1_banner_title">Aviation Law</h1>
+                    <p class="banner-sub" data-cms="practice_1_banner_sub">Specialized regulatory and transactional legal support for the aviation sector.</p>
                 </div>
             </div>
         </section>
@@ -72,12 +72,12 @@
             <div class="container">
                 <div class="content-grid">
                     <div class="content-main">
-                        <h2 class="serif section-h2">Our Aviation Law Practice</h2>
-                        <p>Spring Legal Consultancy provides comprehensive legal advisory services to a wide range of aviation sector stakeholders — from airlines, aircraft operators, and maintenance organizations to regulators, financiers, and insurers operating in Ghana and across West Africa.</p>
-                        <p>Our team brings deep expertise in the unique regulatory landscape governing civil aviation, combining legal knowledge with an understanding of the commercial realities of the industry.</p>
+                        <h2 class="serif section-h2" data-cms="practice_1_heading">Our Aviation Law Practice</h2>
+                        <p data-cms="practice_1_p1">Spring Legal Consultancy provides comprehensive legal advisory services to a wide range of aviation sector stakeholders — from airlines, aircraft operators, and maintenance organizations to regulators, financiers, and insurers operating in Ghana and across West Africa.</p>
+                        <p data-cms="practice_1_p2">Our team brings deep expertise in the unique regulatory landscape governing civil aviation, combining legal knowledge with an understanding of the commercial realities of the industry.</p>
 
                         <h3 class="serif">Areas of Expertise</h3>
-                        <ul class="service-list">
+                        <ul class="service-list" data-cms="practice_1_bullets">
                             <li><i class="fa-solid fa-check"></i> Regulatory compliance and advisory under the Ghana Civil Aviation Authority (GCAA) framework</li>
                             <li><i class="fa-solid fa-check"></i> Aircraft acquisition, financing, and leasing transactions</li>
                             <li><i class="fa-solid fa-check"></i> Aviation insurance claims and dispute resolution</li>
@@ -89,11 +89,11 @@
                         </ul>
 
                         <h3 class="serif">Why SLC for Aviation?</h3>
-                        <p>Mrs. Ruby Akua Aglagoh, our founding partner, holds specialized expertise in aviation law — one of only a few practitioners in Ghana with this level of dedicated sectoral knowledge. Our firm has advised on aviation contracts, regulatory submissions, and enforcement matters, making us a trusted partner for operators navigating Ghana's evolving aviation landscape.</p>
+                        <p data-cms="practice_1_why">Mrs. Ruby Akua Aglagoh, our founding partner, holds specialized expertise in aviation law — one of only a few practitioners in Ghana with this level of dedicated sectoral knowledge. Our firm has advised on aviation contracts, regulatory submissions, and enforcement matters, making us a trusted partner for operators navigating Ghana's evolving aviation landscape.</p>
 
                         <div class="cta-box">
-                            <h4 class="serif">Need Aviation Legal Counsel?</h4>
-                            <p>Our team is ready to advise on regulatory, transactional, or dispute matters in the aviation sector.</p>
+                            <h4 class="serif" data-cms="practice_1_cta_title">Need Aviation Legal Counsel?</h4>
+                            <p data-cms="practice_1_cta_text">Our team is ready to advise on regulatory, transactional, or dispute matters in the aviation sector.</p>
                             <a href="../contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
                         </div>
                     </div>
@@ -195,6 +195,7 @@
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
+    <script src="../cms-loader.js"></script>
 </body>
 </html>
 

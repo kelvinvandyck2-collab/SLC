@@ -37,13 +37,13 @@
                     <li><a href="../team.html">Team</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
-                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                        <a class="btn btn-primary" href="../contact.html">Consult</a>
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                        <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     </div></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a class="btn btn-primary" href="../contact.html">Consult</a>
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                    <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
                     </button>
@@ -61,8 +61,8 @@
                         <a href="aviation-law.html">Practice Areas</a><i class="fa-solid fa-chevron-right"></i>
                         <span>Corporate & Commercial</span>
                     </nav>
-                    <h1 class="serif banner-title">Corporate &amp; Commercial</h1>
-                    <p class="banner-sub">Legal support for company formation, governance, mergers, and commercial transactions.</p>
+                    <h1 class="serif banner-title" data-cms="practice_2_banner_title">Corporate &amp; Commercial</h1>
+                    <p class="banner-sub" data-cms="practice_2_banner_sub">Legal support for company formation, governance, mergers, and commercial transactions.</p>
                 </div>
             </div>
         </section>
@@ -70,11 +70,11 @@
             <div class="container">
                 <div class="content-grid">
                     <div class="content-main">
-                        <h2 class="serif section-h2">Our Corporate &amp; Commercial Practice</h2>
-                        <p>Spring Legal Consultancy advises businesses — from start-ups to multinational corporations — on the full spectrum of corporate and commercial legal matters. We act as trusted counsel to boards, executives, and management teams across all sectors of the Ghanaian economy.</p>
-                        <p>Our team understands that commercial transactions must be structured efficiently, with legal risks mitigated and business objectives kept at the forefront of every advisory mandate.</p>
+                        <h2 class="serif section-h2" data-cms="practice_2_heading">Our Corporate &amp; Commercial Practice</h2>
+                        <p data-cms="practice_2_p1">Spring Legal Consultancy advises businesses — from start-ups to multinational corporations — on the full spectrum of corporate and commercial legal matters. We act as trusted counsel to boards, executives, and management teams across all sectors of the Ghanaian economy.</p>
+                        <p data-cms="practice_2_p2">Our team understands that commercial transactions must be structured efficiently, with legal risks mitigated and business objectives kept at the forefront of every advisory mandate.</p>
                         <h3 class="serif">Areas of Expertise</h3>
-                        <ul class="service-list">
+                        <ul class="service-list" data-cms="practice_2_bullets">
                             <li><i class="fa-solid fa-check"></i> Company incorporation, structuring, and registration</li>
                             <li><i class="fa-solid fa-check"></i> Corporate governance, board advisory, and compliance</li>
                             <li><i class="fa-solid fa-check"></i> Mergers, acquisitions, and joint ventures</li>
@@ -85,10 +85,10 @@
                             <li><i class="fa-solid fa-check"></i> Employment and labour law advisory</li>
                         </ul>
                         <h3 class="serif">Why SLC?</h3>
-                        <p>Our managing partner, Alexander Nii Kwartey Owoo, brings over two decades of corporate law experience, including his tenure as Head of Legal at HFC Bank. This background gives SLC a uniquely commercial understanding of legal risk — enabling us to deliver advice that is both technically sound and commercially practical.</p>
+                        <p data-cms="practice_2_why">Our managing partner, Alexander Nii Kwartey Owoo, brings over two decades of corporate law experience, including his tenure as Head of Legal at HFC Bank. This background gives SLC a uniquely commercial understanding of legal risk — enabling us to deliver advice that is both technically sound and commercially practical.</p>
                         <div class="cta-box">
-                            <h4 class="serif">Ready to Structure Your Business?</h4>
-                            <p>Our corporate team is available to advise on transactions, governance, and contracts.</p>
+                            <h4 class="serif" data-cms="practice_2_cta_title">Ready to Structure Your Business?</h4>
+                            <p data-cms="practice_2_cta_text">Our corporate team is available to advise on transactions, governance, and contracts.</p>
                             <a href="../contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
                         </div>
                     </div>
@@ -189,6 +189,7 @@
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
+    <script src="../cms-loader.js"></script>
 </body>
 </html>
 

@@ -37,13 +37,13 @@
                     <li><a href="../team.html">Team</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
-                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                        <a class="btn btn-primary" href="../contact.html">Consult</a>
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                        <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     </div></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a class="btn btn-primary" href="../contact.html">Consult</a>
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                    <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
                     </button>
@@ -61,8 +61,8 @@
                         <a href="aviation-law.html">Practice Areas</a><i class="fa-solid fa-chevron-right"></i>
                         <span>Insurance Claims</span>
                     </nav>
-                    <h1 class="serif banner-title">Insurance Claims</h1>
-                    <p class="banner-sub">Professional handling of insurance disputes and claims for corporate and individual clients.</p>
+                    <h1 class="serif banner-title" data-cms="practice_8_banner_title">Insurance Claims</h1>
+                    <p class="banner-sub" data-cms="practice_8_banner_sub">Professional handling of insurance disputes and claims for corporate and individual clients.</p>
                 </div>
             </div>
         </section>
@@ -70,11 +70,11 @@
             <div class="container">
                 <div class="content-grid">
                     <div class="content-main">
-                        <h2 class="serif section-h2">Our Insurance Claims Practice</h2>
-                        <p>When insurers deny, delay, or underpay claims, Spring Legal Consultancy steps in to advocate for policyholders and ensure they receive what they are contractually entitled to. We also advise insurers and reinsurers on policy wording, coverage disputes, and regulatory compliance.</p>
-                        <p>Our insurance practice spans the full range of insurance lines, including property, motor, liability, life, and marine insurance, with particular strength in aviation-related insurance matters.</p>
+                        <h2 class="serif section-h2" data-cms="practice_8_heading">Our Insurance Claims Practice</h2>
+                        <p data-cms="practice_8_p1">When insurers deny, delay, or underpay claims, Spring Legal Consultancy steps in to advocate for policyholders and ensure they receive what they are contractually entitled to. We also advise insurers and reinsurers on policy wording, coverage disputes, and regulatory compliance.</p>
+                        <p data-cms="practice_8_p2">Our insurance practice spans the full range of insurance lines, including property, motor, liability, life, and marine insurance, with particular strength in aviation-related insurance matters.</p>
                         <h3 class="serif">Areas of Expertise</h3>
-                        <ul class="service-list">
+                        <ul class="service-list" data-cms="practice_8_bullets">
                             <li><i class="fa-solid fa-check"></i> Property and casualty insurance claims</li>
                             <li><i class="fa-solid fa-check"></i> Motor vehicle accident and fleet insurance disputes</li>
                             <li><i class="fa-solid fa-check"></i> Aviation hull and liability claims</li>
@@ -85,10 +85,10 @@
                             <li><i class="fa-solid fa-check"></i> Subrogation and recovery actions</li>
                         </ul>
                         <h3 class="serif">Why SLC?</h3>
-                        <p>Spring Legal Consultancy's combined expertise in aviation law, corporate law, and litigation makes us uniquely positioned to handle complex, multi-line insurance claims that span industry sectors. We have a strong track record of securing favourable settlements and judgments for both individual and corporate policyholders.</p>
+                        <p data-cms="practice_8_why">Spring Legal Consultancy's combined expertise in aviation law, corporate law, and litigation makes us uniquely positioned to handle complex, multi-line insurance claims that span industry sectors. We have a strong track record of securing favourable settlements and judgments for both individual and corporate policyholders.</p>
                         <div class="cta-box">
-                            <h4 class="serif">Facing an Insurance Dispute?</h4>
-                            <p>Our team will fight to ensure you receive the full benefit of your insurance coverage.</p>
+                            <h4 class="serif" data-cms="practice_8_cta_title">Facing an Insurance Dispute?</h4>
+                            <p data-cms="practice_8_cta_text">Our team will fight to ensure you receive the full benefit of your insurance coverage.</p>
                             <a href="../contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
                         </div>
                     </div>
@@ -189,6 +189,7 @@
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
+    <script src="../cms-loader.js"></script>
 </body>
 </html>
 

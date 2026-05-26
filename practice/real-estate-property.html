@@ -37,13 +37,13 @@
                     <li><a href="../team.html">Team</a></li>
                     <li><a href="../contact.html">Contact</a></li>
                     <li class="mobile-only-item"><div class="nav-mobile-actions">
-                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                        <a class="btn btn-primary" href="../contact.html">Consult</a>
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                        <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     </div></li>
                 </ul>
                 <div class="nav-actions">
-                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
-                    <a class="btn btn-primary" href="../contact.html">Consult</a>
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> <span data-cms="header_call_text">Call Us</span></a>
+                    <a class="btn btn-primary" href="../contact.html"><span data-cms="header_consult_text">Consult</span></a>
                     <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
                         <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
                     </button>
@@ -61,8 +61,8 @@
                         <a href="aviation-law.html">Practice Areas</a><i class="fa-solid fa-chevron-right"></i>
                         <span>Real Estate & Property</span>
                     </nav>
-                    <h1 class="serif banner-title">Real Estate &amp; Property</h1>
-                    <p class="banner-sub">Legal support for property transactions, leasing, conveyancing, and land dispute resolution.</p>
+                    <h1 class="serif banner-title" data-cms="practice_4_banner_title">Real Estate &amp; Property</h1>
+                    <p class="banner-sub" data-cms="practice_4_banner_sub">Legal support for property transactions, leasing, conveyancing, and land dispute resolution.</p>
                 </div>
             </div>
         </section>
@@ -70,11 +70,11 @@
             <div class="container">
                 <div class="content-grid">
                     <div class="content-main">
-                        <h2 class="serif section-h2">Our Real Estate &amp; Property Practice</h2>
-                        <p>Navigating Ghana's property landscape requires legal counsel with deep local knowledge and technical expertise. Spring Legal Consultancy advises buyers, sellers, developers, landlords, tenants, and financiers on all aspects of real estate law in Ghana.</p>
-                        <p>From due diligence on land titles to complex development agreements, we ensure our clients' property interests are protected at every stage of the transaction.</p>
+                        <h2 class="serif section-h2" data-cms="practice_4_heading">Our Real Estate &amp; Property Practice</h2>
+                        <p data-cms="practice_4_p1">Navigating Ghana's property landscape requires legal counsel with deep local knowledge and technical expertise. Spring Legal Consultancy advises buyers, sellers, developers, landlords, tenants, and financiers on all aspects of real estate law in Ghana.</p>
+                        <p data-cms="practice_4_p2">From due diligence on land titles to complex development agreements, we ensure our clients' property interests are protected at every stage of the transaction.</p>
                         <h3 class="serif">Areas of Expertise</h3>
-                        <ul class="service-list">
+                        <ul class="service-list" data-cms="practice_4_bullets">
                             <li><i class="fa-solid fa-check"></i> Land title investigations and due diligence</li>
                             <li><i class="fa-solid fa-check"></i> Conveyancing and property transfers</li>
                             <li><i class="fa-solid fa-check"></i> Lease drafting and negotiation</li>
@@ -85,10 +85,10 @@
                             <li><i class="fa-solid fa-check"></i> Property development agreements and joint ventures</li>
                         </ul>
                         <h3 class="serif">Why SLC?</h3>
-                        <p>Our team has handled a diverse portfolio of property matters, from residential conveyancing to large commercial development projects. We understand the unique complexities of Ghana's land tenure system — including customary, freehold, and leasehold — and advise clients accordingly.</p>
+                        <p data-cms="practice_4_why">Our team has handled a diverse portfolio of property matters, from residential conveyancing to large commercial development projects. We understand the unique complexities of Ghana's land tenure system — including customary, freehold, and leasehold — and advise clients accordingly.</p>
                         <div class="cta-box">
-                            <h4 class="serif">Have a Property Matter?</h4>
-                            <p>Our real estate team is available to assist with transactions, disputes, and advisory work.</p>
+                            <h4 class="serif" data-cms="practice_4_cta_title">Have a Property Matter?</h4>
+                            <p data-cms="practice_4_cta_text">Our real estate team is available to assist with transactions, disputes, and advisory work.</p>
                             <a href="../contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
                         </div>
                     </div>
@@ -189,6 +189,7 @@
         const b=document.getElementById('backToTopBtn');
         window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
     </script>
+    <script src="../cms-loader.js"></script>
 </body>
 </html>
 
