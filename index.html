@@ -147,6 +147,53 @@
             box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
         }
 
+        /* ─── Back to Top ──────────────────────────────────────────── */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 11px 20px;
+            background: var(--navy);
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius-full);
+            font-family: "Inter", sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            box-shadow: 0 8px 28px rgba(26, 58, 107, 0.30);
+            transition: all var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--pink);
+            box-shadow: 0 12px 32px rgba(233, 30, 140, 0.35);
+            transform: translateY(-3px);
+        }
+        .back-to-top i {
+            font-size: 0.8rem;
+        }
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 16px;
+                padding: 9px 16px;
+                font-size: 0.78rem;
+            }
+        }
+
         /* ─── Header (Sticky, Solid White, Subtle Shadow) ─────────── */
         .site-header {
             background: var(--white);
@@ -1984,6 +2031,23 @@
         loadCMS();
         setInterval(loadCMS, 5000);
     </script>
+
+<button class="back-to-top" id="backToTopBtn" title="Return to the top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa-solid fa-arrow-up"></i> Return to Top
+</button>
+
+<script>
+    // Show/hide the Back to Top button based on scroll position
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    }, { passive: true });
+</script>
+
 </body>
 
 </html>
