@@ -176,10 +176,111 @@
         }
         .page-loader .spinner { width: 32px; height: 32px; border-width: 3px; border-top-color: var(--pink); border-color: var(--border); border-top-color: var(--pink); }
 
+        /* ── Mobile Top Header ── */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 0 20px;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            color: var(--text-bright);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all var(--transition);
+        }
+        .mobile-menu-btn:hover {
+            background: rgba(233,30,140,0.06);
+            color: var(--pink);
+        }
+        .mobile-brand {
+            font-weight: 700;
+            color: var(--text-bright);
+            font-size: 1.1rem;
+            letter-spacing: 0.05em;
+        }
+        .btn-save-mobile {
+            padding: 8px 12px;
+            font-size: 0.8rem;
+            border-radius: 8px;
+        }
+
+        /* ── Sidebar Drawer Overlay ── */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .sidebar-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
         /* ── Responsive ── */
         @media (max-width: 768px) {
-            .sidebar { display: none; }
-            .main { margin-left: 0; padding: 20px; }
+            .mobile-header { display: flex; }
+            .sidebar {
+                transform: translateX(-100%);
+                z-index: 999;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+            }
+            .sidebar.active {
+                transform: translateX(0);
+                display: flex;
+            }
+            .sidebar-overlay {
+                display: block;
+            }
+            .main {
+                margin-left: 0;
+                padding: 80px 16px 20px 16px; /* offset top for fixed mobile header */
+            }
+            .topbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
+            .topbar h2 {
+                font-size: 1.3rem;
+            }
+            .topbar-actions {
+                width: 100%;
+                justify-content: space-between;
+                display: flex;
+                gap: 10px;
+            }
+            .topbar-actions .btn {
+                flex: 1;
+                justify-content: center;
+            }
+            .card {
+                padding: 18px;
+            }
         }
     </style>
 </head>
@@ -204,6 +305,18 @@
 
 <!-- ═══ APP ═══ -->
 <div class="app" id="app" style="display:none;">
+    <div class="mobile-header">
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <span class="mobile-brand">SLC Admin</span>
+        <button class="btn btn-pink btn-save-mobile" onclick="saveCurrentSection()" aria-label="Save Changes">
+            <i class="fa-solid fa-cloud-arrow-up"></i> Save
+        </button>
+    </div>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
     <aside class="sidebar">
         <div class="sidebar-brand"><img src="logo.png" alt="Logo"></div>
         <nav class="sidebar-nav" id="sidebarNav">
@@ -586,6 +699,31 @@
             eyeIcon.classList.add('fa-eye');
         }
     }
+
+    // ═══ MOBILE SIDEBAR TOGGLE ═══
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    function openMobileSidebar() {
+        sidebar.classList.add('active');
+        sidebarOverlay.classList.add('active');
+    }
+
+    function closeMobileSidebar() {
+        sidebar.classList.remove('active');
+        sidebarOverlay.classList.remove('active');
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', openMobileSidebar);
+    }
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeMobileSidebar);
+    }
+    document.querySelectorAll('.sidebar-nav a').forEach(link => {
+        link.addEventListener('click', closeMobileSidebar);
+    });
 </script>
 </body>
 </html>
