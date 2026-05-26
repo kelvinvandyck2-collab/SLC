@@ -316,7 +316,6 @@ a { color: inherit; text-decoration: none; }
     .dropdown-menu li:last-child a { border-bottom: none; }
 
     .content-grid { grid-template-columns: 1fr; gap: 40px; }
-    .content-sidebar { order: -1; }
     .sidebar-nav-list { display: grid; grid-template-columns: repeat(2, 1fr); }
     .footer-grid-abdavid { grid-template-columns: 1fr 1fr; gap: 36px; }
     .footer-brand { grid-column: 1 / -1; }

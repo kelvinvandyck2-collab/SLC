@@ -1662,6 +1662,17 @@
         });
 
         const BASE_TITLE = 'Spring Legal Consultancy | Accra, Ghana';
+        document.querySelectorAll('.has-dropdown').forEach(item => {
+            const toggle = item.querySelector('.dropdown-toggle');
+            if (toggle) {
+                toggle.addEventListener('click', e => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        item.classList.toggle('open');
+                    }
+                });
+            }
+        });
         document.title = BASE_TITLE;
 
         // Close mobile menu when clicking any nav link
