@@ -10,11 +10,23 @@
  * 4. The 5-second polling interval is removed — background refresh on load is enough.
  */
 
-const CMS_CACHE_KEY = 'slc_cms_cache_v2'; // bump version to bust old &amp; cache
+const CMS_CACHE_KEY = 'slc_cms_cache_v2';
 const SUPABASE_URL  = 'https://uwhujavrrdzzwxunrlzu.supabase.co';
 const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3aHVqYXZycmR6end4dW5ybHp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MzE1MDAsImV4cCI6MjA4NjUwNzUwMH0.l9qlQDGwJLKcyiq0saQamT91s44qHT3MDnG8s2FINvk';
 
-// Safety net — decode any residual HTML entities that may be in cached/DB values
+// Inject a global style so & in serif headings renders in Inter (plain font)
+// Playfair Display has a decorative/calligraphic & glyph — this forces it plain.
+(function injectAmpStyle() {
+    if (document.getElementById('slc-amp-style')) return;
+    const s = document.createElement('style');
+    s.id = 'slc-amp-style';
+    s.textContent = '.plain-amp { font-family: "Inter", sans-serif; font-style: normal; font-weight: inherit; font-size: inherit; }';
+    document.head.appendChild(s);
+})();
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+// Decode any residual HTML entities that may be in cached/DB values
 function decodeEntities(str) {
     return str
         .replace(/&amp;/g, '&')
@@ -22,6 +34,11 @@ function decodeEntities(str) {
         .replace(/&quot;/g, '"')
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>');
+}
+
+// Wrap & in a plain-font span so serif headings don't use the fancy glyph
+function wrapAmpersand(str) {
+    return str.replace(/&/g, '<span class="plain-amp">&amp;</span>');
 }
 
 // ─── Core injector ────────────────────────────────────────────────────────────
@@ -59,8 +76,15 @@ function applyCMSData(data) {
             return;
         }
 
-        // All other elements — plain text only (safe), entities decoded
-        el.textContent = decodeEntities(val);
+        // Heading elements — use innerHTML so we can wrap & with plain-font span
+        const decoded = decodeEntities(val);
+        if (['H1', 'H2', 'H3', 'H4', 'H5', 'H6'].includes(el.tagName)) {
+            el.innerHTML = wrapAmpersand(decoded);
+            return;
+        }
+
+        // All other elements — plain text (safe), entities decoded
+        el.textContent = decoded;
     });
 }
 
@@ -99,14 +123,10 @@ async function fetchAndRefresh() {
             localStorage.setItem(CMS_CACHE_KEY, fresh);
         }
     } catch (e) {
-        // Network failure — cached content already showing, no action needed
         console.warn('CMS background refresh failed:', e.message);
     }
 }
 
 // ─── Initialise ───────────────────────────────────────────────────────────────
-// Apply cache immediately (synchronous) to prevent any visible flash
 applyCache();
-
-// Then fetch fresh data once the page is fully loaded
 document.addEventListener('DOMContentLoaded', fetchAndRefresh);
