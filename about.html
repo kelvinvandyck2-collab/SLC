@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,19 +26,19 @@
         .values-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 16px; }
         .value-item { display: flex; align-items: flex-start; gap: 12px; font-size: 0.92rem; color: var(--gray-800); padding: 16px; background: var(--white); border-radius: var(--radius-sm); border: 1px solid var(--navy-pale); }
         .value-item i { color: var(--pink); font-size: 0.9rem; margin-top: 3px; flex-shrink: 0; }
-        .navy-block { background: var(--navy-dark); color: var(--white); border-radius: var(--radius-md); padding: 60px; margin-bottom: 0; }
+        .navy-block { background: var(--white); color: var(--navy); border: 1px solid var(--navy-pale); border-radius: var(--radius-md); padding: 60px; margin-bottom: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
         .navy-block-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center; }
-        .navy-tag { font-size: 0.75rem; font-weight: 700; color: var(--pink-light); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 14px; display: block; }
-        .navy-block h2 { font-size: clamp(1.6rem,3vw,2.2rem); color: var(--white); margin-bottom: 18px; padding-left: 20px; border-left: 5px solid var(--pink); line-height: 1.15; }
-        .navy-desc { color: rgba(255,255,255,0.7); font-size: 1rem; line-height: 1.75; margin-bottom: 30px; }
+        .navy-tag { font-size: 0.75rem; font-weight: 700; color: var(--pink); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 14px; display: block; }
+        .navy-block h2 { font-size: clamp(1.6rem,3vw,2.2rem); color: var(--navy); margin-bottom: 18px; padding-left: 20px; border-left: 5px solid var(--pink); line-height: 1.15; }
+        .navy-desc { color: var(--gray-600); font-size: 1rem; line-height: 1.75; margin-bottom: 30px; }
         .cred-list { list-style: none; display: grid; gap: 14px; }
-        .cred-list li { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: rgba(255,255,255,0.85); font-weight: 600; }
-        .cred-list li i { color: var(--pink-light); font-size: 1.1rem; }
+        .cred-list li { display: flex; align-items: center; gap: 12px; font-size: 0.92rem; color: var(--navy); font-weight: 600; }
+        .cred-list li i { color: var(--pink); font-size: 1.1rem; }
         .purpose-cards { display: grid; gap: 20px; }
-        .purpose-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); padding: 28px; }
-        .purpose-icon { width: 44px; height: 44px; border-radius: 50%; background: rgba(233,30,140,0.15); color: var(--pink-light); display: grid; place-items: center; font-size: 1.1rem; margin-bottom: 14px; }
-        .purpose-card h3 { font-size: 1.2rem; color: var(--white); margin-bottom: 8px; }
-        .purpose-card p { font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.65; }
+        .purpose-card { background: var(--navy-wash); border: 1px solid var(--navy-pale); border-radius: var(--radius-md); padding: 28px; }
+        .purpose-icon { width: 44px; height: 44px; border-radius: 50%; background: var(--pink-pale); color: var(--pink); display: grid; place-items: center; font-size: 1.1rem; margin-bottom: 14px; }
+        .purpose-card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 8px; }
+        .purpose-card p { font-size: 0.9rem; color: var(--gray-600); line-height: 1.65; }
         @media (max-width: 1024px) {
             .about-intro-grid { grid-template-columns: 1fr; gap: 40px; }
             .navy-block-grid { grid-template-columns: 1fr; gap: 40px; }
