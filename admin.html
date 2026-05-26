@@ -351,7 +351,7 @@
 
     <div class="main">
         <div class="topbar">
-            <h2 id="sectionTitle">Hero Section</h2>
+            <h2 id="sectionTitle">Navigation &amp; Logo</h2>
             <div class="topbar-actions">
                 <button class="btn btn-outline" onclick="loadContent()"><i class="fa-solid fa-rotate"></i> Refresh</button>
                 <button class="btn btn-pink" id="saveAllBtn" onclick="saveCurrentSection()"><i class="fa-solid fa-cloud-arrow-up"></i> Save Changes</button>
@@ -678,8 +678,10 @@
         document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
         a.classList.add('active');
         currentSection = a.dataset.section;
-        document.getElementById('sectionTitle').textContent = sections[currentSection].title;
+        // Use the link's text content so the title matches exactly what was clicked
+        document.getElementById('sectionTitle').textContent = a.textContent.trim();
         renderSection(currentSection);
+        closeMobileSidebar();
     });
 
     // ═══ TOAST ═══
@@ -735,9 +737,7 @@
     if (sidebarOverlay) {
         sidebarOverlay.addEventListener('click', closeMobileSidebar);
     }
-    document.querySelectorAll('.sidebar-nav a').forEach(link => {
-        link.addEventListener('click', closeMobileSidebar);
-    });
+
 </script>
 </body>
 </html>
