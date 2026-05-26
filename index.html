@@ -1921,11 +1921,30 @@
             navLinksContainer.classList.toggle('active');
         });
 
+        /* ── Section Title Map ─────────────────────────────────────── */
+        const sectionTitles = {
+            home:     'Home',
+            about:    'About',
+            services: 'Practice Areas',
+            mission:  'Our Commitments',
+            team:     'Team',
+            contact:  'Contact',
+        };
+        const BASE_TITLE = 'Spring Legal Consultancy | Accra, Ghana';
+
+        function updatePageTitle(sectionId) {
+            const label = sectionTitles[sectionId];
+            document.title = label ? `${label} | Spring Legal Consultancy` : BASE_TITLE;
+        }
+
         // Close mobile menu when clicking any nav link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 menuToggle.classList.remove('active');
                 navLinksContainer.classList.remove('active');
+                // Update page title from the clicked link's href
+                const hash = link.getAttribute('href')?.replace('#', '');
+                if (hash) updatePageTitle(hash);
             });
         });
 
@@ -1956,6 +1975,8 @@
             navLinks.forEach(link => {
                 link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`);
             });
+            // Keep the page title in sync with the visible section
+            updatePageTitle(currentSection);
         }, { passive: true });
 
         /* ── Hero Carousel Slider ─────────────────────────────────── */
