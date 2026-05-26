@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Meet the team at Spring Legal Consultancy — experienced lawyers in corporate law, aviation, litigation, banking, real estate, and family law based in Accra, Ghana.">
+    <title>Our Team | Spring Legal Consultancy</title>
+    <link rel="shortcut icon" href="logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="practice/practice.css">
+    <style>
+        .team-section { padding: 80px 0 100px; }
+        .team-intro { text-align: center; max-width: 680px; margin: 0 auto 60px; }
+        .team-intro h2 { font-size: clamp(1.8rem,3vw,2.4rem); color: var(--navy); margin-bottom: 16px; }
+        .team-intro p { color: var(--gray-600); font-size: 1.05rem; line-height: 1.75; }
+        .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 70px; }
+        .team-card {
+            background: var(--white); border-radius: var(--radius-md);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.04); border: 1px solid var(--navy-pale);
+            overflow: hidden; transition: transform var(--transition), box-shadow var(--transition);
+        }
+        .team-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(26,58,107,0.12); }
+        .team-img-wrap { height: 340px; overflow: hidden; background: var(--navy-pale); }
+        .team-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .team-card:hover .team-img-wrap img { transform: scale(1.05); }
+        .team-info { padding: 28px 24px; }
+        .team-location { font-size: 0.7rem; font-weight: 700; color: var(--pink); letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-bottom: 6px; }
+        .team-name { font-size: 1.2rem; color: var(--navy); font-weight: 800; margin-bottom: 6px; }
+        .team-role { font-size: 0.78rem; font-weight: 700; color: var(--gray-400); display: block; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.04em; }
+        .team-bio { color: var(--gray-600); font-size: 0.88rem; line-height: 1.65; }
+        .team-cta { background: var(--navy-wash); border-radius: var(--radius-md); padding: 50px; text-align: center; border: 1px solid var(--navy-pale); }
+        .team-cta h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 14px; }
+        .team-cta p { color: var(--gray-600); font-size: 1rem; margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+        .team-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 1024px) { .team-grid { grid-template-columns: repeat(2,1fr); } }
+        @media (max-width: 768px) {
+            .team-section { padding: 50px 0 70px; }
+            .team-grid { grid-template-columns: 1fr; }
+            .team-cta { padding: 36px 24px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="nav" aria-label="Primary navigation">
+                <a class="brand" href="index.html"><img src="logo.png" alt="Spring Legal Consultancy Logo"></a>
+                <ul class="nav-links" role="list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li class="has-dropdown">
+                        <a href="index.html#services" class="dropdown-toggle">Practice Areas <i class="fa-solid fa-chevron-down dropdown-icon"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="practice/aviation-law.html">Aviation Law</a></li>
+                            <li><a href="practice/corporate-commercial.html">Corporate &amp; Commercial</a></li>
+                            <li><a href="practice/dispute-resolution.html">Dispute Resolution</a></li>
+                            <li><a href="practice/real-estate-property.html">Real Estate &amp; Property</a></li>
+                            <li><a href="practice/private-client-family.html">Private Client &amp; Family</a></li>
+                            <li><a href="practice/banking-finance.html">Banking &amp; Finance</a></li>
+                            <li><a href="practice/civil-construction.html">Civil Construction</a></li>
+                            <li><a href="practice/insurance-claims.html">Insurance Claims</a></li>
+                            <li><a href="practice/natural-resources-law.html">Natural Resources Law</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="team.html" class="active">Team</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li class="mobile-only-item"><div class="nav-mobile-actions">
+                        <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
+                        <a class="btn btn-primary" href="contact.html">Consult</a>
+                    </div></li>
+                </ul>
+                <div class="nav-actions">
+                    <a class="btn btn-outline" href="tel:+2330302201530"><i class="fa-solid fa-phone"></i> Call Us</a>
+                    <a class="btn btn-primary" href="contact.html">Consult</a>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Toggle mobile menu">
+                        <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-banner">
+            <div class="banner-bg" style="background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80');"></div>
+            <div class="banner-overlay">
+                <div class="container">
+                    <nav class="breadcrumb" aria-label="Breadcrumb">
+                        <a href="index.html">Home</a><i class="fa-solid fa-chevron-right"></i>
+                        <span>Our Team</span>
+                    </nav>
+                    <h1 class="serif banner-title">Our Team</h1>
+                    <p class="banner-sub">Senior counsel with decades of combined practice across corporate, regulatory and litigation work.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-section">
+            <div class="container">
+                <div class="team-intro">
+                    <h2 class="serif">Experienced lawyers for complex legal matters.</h2>
+                    <p>SLC's partners bring together expertise across corporate law, aviation, banking, litigation, real estate, and family law — combining deep technical knowledge with practical insight and a commitment to results.</p>
+                </div>
+
+                <div class="team-grid">
+                    <!-- Mrs. Ruby Akua Aglagoh -->
+                    <article class="team-card">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-09.jpg" alt="Mrs. Ruby Akua Aglagoh" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%25\' height=\'100%25\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
+                        </div>
+                        <div class="team-info">
+                            <span class="team-location">Accra, Ghana</span>
+                            <h3 class="serif team-name">Mrs. Ruby Akua Aglagoh</h3>
+                            <span class="team-role">Founder/Partner | Notary Public | Human Rights Advocate</span>
+                            <p class="team-bio">Called to the Ghana Bar in 2001. Extensive experience in corporate governance, litigation, debt recovery, family law, aviation, real estate, and construction. Adjunct Lecturer at Ensign Global University. Holds LLB (Ghana), BL (Ghana School of Law), and LLM (Research) from Edith Cowan University, Australia.</p>
+                        </div>
+                    </article>
+
+                    <!-- Alexander Nii Kwartey Owoo -->
+                    <article class="team-card">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-10.jpg" alt="Alexander Nii Kwartey Owoo" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%25\' height=\'100%25\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
+                        </div>
+                        <div class="team-info">
+                            <span class="team-location">Accra, Ghana</span>
+                            <h3 class="serif team-name">Alexander Nii Kwartey Owoo, Esq.</h3>
+                            <span class="team-role">Managing Partner | Barrister &amp; Solicitor | Notary Public</span>
+                            <p class="team-bio">Over two decades of experience in corporate law, banking, finance, trusts, family law, and insurance. Former Head of Legal at HFC Bank. Lecturer in Law of Trusts and Business Law. Holds LLB (Ghana) and LLM in International Commercial and Corporate Law (London). Licensed Insolvency Practitioner.</p>
+                        </div>
+                    </article>
+
+                    <!-- Ernest Assie -->
+                    <article class="team-card">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-11.jpg" alt="Ernest Assie" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%25\' height=\'100%25\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
+                        </div>
+                        <div class="team-info">
+                            <span class="team-location">Accra, Ghana</span>
+                            <h3 class="serif team-name">Ernest Assie, Esq.</h3>
+                            <span class="team-role">Junior Partner | Barrister &amp; Solicitor</span>
+                            <p class="team-bio">Called to the Ghana Bar in 2017. Over 16 years of prior experience in recovery and debt management, client service, and banking operations. Formerly with Republic Bank Ghana PLC. Successfully handled high-profile cases in court and before statutory bodies. Holds BA (KNUST), LLB (Mountcrest), and BL (Ghana School of Law).</p>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="team-cta">
+                    <h3 class="serif">Ready to speak with one of our lawyers?</h3>
+                    <p>Our team is available to discuss your legal matter and advise on the best path forward.</p>
+                    <div class="team-cta-btns">
+                        <a href="tel:+2330302201530" class="btn btn-outline"><i class="fa-solid fa-phone"></i> Call Us Now</a>
+                        <a href="contact.html" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Request a Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="logo.png" alt="Spring Legal Consultancy">
+                    <p>A full-service corporate law firm built on integrity, professionalism, and results. Serving clients across Ghana and internationally since 2012.</p>
+                </div>
+                <div class="footer-col"><h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About SLC</a></li>
+                        <li><a href="index.html#services">Practice Areas</a></li>
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col"><h4>Contact Info</h4>
+                    <ul class="footer-links">
+                        <li><a href="tel:+2330302201530">(+233) 030 220 1530</a></li>
+                        <li><a href="mailto:info@springlegal.com.gh">info@springlegal.com.gh</a></li>
+                        <li>16 Odanta Street, Asylum Down</li><li>Accra, Ghana</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Spring Legal Consultancy. All rights reserved.</span>
+                <span><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms of Use</a></span>
+            </div>
+        </div>
+    </footer>
+    <button class="back-to-top" id="backToTopBtn" title="Return to the top" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i> Return to Top</button>
+    <script>
+        const t=document.getElementById('menuToggle'),n=document.querySelector('.nav-links');
+        t.addEventListener('click',()=>{t.classList.toggle('active');n.classList.toggle('active');});
+        document.querySelectorAll('.has-dropdown').forEach(item=>{
+            item.querySelector('.dropdown-toggle').addEventListener('click',e=>{
+                if(window.innerWidth<=1024){e.preventDefault();item.classList.toggle('open');}
+            });
+        });
+        document.querySelectorAll('.nav-links a:not(.dropdown-toggle)').forEach(l=>l.addEventListener('click',()=>{t.classList.remove('active');n.classList.remove('active');}));
+        const b=document.getElementById('backToTopBtn');
+        window.addEventListener('scroll',()=>b.classList.toggle('visible',window.scrollY>300),{passive:true});
+    </script>
+</body>
+</html>
