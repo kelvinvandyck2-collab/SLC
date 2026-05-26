@@ -1365,6 +1365,30 @@
         }
 
         @media (max-width: 768px) {
+            .footer-grid-abdavid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            .footer-brand {
+                justify-content: center;
+            }
+            .footer-description {
+                margin: 0 auto;
+            }
+            .footer-socials {
+                justify-content: center;
+            }
+            .footer-col h4::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
+            }
+
             .hero-carousel {
                 height: auto;
                 min-height: 820px;
