@@ -101,6 +101,30 @@
         }
         .sidebar-footer a:hover { color: var(--red); }
 
+        /* ── Practice Dropdown ── */
+        .nav-group-toggle {
+            display: flex; align-items: center; gap: 12px; padding: 11px 20px;
+            color: var(--text-dim); font-size: 0.86rem; font-weight: 600;
+            cursor: pointer; border-left: 3px solid transparent;
+            transition: all var(--transition); user-select: none;
+            border: none; background: none; width: 100%; text-align: left;
+        }
+        .nav-group-toggle:hover { color: var(--pink); background: rgba(233,30,140,0.06); border-left-color: var(--pink); }
+        .nav-group-toggle.open { color: var(--pink); background: rgba(233,30,140,0.06); border-left-color: var(--pink); }
+        .nav-group-toggle i.main-icon { width: 18px; text-align: center; font-size: 0.9rem; }
+        .nav-group-toggle .caret { margin-left: auto; font-size: 0.65rem; transition: transform var(--transition); }
+        .nav-group-toggle.open .caret { transform: rotate(180deg); }
+        .nav-sub { display: none; overflow: hidden; }
+        .nav-sub.open { display: block; }
+        .nav-sub a {
+            padding: 8px 20px 8px 44px !important;
+            font-size: 0.82rem !important; font-weight: 500 !important;
+            border-left: 3px solid transparent;
+        }
+        .nav-sub a:hover, .nav-sub a.active {
+            color: var(--pink); background: rgba(233,30,140,0.05); border-left-color: var(--pink);
+        }
+
         /* ── Main ── */
         .main { flex: 1; margin-left: 260px; padding: 32px 40px; }
         .topbar {
@@ -383,7 +407,24 @@
             <div style="padding: 10px 20px 4px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); opacity: 0.5;">Full Pages</div>
             <a href="#" data-section="aboutpage"><i class="fa-solid fa-building-columns"></i> About Page</a>
             <a href="#" data-section="mission"><i class="fa-solid fa-bullseye"></i> SLC Commitments</a>
-            <a href="#" data-section="services"><i class="fa-solid fa-briefcase"></i> Practice Area Pages</a>
+
+            <!-- Practice Areas Dropdown -->
+            <button class="nav-group-toggle" id="practiceToggle">
+                <i class="fa-solid fa-briefcase main-icon"></i> Practice Area Pages
+                <i class="fa-solid fa-chevron-down caret"></i>
+            </button>
+            <div class="nav-sub" id="practiceSub">
+                <a href="#" data-section="services_1"><i class="fa-solid fa-plane"></i> Aviation Law</a>
+                <a href="#" data-section="services_2"><i class="fa-solid fa-building"></i> Corporate &amp; Commercial</a>
+                <a href="#" data-section="services_3"><i class="fa-solid fa-gavel"></i> Dispute Resolution</a>
+                <a href="#" data-section="services_4"><i class="fa-solid fa-house"></i> Real Estate &amp; Property</a>
+                <a href="#" data-section="services_5"><i class="fa-solid fa-users"></i> Private Client &amp; Family</a>
+                <a href="#" data-section="services_6"><i class="fa-solid fa-landmark"></i> Banking &amp; Finance</a>
+                <a href="#" data-section="services_7"><i class="fa-solid fa-helmet-safety"></i> Civil Construction</a>
+                <a href="#" data-section="services_8"><i class="fa-solid fa-shield-halved"></i> Insurance Claims</a>
+                <a href="#" data-section="services_9"><i class="fa-solid fa-mountain-sun"></i> Natural Resources</a>
+            </div>
+
             <a href="#" data-section="team"><i class="fa-solid fa-users"></i> Team Page</a>
             <a href="#" data-section="contact"><i class="fa-solid fa-envelope"></i> Contact Page</a>
             <div style="padding: 10px 20px 4px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim); opacity: 0.5;">Sitewide</div>
@@ -481,7 +522,7 @@
     }
 
     // ═══ SECTION DEFINITIONS ═══
-    const sections = {
+    const sections = Object.assign({
         general: {
             title: 'Navigation & Logo Actions',
             cards: [{
@@ -593,33 +634,56 @@
                 ]
             }]
         },
-        services: {
-            title: 'Practice Area Pages',
-            cards: [
-                { i: 1, name: 'Aviation Law' },
-                { i: 2, name: 'Corporate & Commercial' },
-                { i: 3, name: 'Dispute Resolution' },
-                { i: 4, name: 'Real Estate & Property' },
-                { i: 5, name: 'Private Client & Family' },
-                { i: 6, name: 'Banking & Finance' },
-                { i: 7, name: 'Civil Construction' },
-                { i: 8, name: 'Insurance Claims' },
-                { i: 9, name: 'Natural Resources Law' },
-            ].map(s => ({
-                title: `${s.i}. ${s.name} Page Content`, badge: 'Subpage',
+        // end of base sections
+    },
+    // ── Practice area sections merged in ──
+    [
+        { i: 1, name: 'Aviation Law',            icon: 'plane' },
+        { i: 2, name: 'Corporate & Commercial',  icon: 'building' },
+        { i: 3, name: 'Dispute Resolution',      icon: 'gavel' },
+        { i: 4, name: 'Real Estate & Property',  icon: 'house' },
+        { i: 5, name: 'Private Client & Family', icon: 'users' },
+        { i: 6, name: 'Banking & Finance',       icon: 'landmark' },
+        { i: 7, name: 'Civil Construction',      icon: 'helmet-safety' },
+        { i: 8, name: 'Insurance Claims',        icon: 'shield-halved' },
+        { i: 9, name: 'Natural Resources Law',   icon: 'mountain-sun' },
+    ].reduce((acc, s) => {
+        acc[`services_${s.i}`] = {
+            title: s.name,
+            cards: [{
+                title: 'Page Banner', badge: 'Practice Page',
                 fields: [
                     { key: `practice_${s.i}_banner_title`, label: 'Banner Title', type: 'input' },
-                    { key: `practice_${s.i}_banner_sub`, label: 'Banner Subtitle', type: 'input' },
-                    { key: `practice_${s.i}_heading`, label: 'Page Section Heading', type: 'input' },
-                    { key: `practice_${s.i}_p1`, label: 'Description Paragraph 1', type: 'textarea' },
-                    { key: `practice_${s.i}_p2`, label: 'Description Paragraph 2', type: 'textarea' },
-                    { key: `practice_${s.i}_bullets`, label: 'Expertise Bullets (One per line)', type: 'textarea', hint: 'Type each expertise on a new line.' },
-                    { key: `practice_${s.i}_why`, label: 'Why Choose Us Section Text', type: 'textarea' },
-                    { key: `practice_${s.i}_cta_title`, label: 'CTA Box Title', type: 'input' },
-                    { key: `practice_${s.i}_cta_text`, label: 'CTA Box Text', type: 'textarea' },
+                    { key: `practice_${s.i}_banner_sub`,   label: 'Banner Subtitle', type: 'input' },
                 ]
-            }))
-        },
+            }, {
+                title: 'Main Content', badge: 'Body',
+                fields: [
+                    { key: `practice_${s.i}_heading`, label: 'Section Heading', type: 'input' },
+                    { key: `practice_${s.i}_p1`, label: 'Paragraph 1', type: 'textarea' },
+                    { key: `practice_${s.i}_p2`, label: 'Paragraph 2', type: 'textarea' },
+                ]
+            }, {
+                title: 'Areas of Expertise', badge: 'Bullets',
+                fields: [
+                    { key: `practice_${s.i}_bullets`, label: 'Expertise List (one per line)', type: 'textarea', hint: 'Each new line becomes a bullet point on the page.' },
+                ]
+            }, {
+                title: 'Why Choose SLC', badge: 'Why Section',
+                fields: [
+                    { key: `practice_${s.i}_why`, label: 'Why SLC Paragraph', type: 'textarea' },
+                ]
+            }, {
+                title: 'Call to Action Box', badge: 'CTA',
+                fields: [
+                    { key: `practice_${s.i}_cta_title`, label: 'CTA Box Title', type: 'input' },
+                    { key: `practice_${s.i}_cta_text`,  label: 'CTA Box Text', type: 'textarea' },
+                ]
+            }]
+        };
+        return acc;
+    }, {}));
+    Object.assign(sections, {
         team: {
             title: 'Team Page & Members',
             cards: [{
@@ -691,7 +755,7 @@
                 ]
             }]
         }
-    };
+    });
 
     // ═══ RENDER ═══
     function renderSection(sectionId) {
@@ -767,6 +831,16 @@
         }
     }
 
+    // ═══ PRACTICE DROPDOWN TOGGLE ═══
+    const practiceToggle = document.getElementById('practiceToggle');
+    const practiceSub = document.getElementById('practiceSub');
+    if (practiceToggle) {
+        practiceToggle.addEventListener('click', () => {
+            practiceToggle.classList.toggle('open');
+            practiceSub.classList.toggle('open');
+        });
+    }
+
     // ═══ SIDEBAR NAV ═══
     document.getElementById('sidebarNav').addEventListener('click', e => {
         const a = e.target.closest('a[data-section]');
@@ -775,7 +849,13 @@
         document.querySelectorAll('.sidebar-nav a').forEach(l => l.classList.remove('active'));
         a.classList.add('active');
         currentSection = a.dataset.section;
-        // Use the link's text content so the title matches exactly what was clicked
+
+        // If clicking a practice sub-item, keep the dropdown open
+        if (currentSection.startsWith('services_')) {
+            practiceToggle.classList.add('open');
+            practiceSub.classList.add('open');
+        }
+
         document.getElementById('sectionTitle').textContent = a.textContent.trim();
         renderSection(currentSection);
         closeMobileSidebar();
