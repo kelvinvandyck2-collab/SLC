@@ -147,13 +147,14 @@
             box-shadow: 0 8px 24px rgba(255, 255, 255, 0.2);
         }
 
-        /* ─── Header (Non-sticky, Solid White, Subtle Shadow) ────── */
+        /* ─── Header (Sticky, Solid White, Subtle Shadow) ─────────── */
         .site-header {
             background: var(--white);
             box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
             border-bottom: 1px solid rgba(26, 58, 107, 0.05);
-            position: relative;
-            z-index: 100;
+            position: sticky;
+            top: 0;
+            z-index: 200;
             height: 90px;
         }
 
