@@ -21,8 +21,17 @@ const files = [
   { file: 'natural-resources-law.html', i: 9 },
 ];
 
+function decodeEntities(str) {
+  return str
+    .replace(/&amp;/g, '&')
+    .replace(/&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+
 function stripTags(html) {
-  return html.replace(/<[^>]+>/g, '').trim();
+  return decodeEntities(html.replace(/<[^>]+>/g, '').trim());
 }
 
 function extractCmsValues(html, idx) {

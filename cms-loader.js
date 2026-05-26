@@ -10,9 +10,19 @@
  * 4. The 5-second polling interval is removed — background refresh on load is enough.
  */
 
-const CMS_CACHE_KEY = 'slc_cms_cache';
+const CMS_CACHE_KEY = 'slc_cms_cache_v2'; // bump version to bust old &amp; cache
 const SUPABASE_URL  = 'https://uwhujavrrdzzwxunrlzu.supabase.co';
 const SUPABASE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV3aHVqYXZycmR6end4dW5ybHp1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA5MzE1MDAsImV4cCI6MjA4NjUwNzUwMH0.l9qlQDGwJLKcyiq0saQamT91s44qHT3MDnG8s2FINvk';
+
+// Safety net — decode any residual HTML entities that may be in cached/DB values
+function decodeEntities(str) {
+    return str
+        .replace(/&amp;/g, '&')
+        .replace(/&apos;/g, "'")
+        .replace(/&quot;/g, '"')
+        .replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>');
+}
 
 // ─── Core injector ────────────────────────────────────────────────────────────
 function applyCMSData(data) {
@@ -49,8 +59,8 @@ function applyCMSData(data) {
             return;
         }
 
-        // All other elements — plain text only (safe)
-        el.textContent = val;
+        // All other elements — plain text only (safe), entities decoded
+        el.textContent = decodeEntities(val);
     });
 }
 
