@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="description" content="Meet the team at Spring Legal Consultancy — experienced lawyers in corporate law, aviation, litigation, banking, real estate, and family law based in Accra, Ghana.">
+    <meta name="description" content="Meet the team at Spring Legal Consultancy â€” experienced lawyers in corporate law, aviation, litigation, banking, real estate, and family law based in Accra, Ghana.">
     <title>Our Team | Spring Legal Consultancy</title>
     <link rel="shortcut icon" href="logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +17,9 @@
         .team-intro h2 { font-size: clamp(1.8rem,3vw,2.4rem); color: var(--navy); margin-bottom: 16px; }
         .team-intro p { color: var(--gray-600); font-size: 1.05rem; line-height: 1.75; }
         .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 70px; }
+        .team-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-bottom: 70px; }
+        @media (max-width: 1024px) { .team-grid-4 { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .team-grid-4 { grid-template-columns: 1fr; } }
         .team-card {
             background: var(--white); border-radius: var(--radius-md);
             box-shadow: 0 8px 25px rgba(0,0,0,0.04); border: 1px solid var(--navy-pale);
@@ -41,7 +44,7 @@
             .team-grid { grid-template-columns: 1fr; }
             .team-cta { padding: 36px 24px; }
         }
-        /* Plain ampersand — overrides Playfair Display decorative & glyph */
+        /* Plain ampersand â€” overrides Playfair Display decorative & glyph */
         .plain-amp { font-family: "Inter", Arial, sans-serif; font-style: normal; font-weight: inherit; font-size: inherit; }
     </style>
     <script src="cms-loader.js" defer></script>
@@ -105,7 +108,7 @@
             <div class="container">
                 <div class="team-intro">
                     <h2 class="serif" data-cms="team_heading">Experienced lawyers for complex legal matters.</h2>
-                    <p data-cms="team_subheading">SLC's partners bring together expertise across corporate law, aviation, banking, litigation, real estate, and family law — combining deep technical knowledge with practical insight and a commitment to results.</p>
+                    <p data-cms="team_subheading">SLC's partners bring together expertise across corporate law, aviation, banking, litigation, real estate, and family law â€” combining deep technical knowledge with practical insight and a commitment to results.</p>
                 </div>
 
                 <div class="team-grid">
@@ -149,6 +152,66 @@
                     </article>
                 </div>
 
+                <!-- External Consultants Section -->
+                <div class="team-intro external-consultants-intro" style="margin-top: 80px; margin-bottom: 50px;">
+                    <h2 class="serif" data-cms="external_consultants_heading">External Consultants</h2>
+                    <p data-cms="external_consultants_subheading">Distinguished legal consultants offering specialized expertise across diverse practice areas.</p>
+                </div>
+
+                <div class="team-grid-4">
+                    <!-- Mr. Theophilus Odartey Lawson -->
+                    <article class="team-card">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-12.jpg" alt="Mr. Theophilus Odartey Lawson" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%25\' height=\'100%25\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
+                        </div>
+                        <div class="team-info">
+                            <span class="team-location" data-cms="consultant_1_location">Accra, Ghana</span>
+                            <h3 class="serif team-name" data-cms="consultant_1_name">Mr. Theophilus Odartey Lawson</h3>
+                            <span class="team-role" data-cms="consultant_1_role">External Consultant</span>
+                            <p class="team-bio" data-cms="consultant_1_bio">External legal consultant offering strategic counsel and advisory support across complex corporate, litigation, and regulatory advisory practice areas.</p>
+                        </div>
+                    </article>
+
+                    <!-- Anastasia Hammond -->
+                    <article class="team-card">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-13.jpg" alt="Anastasia Hammond" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%25\' height=\'100%25\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
+                        </div>
+                        <div class="team-info">
+                            <span class="team-location" data-cms="consultant_2_location">Accra, Ghana</span>
+                            <h3 class="serif team-name" data-cms="consultant_2_name">Anastasia Hammond</h3>
+                            <span class="team-role" data-cms="consultant_2_role">External Consultant</span>
+                            <p class="team-bio" data-cms="consultant_2_bio">External legal consultant specializing in commercial advisory, regulatory compliance, and client representation in high-stakes corporate legal transactions.</p>
+                        </div>
+                    </article>
+
+                    <!-- Miss Gyama Owusu Boakye -->
+                    <article class="team-card">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-14.jpg" alt="Miss Gyama Owusu Boakye" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%25\' height=\'100%25\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
+                        </div>
+                        <div class="team-info">
+                            <span class="team-location" data-cms="consultant_3_location">Accra, Ghana</span>
+                            <h3 class="serif team-name" data-cms="consultant_3_name">Miss Gyama Owusu Boakye</h3>
+                            <span class="team-role" data-cms="consultant_3_role">External Consultant</span>
+                            <p class="team-bio" data-cms="consultant_3_bio">External legal consultant providing focused research, legal analysis, and advisory support on private client, property, and dispute resolution matters.</p>
+                        </div>
+                    </article>
+
+                    <!-- Mr. Mensah Eric Boakye -->
+                    <article class="team-card">
+                        <div class="team-img-wrap">
+                            <img src="img/team/team-15.jpg" alt="Mr. Mensah Eric Boakye" onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 240 300\' fill=\'%23e8edf5\'><rect width=\'100%25\' height=\'100%25\'/><path d=\'M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z\' fill=\'%231a3a6b\'/></svg>';">
+                        </div>
+                        <div class="team-info">
+                            <span class="team-location" data-cms="consultant_4_location">Accra, Ghana</span>
+                            <h3 class="serif team-name" data-cms="consultant_4_name">Mr. Mensah Eric Boakye</h3>
+                            <span class="team-role" data-cms="consultant_4_role">External Consultant</span>
+                            <p class="team-bio" data-cms="consultant_4_bio">Senior external legal consultant with extensive experience in commercial practice, banking law, and complex dispute resolution advisory.</p>
+                        </div>
+                    </article>
+                </div>
+
                 <div class="team-cta">
                     <h3 class="serif">Ready to speak with one of our lawyers?</h3>
                     <p>Our team is available to discuss your legal matter and advise on the best path forward.</p>
@@ -170,7 +233,7 @@
                         <img src="logo.png" alt="Spring Legal Consultancy Logo">
                         <div>
                             <span class="footer-brand-name">Spring Legal Consultancy</span>
-                            <span class="footer-tagline">Precision · Integrity · Results</span>
+                            <span class="footer-tagline">Precision Â· Integrity Â· Results</span>
                         </div>
                     </div>
                     <p class="footer-description" data-cms="footer_description">
@@ -208,7 +271,7 @@
             <div class="footer-bottom">
                 <span data-cms="footer_copyright">&copy; 2026 Spring Legal Consultancy. All rights reserved.</span>
                 <span>
-                    <a href="#">Privacy Policy</a> &nbsp;·&nbsp;
+                    <a href="#">Privacy Policy</a> &nbsp;Â·&nbsp;
                     <a href="#">Terms of Use</a>
                 </span>
             </div>

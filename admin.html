@@ -663,6 +663,19 @@
                     { key: `team_${m.n}_role`, label: 'Role & Titles', type: 'input' },
                     { key: `team_${m.n}_bio`, label: 'Detailed Biography', type: 'textarea' },
                 ]
+            })), ...[
+                { n: 1, name: 'Mr. Theophilus Odartey Lawson' },
+                { n: 2, name: 'Anastasia Hammond' },
+                { n: 3, name: 'Miss Gyama Owusu Boakye' },
+                { n: 4, name: 'Mr. Mensah Eric Boakye' },
+            ].map(m => ({
+                title: m.name, badge: `Consultant ${m.n}`,
+                fields: [
+                    { key: `consultant_${m.n}_location`, label: 'Location Tag', type: 'input' },
+                    { key: `consultant_${m.n}_name`, label: 'Full Name', type: 'input' },
+                    { key: `consultant_${m.n}_role`, label: 'Role & Titles', type: 'input' },
+                    { key: `consultant_${m.n}_bio`, label: 'Detailed Biography', type: 'textarea' },
+                ]
             }))]
         },
         contact: {
