@@ -754,6 +754,216 @@
         }
     });
 
+    // ═══ DEFAULT CONTENT FALLBACKS FOR ADMIN EDITOR ═══
+    const DEFAULT_CMS_DATA = {
+        header_call_text: 'Call (+233) 030 220 1530',
+        header_consult_text: 'Request Consultation',
+
+        hero_badge: 'Delivering Legal Excellence Since 2012',
+        hero_title: 'Legal clarity for<br><span class="highlight">high-stakes</span><br>decisions.',
+        hero_tagline: 'Precision. Integrity. Results.',
+        hero_description: 'Spring Legal Consultancy is a full-service corporate law firm in Accra, Ghana. We serve companies, institutions and private clients across corporate, aviation, litigation and regulatory matters — with bespoke solutions aligned to your strategic objectives.',
+        hero_cta_consult: 'Schedule Consultation',
+        hero_cta_explore: 'Explore Practice Areas',
+        overlap_card_1_title: 'Corporate & Commercial',
+        overlap_card_1_desc: 'Company incorporation, corporate governance, commercial contracts, regulatory compliance, and joint venture transactions.',
+        overlap_card_2_title: 'Aviation Law Advisory',
+        overlap_card_2_desc: 'Aviation regulatory compliance, aircraft leasing, air operator licensing, and dispute resolution for aviation stakeholders.',
+        overlap_card_3_title: 'Dispute Resolution & Litigation',
+        overlap_card_3_desc: 'Strategic legal representation in commercial litigation, debt recovery, arbitration, and alternative dispute resolution.',
+
+        about_tag: 'About SLC',
+        about_heading: 'A full-service corporate law firm built on integrity and results.',
+        about_para_1: 'Spring Legal Consultancy (SLC) has evolved from a sole practitioner practice established in 2012 into a reputable partnership serving a broad and diverse clientele. We are guided by the highest standards of integrity, fairness, and professionalism, which define our approach to client service and legal practice.',
+        about_banner_title: 'About Spring Legal Consultancy',
+        about_banner_sub: 'A full-service law firm built on integrity, professionalism, and results since 2012.',
+        about_para_2: 'Our multidisciplinary team of legal consultants and paralegals delivers bespoke legal solutions aligned with our clients\' strategic and commercial objectives. We adopt a proactive, solutions-oriented approach, combining technical expertise with practical insight to achieve optimal outcomes.',
+        about_para_3: 'Whether advising corporations on complex transactions or guiding individuals through sensitive personal matters, SLC brings the same commitment to excellence and the same dedication to protecting our clients\' interests.',
+        about_stat_1_num: '2012',
+        about_stat_1_label: 'Established',
+        about_stat_2_num: '9+',
+        about_stat_2_label: 'Practice Areas',
+        about_stat_3_num: '3',
+        about_stat_3_label: 'Partner Lawyers',
+        about_stat_4_num: 'GBA',
+        about_stat_4_label: 'Certified Counsel',
+        about_values_title: 'Our Core Values',
+        about_value_1_title: 'Integrity',
+        about_value_1_desc: 'highest ethical standards in every engagement',
+        about_value_2_title: 'Professional Excellence',
+        about_value_2_desc: 'continuous learning and technical mastery',
+        about_value_3_title: 'Client-Centered',
+        about_value_3_desc: 'tailored solutions aligned with client objectives',
+        about_value_4_title: 'Respect & Fairness',
+        about_value_4_desc: 'dignity and impartiality in all matters',
+        about_value_5_title: 'Results-Driven',
+        about_value_5_desc: 'practical, efficient outcomes for every client',
+
+        navy_tag: 'Commitments',
+        navy_heading: 'Credentials & Practice Standards',
+        navy_desc: 'Spring Legal Consultancy operates under full licensing by the General Legal Council of Ghana. Our partners are active members of the Ghana Bar Association and international legal bodies.',
+        navy_cred_1: 'Licensed by the General Legal Council of Ghana',
+        navy_cred_2: 'Notary Public certification',
+        navy_cred_3: 'Licensed Insolvency Practitioners',
+        navy_cred_4: 'Members of the Ghana Bar Association',
+        mission_title: 'Our Mission',
+        mission_text: 'To deliver high-quality, ethical, and client-focused legal services that protect our clients\' interests, support business growth, and provide practical solutions to complex legal challenges.',
+        vision_title: 'Our Vision',
+        vision_text: 'To be a leading and trusted legal consultancy recognized for excellence, innovation, and professionalism, setting the benchmark for premium legal service delivery in the region.',
+
+        practice_1_banner_title: 'Aviation Law',
+        practice_1_banner_sub: 'Specialized legal advisory for airlines, aircraft owners, operators, and aviation stakeholders in Ghana.',
+        practice_1_heading: 'Comprehensive Legal Solutions for the Aviation Sector',
+        practice_1_p1: 'Spring Legal Consultancy provides specialized legal representation and regulatory advisory to domestic and international aviation stakeholders. Our practice covers aircraft leasing, regulatory compliance with the Ghana Civil Aviation Authority (GCAA), passenger and cargo claims, and commercial agreements.',
+        practice_1_p2: 'We guide clients through complex regulatory frameworks, cross-border aircraft transactions, and dispute resolution, ensuring full compliance while protecting commercial interests.',
+        practice_1_bullets: 'Aircraft leasing & finance agreements\nRegulatory compliance & GCAA licensing\nAviation dispute resolution & litigation\nAir operator certificate (AOC) applications\nPassenger & cargo claims defense',
+        practice_1_why: 'Our deep understanding of Ghana aviation regulations and international air law standards makes SLC the trusted partner for aviation businesses.',
+        practice_1_cta_title: 'Need Aviation Legal Counsel?',
+        practice_1_cta_text: 'Contact our aviation law practice team to schedule a consultation regarding your regulatory or commercial matter.',
+
+        practice_2_banner_title: 'Corporate & Commercial Law',
+        practice_2_banner_sub: 'Strategic legal advisory for business formation, governance, commercial contracts, and transactions.',
+        practice_2_heading: 'Protecting and Advancing Your Commercial Objectives',
+        practice_2_p1: 'SLC offers end-to-end corporate and commercial legal services for local businesses, multinational corporations, and entrepreneurs operating in Ghana.',
+        practice_2_p2: 'From entity structuring and joint ventures to regulatory compliance and contract drafting, our team ensures your commercial activities are legally sound and risk-mitigated.',
+        practice_2_bullets: 'Company formation & corporate structuring\nCorporate governance & board advisory\nCommercial contract drafting & negotiation\nMergers, acquisitions & joint ventures\nRegulatory compliance & permit acquisition',
+        practice_2_why: 'We combine legal rigor with business acumen to deliver practical solutions that advance client growth.',
+        practice_2_cta_title: 'Consult Our Corporate Practice',
+        practice_2_cta_text: 'Reach out to discuss your company structure, contracts, or transaction support needs.',
+
+        practice_3_banner_title: 'Dispute Resolution & Litigation',
+        practice_3_banner_sub: 'Strategic representation in commercial litigation, debt recovery, and arbitration.',
+        practice_3_heading: 'Resolving Complex Disputes Efficiently',
+        practice_3_p1: 'Our litigation and dispute resolution team represents corporate clients and individuals before all courts in Ghana and statutory tribunals.',
+        practice_3_p2: 'We prioritize strategic, cost-effective resolution methods including negotiation, mediation, and arbitration, while standing ready to advocate vigorously in court.',
+        practice_3_bullets: 'Commercial litigation & trial advocacy\nCorporate debt recovery & asset retrieval\nAlternative dispute resolution (ADR) & arbitration\nLabor & employment disputes\nLand & property litigation',
+        practice_3_why: 'Our proven track record in high-stakes litigation gives our clients confidence in contentious matters.',
+        practice_3_cta_title: 'Facing a Legal Dispute?',
+        practice_3_cta_text: 'Contact our dispute resolution team to evaluate your case and plan a clear strategy.',
+
+        practice_4_banner_title: 'Real Estate & Property Law',
+        practice_4_banner_sub: 'Legal support for land acquisition, conveyancing, commercial leasing, and property disputes.',
+        practice_4_heading: 'Navigating Property & Real Estate Transactions in Ghana',
+        practice_4_p1: 'Spring Legal Consultancy assists developers, investors, and private individuals in land title verification, property acquisitions, and development projects.',
+        practice_4_p2: 'We perform comprehensive due diligence to protect clients from land title conflicts and streamline registration processes.',
+        practice_4_bullets: 'Land title search & due diligence\nConveyancing & property sales agreements\nCommercial & residential lease agreements\nProperty development legal support\nLand dispute resolution & title defense',
+        practice_4_why: 'Our thorough due diligence process ensures your real estate investments in Ghana are secure.',
+        practice_4_cta_title: 'Planning a Property Transaction?',
+        practice_4_cta_text: 'Speak with our real estate counsel to verify titles and draft binding agreements.',
+
+        practice_5_banner_title: 'Private Client & Family Law',
+        practice_5_banner_sub: 'Discreet, compassionate legal guidance for estate planning, trusts, matrimonial, and family matters.',
+        practice_5_heading: 'Dedicated Guidance for Personal & Family Legal Affairs',
+        practice_5_p1: 'SLC provides personalized, confidential legal services to private individuals and families across Ghana and the diaspora.',
+        practice_5_p2: 'Our practice covers wills, estate distribution, trusts, matrimonial dissolution, child custody, and adoption matters with utmost discretion.',
+        practice_5_bullets: 'Wills drafting & estate planning\nProbate & letters of administration\nFamily trusts & asset protection\nMatrimonial law & divorce proceedings\nChild custody & adoption guidance',
+        practice_5_why: 'We approach sensitive family matters with empathy, confidentiality, and firm legal advocacy.',
+        practice_5_cta_title: 'Discuss Private Family Matters',
+        practice_5_cta_text: 'Schedule a confidential meeting with our senior private client lawyer.',
+
+        practice_6_banner_title: 'Banking & Finance',
+        practice_6_banner_sub: 'Legal advisory for financial institutions, credit facilities, recovery, and insolvency.',
+        practice_6_heading: 'Comprehensive Legal Advisory for Financial Services',
+        practice_6_p1: 'SLC advises banks, microfinance institutions, and corporate borrowers on loan structuring, perfection of securities, and regulatory compliance.',
+        practice_6_p2: 'We specialize in corporate insolvency, debt recovery, and financial restructuring under licensed insolvency practice frameworks.',
+        practice_6_bullets: 'Loan documentation & security perfection\nCorporate debt recovery & enforcement\nInsolvency & business restructuring\nFinancial regulatory compliance\nTrusts & credit facility advisory',
+        practice_6_why: 'Decades of head-of-legal banking experience ensure practical, effective counsel.',
+        practice_6_cta_title: 'Banking or Recovery Advisory?',
+        practice_6_cta_text: 'Contact our banking and finance team for debt recovery or financial documentation support.',
+
+        practice_7_banner_title: 'Civil Construction Law',
+        practice_7_banner_sub: 'Legal support for infrastructure projects, contractors, developers, and construction disputes.',
+        practice_7_heading: 'Legal Protection Across the Construction Lifecycle',
+        practice_7_p1: 'We advise contractors, project owners, engineers, and sub-contractors on civil construction contracts, FIDIC agreements, and regulatory permits.',
+        practice_7_p2: 'When disputes arise regarding project delays, payment claims, or defects, we deliver effective dispute resolution.',
+        practice_7_bullets: 'Construction contract drafting (FIDIC & bespoke)\nRegulatory permits & environmental compliance\nProject claim management & delay disputes\nArbitration & dispute adjudication boards\nJoint venture & sub-contractor agreements',
+        practice_7_why: 'We protect commercial margin and project continuity through clear contract management.',
+        practice_7_cta_title: 'Starting a Construction Project?',
+        practice_7_cta_text: 'Get expert legal review for construction agreements and risk management.',
+
+        practice_8_banner_title: 'Insurance Claims & Advisory',
+        practice_8_banner_sub: 'Legal representation for corporate and individual policyholders in insurance disputes.',
+        practice_8_heading: 'Enforcing Policyholder Rights & Claims',
+        practice_8_p1: 'SLC represents clients in policy interpretation, claims negotiations, and litigation against insurers for denied or undervalued claims.',
+        practice_8_p2: 'We advise corporate clients on risk management, liability policies, and commercial insurance coverage.',
+        practice_8_bullets: 'Insurance claim negotiation & settlement\nCoverage dispute litigation & arbitration\nCorporate risk management advisory\nThird-party liability claims\nPolicy review & indemnity terms',
+        practice_8_why: 'We ensure policyholders receive full and fair compensation under their policy terms.',
+        practice_8_cta_title: 'Facing an Insurance Dispute?',
+        practice_8_cta_text: 'Let our team evaluate your insurance policy and claim details.',
+
+        practice_9_banner_title: 'Natural Resources Law',
+        practice_9_banner_sub: 'Legal counsel for energy, mining, oil & gas, and environmental compliance in Ghana.',
+        practice_9_heading: 'Advisory for Energy, Mining & Resource Development',
+        practice_9_p1: 'Spring Legal Consultancy provides legal support to domestic and foreign investors in Ghana\'s mining, energy, and natural resource sectors.',
+        practice_9_p2: 'We guide clients through concession licensing, joint venture negotiations, local content compliance, and environmental regulations.',
+        practice_9_bullets: 'Mining concession licensing & leases\nEnergy & renewable project agreements\nLocal content regulatory compliance\nEnvironmental impact legal assessment\nResource transaction structuring',
+        practice_9_why: 'We help resource investors navigate Ghana regulatory framework smoothly.',
+        practice_9_cta_title: 'Investing in Natural Resources?',
+        practice_9_cta_text: 'Connect with our natural resources practice for licensing and compliance guidance.',
+
+        team_banner_title: 'Our Team',
+        team_banner_sub: 'Senior counsel with decades of combined practice across corporate, regulatory and litigation work.',
+        team_heading: 'Experienced lawyers for complex legal matters.',
+        team_subheading: 'SLC\'s partners bring together expertise across corporate law, aviation, banking, litigation, real estate, and family law — combining deep technical knowledge with practical insight and a commitment to results.',
+        team_1_location: 'Accra, Ghana',
+        team_1_name: 'Mrs. Ruby Akua Aglagoh',
+        team_1_role: 'Founder/Partner | Notary Public | Human Rights Advocate',
+        team_1_bio: 'Called to the Ghana Bar in 2001. Extensive experience in corporate governance, litigation, debt recovery, family law, aviation, real estate, and construction. Adjunct Lecturer at Ensign Global University. Holds LLB (Ghana), BL (Ghana School of Law), and LLM (Research) from Edith Cowan University, Australia.',
+        team_2_location: 'Accra, Ghana',
+        team_2_name: 'Alexander Nii Kwartey Owoo, Esq.',
+        team_2_role: 'Managing Partner | Barrister & Solicitor | Notary Public',
+        team_2_bio: 'Over two decades of experience in corporate law, banking, finance, trusts, family law, and insurance. Former Head of Legal at HFC Bank. Lecturer in Law of Trusts and Business Law. Holds LLB (Ghana) and LLM in International Commercial and Corporate Law (London). Licensed Insolvency Practitioner.',
+        team_3_location: 'Accra, Ghana',
+        team_3_name: 'Ernest Assie, Esq.',
+        team_3_role: 'Junior Partner | Barrister & Solicitor',
+        team_3_bio: 'Called to the Ghana Bar in 2017. Over 16 years of prior experience in recovery and debt management, client service, and banking operations. Formerly with Republic Bank Ghana PLC. Successfully handled high-profile cases in court and before statutory bodies. Holds BA (KNUST), LLB (Mountcrest), and BL (Ghana School of Law).',
+
+        external_consultants_heading: 'External Consultants',
+        external_consultants_subheading: 'Distinguished legal consultants offering specialized expertise across diverse practice areas.',
+        consultant_1_location: 'Accra, Ghana',
+        consultant_1_name: 'Mr. Theophilus Odartey Lawson',
+        consultant_1_role: 'External Consultant',
+        consultant_1_bio: 'External legal consultant offering strategic counsel and advisory support across complex corporate, litigation, and regulatory advisory practice areas.',
+        consultant_2_location: 'Accra, Ghana',
+        consultant_2_name: 'Anastasia Hammond',
+        consultant_2_role: 'External Consultant',
+        consultant_2_bio: 'External legal consultant specializing in commercial advisory, regulatory compliance, and client representation in high-stakes corporate legal transactions.',
+        consultant_3_location: 'Accra, Ghana',
+        consultant_3_name: 'Miss Gyama Owusu Boakye',
+        consultant_3_role: 'External Consultant',
+        consultant_3_bio: 'External legal consultant providing focused research, legal analysis, and advisory support on private client, property, and dispute resolution matters.',
+        consultant_4_location: 'Accra, Ghana',
+        consultant_4_name: 'Mr. Mensah Eric Boakye',
+        consultant_4_role: 'External Consultant',
+        consultant_4_bio: 'External legal consultant providing counsel on corporate governance, dispute management, and strategic transaction structuring.',
+
+        contact_banner_title: 'Contact Us',
+        contact_banner_sub: 'Bring your matter to a team that moves with purpose.',
+        contact_heading: 'Let\'s discuss your legal matter.',
+        contact_subheading: 'Share a few details and the SLC team will follow up promptly with next steps. You can also reach us directly by phone or email.',
+        contact_address_title: 'Office Location',
+        contact_address: '16 Odanta Street, Asylum Down, Accra, Ghana',
+        contact_phone_title: 'Telephone',
+        contact_phone: '(+233) 030 220 1530',
+        contact_email_title: 'Email Address',
+        contact_email: 'info@springlegal.com.gh',
+        contact_hours_title: 'Office Hours',
+        contact_hours: 'Monday – Friday, 8 AM – 5 PM GMT',
+        contact_form_title: 'Request a Consultation',
+        contact_select_default: 'Select a Practice Area',
+        contact_form_btn: 'Send Consultation Request',
+
+        footer_description: 'Full-service corporate law firm delivering legal excellence since 2012. Headquartered in Accra, Ghana, serving clients locally and internationally.',
+        footer_copyright: '© 2026 Spring Legal Consultancy. All rights reserved.'
+    };
+
+    function getFieldValue(key) {
+        if (contentData[key] !== undefined && contentData[key] !== '') {
+            return contentData[key];
+        }
+        return DEFAULT_CMS_DATA[key] || '';
+    }
+
     // ═══ RENDER ═══
     function renderSection(sectionId) {
         const section = sections[sectionId];
@@ -762,12 +972,13 @@
         section.cards.forEach(card => {
             html += `<div class="card"><div class="card-header"><h3>${card.title}</h3><span class="card-badge">${card.badge}</span></div>`;
             card.fields.forEach(f => {
-                const val = (contentData[f.key] || '').replace(/"/g, '&quot;');
+                const rawVal = getFieldValue(f.key);
+                const valEscaped = rawVal.replace(/"/g, '&quot;');
                 html += `<div class="field"><label>${f.label}</label>`;
                 if (f.type === 'textarea') {
-                    html += `<textarea data-key="${f.key}">${contentData[f.key] || ''}</textarea>`;
+                    html += `<textarea data-key="${f.key}">${rawVal}</textarea>`;
                 } else {
-                    html += `<input type="text" data-key="${f.key}" value="${val}">`;
+                    html += `<input type="text" data-key="${f.key}" value="${valEscaped}">`;
                 }
                 if (f.hint) html += `<div class="field-hint">${f.hint}</div>`;
                 html += `</div>`;
