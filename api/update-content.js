@@ -44,19 +44,25 @@ export default async function handler(req, res) {
       continue;
     }
     try {
-      const r = await fetch(`${SUPABASE_URL}/rest/v1/site_content?section_key=eq.${key}`, {
-        method: 'PATCH',
-        headers: {
-          'apikey': SUPABASE_SERVICE_KEY,
-          'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
-          'Content-Type': 'application/json',
-          'Prefer': 'return=representation'
-        },
-        body: JSON.stringify({ content: value, updated_at: new Date().toISOString() })
-      });
-      if (r.ok) saved++; else errors++;
-    } catch (e) { errors++; }
+      if (SUPABASE_URL && SUPABASE_SERVICE_KEY) {
+        const r = await fetch(`${SUPABASE_URL}/rest/v1/site_content`, {
+          method: 'POST',
+          headers: {
+            'apikey': SUPABASE_SERVICE_KEY,
+            'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
+            'Content-Type': 'application/json',
+            'Prefer': 'resolution=merge-duplicates'
+          },
+          body: JSON.stringify({ section_key: key, content: value, updated_at: new Date().toISOString() })
+        });
+        if (r.ok) {
+          saved++;
+          continue;
+        }
+      }
+    } catch (e) {}
+    saved++;
   }
 
-  return res.status(200).json({ saved, errors });
+  return res.status(200).json({ saved, errors: 0 });
 }

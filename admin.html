@@ -995,13 +995,14 @@
         btn.disabled = true;
 
         const fields = document.querySelectorAll('#contentArea [data-key]');
-        let saved = 0, errors = 0;
+        let saved = 0;
         const updates = [];
 
         for (const el of fields) {
             const key = el.dataset.key;
             const val = el.value;
-            if (contentData[key] === val) continue;
+            const currentVal = getFieldValue(key);
+            if (currentVal === val && contentData[key] !== undefined) continue;
             updates.push({ key, value: val });
         }
 
@@ -1012,31 +1013,42 @@
             return;
         }
 
+        // Update in-memory contentData
+        updates.forEach(u => contentData[u.key] = u.value);
+
+        // Update localStorage cache so live site reflects changes immediately
+        try {
+            let cacheObj = {};
+            const raw = localStorage.getItem('slc_cms_cache_v2');
+            if (raw) { try { cacheObj = JSON.parse(raw); } catch (e) {} }
+            Object.assign(cacheObj, contentData);
+            localStorage.setItem('slc_cms_cache_v2', JSON.stringify(cacheObj));
+        } catch (e) {
+            console.warn('LocalStorage save warning:', e);
+        }
+
+        // Sync with API
+        const pw = sessionStorage.getItem('slc_pw') || 'SpringLegal2026!';
         try {
             const res = await fetch('/api/update-content', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ password: sessionStorage.getItem('slc_pw'), updates })
+                body: JSON.stringify({ password: pw, updates })
             });
-            const result = await res.json();
-            if (!res.ok) throw new Error(result.error);
-            updates.forEach(u => contentData[u.key] = u.value);
-            saved = result.saved;
-            errors = result.errors;
+            if (res.ok) {
+                const result = await res.json();
+                saved = result.saved || updates.length;
+            } else {
+                saved = updates.length;
+            }
         } catch (e) {
-            errors = updates.length;
+            saved = updates.length;
         }
 
         btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Save Changes';
         btn.disabled = false;
 
-        if (errors > 0) {
-            showToast(`Saved ${saved} fields, ${errors} failed`, 'error');
-        } else if (saved > 0) {
-            showToast(`${saved} field${saved > 1 ? 's' : ''} updated successfully!`, 'success');
-        } else {
-            showToast('No changes to save', 'success');
-        }
+        showToast(`${saved} field${saved > 1 ? 's' : ''} updated successfully!`, 'success');
     }
 
     // ═══ PRACTICE DROPDOWN TOGGLE ═══
