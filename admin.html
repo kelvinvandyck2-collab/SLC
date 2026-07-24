@@ -421,9 +421,26 @@
 
     // ═══ API HELPERS ═══
     async function fetchContent() {
-        const res = await fetch('/api/get-content');
-        if (!res.ok) throw new Error('Failed to load content');
-        return res.json();
+        try {
+            const res = await fetch('/api/get-content');
+            if (res.ok) {
+                const data = await res.json();
+                if (Array.isArray(data)) return data;
+            }
+        } catch (e) {
+            console.warn('API get-content error:', e);
+        }
+
+        // Try local cache
+        try {
+            const cached = localStorage.getItem('slc_cms_cache_v2');
+            if (cached) {
+                const obj = JSON.parse(cached);
+                return Object.keys(obj).map(key => ({ section_key: key, content: obj[key] }));
+            }
+        } catch (e) {}
+
+        return [];
     }
 
     async function verifyPassword(pw) {
@@ -477,11 +494,14 @@
         try {
             const rows = await fetchContent();
             contentData = {};
-            rows.forEach(r => contentData[r.section_key] = r.content);
+            if (Array.isArray(rows)) {
+                rows.forEach(r => { if (r && r.section_key) contentData[r.section_key] = r.content; });
+            }
             renderSection(currentSection);
-            showToast('Content loaded successfully', 'success');
+            showToast('Content loaded', 'success');
         } catch (e) {
-            showToast('Failed to load: ' + e.message, 'error');
+            console.error('loadContent error:', e);
+            renderSection(currentSection);
         }
     }
 
