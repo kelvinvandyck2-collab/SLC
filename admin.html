@@ -1397,9 +1397,14 @@
 
         // Sync with API
         let savedCount = 0;
+        let cloudSuccess = false;
         const pw = sessionStorage.getItem('slc_pw') || 'SpringLegal2026!';
+        const apiUrl = (window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+            ? 'https://slc-beige.vercel.app/api/update-content'
+            : '/api/update-content';
+
         try {
-            const res = await fetch('/api/update-content', {
+            const res = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ password: pw, updates })
@@ -1407,17 +1412,23 @@
             if (res.ok) {
                 const result = await res.json();
                 savedCount = result.saved || updates.length;
+                cloudSuccess = true;
             } else {
-                savedCount = updates.length;
+                const errJson = await res.json().catch(() => ({}));
+                console.error('API update failed:', res.status, errJson);
             }
         } catch (e) {
-            savedCount = updates.length;
+            console.error('API network fetch error:', e);
         }
 
         btn.innerHTML = '<i class="fa-solid fa-cloud-arrow-up"></i> Save Changes';
         btn.disabled = false;
 
-        showToast(`${savedCount} change${savedCount > 1 ? 's' : ''} saved successfully!`, 'success');
+        if (cloudSuccess) {
+            showToast(`${savedCount} change${savedCount > 1 ? 's' : ''} saved to cloud DB successfully!`, 'success');
+        } else {
+            showToast('Saved to local cache, but cloud DB sync failed. Check internet connection.', 'error');
+        }
     }
 
     // ═══ PRACTICE DROPDOWN TOGGLE ═══
