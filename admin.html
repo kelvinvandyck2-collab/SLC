@@ -177,6 +177,41 @@
         .field-hint { font-size: 0.72rem; color: var(--text-dim); margin-top: 4px; font-style: italic; }
         .save-row { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
 
+        /* ── Image Upload Control ── */
+        .image-field-wrap { display: flex; gap: 20px; align-items: flex-start; margin-top: 6px; }
+        .image-preview-box {
+            width: 130px; height: 165px; border-radius: 12px; border: 2px dashed var(--border-focus);
+            background: var(--bg-input); display: flex; align-items: center; justify-content: center;
+            overflow: hidden; position: relative; flex-shrink: 0; transition: border-color var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        .image-preview-box img { width: 100%; height: 100%; object-fit: cover; }
+        .image-controls { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .btn-upload-wrap { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+        .btn-file {
+            position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; background: rgba(233,30,140,0.1); color: var(--pink); border-radius: 10px;
+            font-size: 0.82rem; font-weight: 700; cursor: pointer; transition: all var(--transition);
+        }
+        .btn-file:hover { background: var(--pink); color: #fff; transform: translateY(-1px); }
+        .btn-file input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; font-size: 100px; }
+        .btn-reset-img {
+            padding: 10px 14px; background: transparent; border: 1.5px solid var(--border); border-radius: 10px;
+            color: var(--text-dim); font-size: 0.78rem; font-weight: 600; cursor: pointer; transition: all var(--transition);
+        }
+        .btn-reset-img:hover { color: var(--red); border-color: var(--red); background: rgba(211,47,47,0.04); }
+
+        /* ── Dynamic Member Management ── */
+        .btn-delete-member {
+            padding: 6px 14px; background: rgba(211,47,47,0.08); color: var(--red);
+            border: 1.5px solid rgba(211,47,47,0.25); border-radius: 8px; font-size: 0.78rem;
+            font-weight: 700; cursor: pointer; transition: all var(--transition);
+            display: inline-flex; align-items: center; gap: 6px;
+        }
+        .btn-delete-member:hover { background: var(--red); color: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(211,47,47,0.2); }
+        .add-member-bar { margin: 16px 0 36px; text-align: center; }
+        .add-member-bar button { padding: 12px 24px; font-size: 0.88rem; border-radius: 12px; }
+
         /* ── Toast ── */
         .toast-container { position: fixed; top: 24px; right: 24px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; }
         .toast {
@@ -670,6 +705,7 @@
     Object.assign(sections, {
         team: {
             title: 'Team Page & Members',
+            isDynamicTeamSection: true,
             cards: [{
                 title: 'Team Page Banner & Intro', badge: 'Team Page',
                 fields: [
@@ -678,32 +714,19 @@
                     { key: 'team_heading', label: 'Section Heading', type: 'input' },
                     { key: 'team_subheading', label: 'Intro Paragraph', type: 'textarea' },
                 ]
-            }, ...[
-                { n: 1, name: 'Mrs. Ruby Akua Aglagoh' },
-                { n: 2, name: 'Alexander Nii Kwartey Owoo' },
-                { n: 3, name: 'Ernest Assie' },
-            ].map(m => ({
-                title: m.name, badge: `Member ${m.n}`,
+            }, {
+                title: 'External Consultants Section Intro', badge: 'Section Intro',
                 fields: [
-                    { key: `team_${m.n}_location`, label: 'Location Tag', type: 'input' },
-                    { key: `team_${m.n}_name`, label: 'Full Name', type: 'input' },
-                    { key: `team_${m.n}_role`, label: 'Role & Titles', type: 'input' },
-                    { key: `team_${m.n}_bio`, label: 'Detailed Biography', type: 'textarea' },
+                    { key: 'external_consultants_heading', label: 'Section Heading', type: 'input' },
+                    { key: 'external_consultants_subheading', label: 'Intro Paragraph', type: 'textarea' },
                 ]
-            })), ...[
-                { n: 1, name: 'Mr. Theophilus Odartey Lawson' },
-                { n: 2, name: 'Anastasia Hammond' },
-                { n: 3, name: 'Miss Gyama Owusu Boakye' },
-                { n: 4, name: 'Mr. Mensah Eric Boakye' },
-            ].map(m => ({
-                title: m.name, badge: `Consultant ${m.n}`,
+            }, {
+                title: 'Para Legal Section Intro', badge: 'Section Intro',
                 fields: [
-                    { key: `consultant_${m.n}_location`, label: 'Location Tag', type: 'input' },
-                    { key: `consultant_${m.n}_name`, label: 'Full Name', type: 'input' },
-                    { key: `consultant_${m.n}_role`, label: 'Role & Titles', type: 'input' },
-                    { key: `consultant_${m.n}_bio`, label: 'Detailed Biography', type: 'textarea' },
+                    { key: 'paralegal_heading', label: 'Section Heading', type: 'input' },
+                    { key: 'paralegal_subheading', label: 'Intro Paragraph', type: 'textarea' },
                 ]
-            }))]
+            }]
         },
         contact: {
             title: 'Contact Page',
@@ -905,14 +928,17 @@
         team_banner_sub: 'Senior counsel with decades of combined practice across corporate, regulatory and litigation work.',
         team_heading: 'Experienced lawyers for complex legal matters.',
         team_subheading: 'SLC\'s partners bring together expertise across corporate law, aviation, banking, litigation, real estate, and family law — combining deep technical knowledge with practical insight and a commitment to results.',
+        team_1_img: 'img/team/team-09.jpg',
         team_1_location: 'Accra, Ghana',
         team_1_name: 'Mrs. Ruby Akua Aglagoh',
         team_1_role: 'Founder/Partner | Notary Public | Human Rights Advocate',
         team_1_bio: 'Called to the Ghana Bar in 2001. Extensive experience in corporate governance, litigation, debt recovery, family law, aviation, real estate, and construction. Adjunct Lecturer at Ensign Global University. Holds LLB (Ghana), BL (Ghana School of Law), and LLM (Research) from Edith Cowan University, Australia.',
+        team_2_img: 'img/team/team-10.jpg',
         team_2_location: 'Accra, Ghana',
         team_2_name: 'Alexander Nii Kwartey Owoo, Esq.',
         team_2_role: 'Managing Partner | Barrister & Solicitor | Notary Public',
         team_2_bio: 'Over two decades of experience in corporate law, banking, finance, trusts, family law, and insurance. Former Head of Legal at HFC Bank. Lecturer in Law of Trusts and Business Law. Holds LLB (Ghana) and LLM in International Commercial and Corporate Law (London). Licensed Insolvency Practitioner.',
+        team_3_img: 'img/team/team-11.jpg',
         team_3_location: 'Accra, Ghana',
         team_3_name: 'Ernest Assie, Esq.',
         team_3_role: 'Junior Partner | Barrister & Solicitor',
@@ -920,22 +946,49 @@
 
         external_consultants_heading: 'External Consultants',
         external_consultants_subheading: 'Distinguished legal consultants offering specialized expertise across diverse practice areas.',
+        consultant_1_img: 'img/team/team-12.jpg',
         consultant_1_location: 'Accra, Ghana',
         consultant_1_name: 'Mr. Theophilus Odartey Lawson',
         consultant_1_role: 'External Consultant',
         consultant_1_bio: 'External legal consultant offering strategic counsel and advisory support across complex corporate, litigation, and regulatory advisory practice areas.',
+        consultant_2_img: 'img/team/team-13.jpg',
         consultant_2_location: 'Accra, Ghana',
         consultant_2_name: 'Anastasia Hammond',
         consultant_2_role: 'External Consultant',
         consultant_2_bio: 'External legal consultant specializing in commercial advisory, regulatory compliance, and client representation in high-stakes corporate legal transactions.',
+        consultant_3_img: 'img/team/team-14.jpg',
         consultant_3_location: 'Accra, Ghana',
         consultant_3_name: 'Miss Gyama Owusu Boakye',
         consultant_3_role: 'External Consultant',
         consultant_3_bio: 'External legal consultant providing focused research, legal analysis, and advisory support on private client, property, and dispute resolution matters.',
+        consultant_4_img: 'img/team/team-15.jpg',
         consultant_4_location: 'Accra, Ghana',
         consultant_4_name: 'Mr. Mensah Eric Boakye',
         consultant_4_role: 'External Consultant',
         consultant_4_bio: 'External legal consultant providing counsel on corporate governance, dispute management, and strategic transaction structuring.',
+
+        paralegal_heading: 'Para Legal Team',
+        paralegal_subheading: 'Skilled paralegals and legal assistants supporting client cases, legal documentation, and research.',
+        paralegal_1_img: '',
+        paralegal_1_location: 'Accra, Ghana',
+        paralegal_1_name: 'Paralegal Member 1',
+        paralegal_1_role: 'Senior Paralegal',
+        paralegal_1_bio: 'Dedicated paralegal providing case management, legal filings, and documentation support across corporate and litigation matters.',
+        paralegal_2_img: '',
+        paralegal_2_location: 'Accra, Ghana',
+        paralegal_2_name: 'Paralegal Member 2',
+        paralegal_2_role: 'Legal Assistant',
+        paralegal_2_bio: 'Assisting senior counsel with statutory compliance, court filing procedures, and client communications.',
+        paralegal_3_img: '',
+        paralegal_3_location: 'Accra, Ghana',
+        paralegal_3_name: 'Paralegal Member 3',
+        paralegal_3_role: 'Research & Case Assistant',
+        paralegal_3_bio: 'Specializing in legal research, due diligence verification, and property search documentation.',
+        paralegal_4_img: '',
+        paralegal_4_location: 'Accra, Ghana',
+        paralegal_4_name: 'Paralegal Member 4',
+        paralegal_4_role: 'Corporate Paralegal',
+        paralegal_4_bio: 'Supporting corporate filings, company secretarial documentation, and regulatory submissions.',
 
         contact_banner_title: 'Contact Us',
         contact_banner_sub: 'Bring your matter to a team that moves with purpose.',
@@ -964,11 +1017,261 @@
         return DEFAULT_CMS_DATA[key] || '';
     }
 
+    // ═══ DYNAMIC TEAM MEMBER MANAGEMENT ═══
+    const DEFAULT_TEAM_PARTNERS = [
+        { id: 1, name: 'Mrs. Ruby Akua Aglagoh', role: 'Founder/Partner | Notary Public | Human Rights Advocate', location: 'Accra, Ghana', bio: 'Called to the Ghana Bar in 2001. Extensive experience in corporate governance, litigation, debt recovery, family law, aviation, real estate, and construction. Adjunct Lecturer at Ensign Global University. Holds LLB (Ghana), BL (Ghana School of Law), and LLM (Research) from Edith Cowan University, Australia.', img: 'img/team/team-09.jpg' },
+        { id: 2, name: 'Alexander Nii Kwartey Owoo, Esq.', role: 'Managing Partner | Barrister & Solicitor | Notary Public', location: 'Accra, Ghana', bio: 'Over two decades of experience in corporate law, banking, finance, trusts, family law, and insurance. Former Head of Legal at HFC Bank. Lecturer in Law of Trusts and Business Law. Holds LLB (Ghana) and LLM in International Commercial and Corporate Law (London). Licensed Insolvency Practitioner.', img: 'img/team/team-10.jpg' },
+        { id: 3, name: 'Ernest Assie, Esq.', role: 'Junior Partner | Barrister & Solicitor', location: 'Accra, Ghana', bio: 'Called to the Ghana Bar in 2017. Over 16 years of prior experience in recovery and debt management, client service, and banking operations. Formerly with Republic Bank Ghana PLC. Successfully handled high-profile cases in court and before statutory bodies. Holds BA (KNUST), LLB (Mountcrest), and BL (Ghana School of Law).', img: 'img/team/team-11.jpg' }
+    ];
+
+    const DEFAULT_TEAM_CONSULTANTS = [
+        { id: 1, name: 'Mr. Theophilus Odartey Lawson', role: 'External Consultant', location: 'Accra, Ghana', bio: 'External legal consultant offering strategic counsel and advisory support across complex corporate, litigation, and regulatory advisory practice areas.', img: 'img/team/team-12.jpg' },
+        { id: 2, name: 'Anastasia Hammond', role: 'External Consultant', location: 'Accra, Ghana', bio: 'External legal consultant specializing in commercial advisory, regulatory compliance, and client representation in high-stakes corporate legal transactions.', img: 'img/team/team-13.jpg' },
+        { id: 3, name: 'Miss Gyama Owusu Boakye', role: 'External Consultant', location: 'Accra, Ghana', bio: 'External legal consultant providing focused research, legal analysis, and advisory support on private client, property, and dispute resolution matters.', img: 'img/team/team-14.jpg' },
+        { id: 4, name: 'Mr. Mensah Eric Boakye', role: 'External Consultant', location: 'Accra, Ghana', bio: 'Senior external legal consultant with extensive experience in commercial practice, banking law, and complex dispute resolution advisory.', img: 'img/team/team-15.jpg' }
+    ];
+
+    const DEFAULT_TEAM_PARALEGALS = [
+        { id: 1, name: 'Paralegal Member 1', role: 'Senior Paralegal', location: 'Accra, Ghana', bio: 'Dedicated paralegal providing case management, legal filings, and documentation support across corporate and litigation matters.', img: '' },
+        { id: 2, name: 'Paralegal Member 2', role: 'Legal Assistant', location: 'Accra, Ghana', bio: 'Assisting senior counsel with statutory compliance, court filing procedures, and client communications.', img: '' },
+        { id: 3, name: 'Paralegal Member 3', role: 'Research & Case Assistant', location: 'Accra, Ghana', bio: 'Specializing in legal research, due diligence verification, and property search documentation.', img: '' },
+        { id: 4, name: 'Paralegal Member 4', role: 'Corporate Paralegal', location: 'Accra, Ghana', bio: 'Supporting corporate filings, company secretarial documentation, and regulatory submissions.', img: '' }
+    ];
+
+    function getTeamCategoryList(catKey) {
+        let defaultList = DEFAULT_TEAM_PARTNERS;
+        if (catKey === 'team_consultants_list') defaultList = DEFAULT_TEAM_CONSULTANTS;
+        if (catKey === 'team_paralegals_list') defaultList = DEFAULT_TEAM_PARALEGALS;
+
+        if (contentData[catKey]) {
+            try {
+                const parsed = typeof contentData[catKey] === 'string' ? JSON.parse(contentData[catKey]) : contentData[catKey];
+                if (Array.isArray(parsed)) return parsed;
+            } catch (e) {}
+        }
+        return JSON.parse(JSON.stringify(defaultList));
+    }
+
+    function syncCurrentTeamDataFromDOM() {
+        ['team_partners_list', 'team_consultants_list', 'team_paralegals_list'].forEach(catKey => {
+            const cards = document.querySelectorAll(`[data-cat-card="${catKey}"]`);
+            if (cards.length === 0) return;
+            const list = [];
+            cards.forEach(card => {
+                const img = card.querySelector('[data-member-field="img"]')?.value || '';
+                const location = card.querySelector('[data-member-field="location"]')?.value || 'Accra, Ghana';
+                const name = card.querySelector('[data-member-field="name"]')?.value || '';
+                const role = card.querySelector('[data-member-field="role"]')?.value || '';
+                const bio = card.querySelector('[data-member-field="bio"]')?.value || '';
+                list.push({ img, location, name, role, bio });
+            });
+            contentData[catKey] = JSON.stringify(list);
+        });
+    }
+
+    function addTeamMember(catKey) {
+        syncCurrentTeamDataFromDOM();
+        const list = getTeamCategoryList(catKey);
+        let label = 'Partner';
+        if (catKey === 'team_consultants_list') label = 'Consultant';
+        if (catKey === 'team_paralegals_list') label = 'Paralegal';
+
+        list.push({ img: '', location: 'Accra, Ghana', name: `New ${label}`, role: `${label} Title`, bio: '' });
+        contentData[catKey] = JSON.stringify(list);
+        renderSection('team');
+        showToast(`New ${label} added! Fill out details and click Save Changes.`, 'success');
+    }
+
+    function deleteTeamMember(catKey, index) {
+        syncCurrentTeamDataFromDOM();
+        const list = getTeamCategoryList(catKey);
+        if (index >= 0 && index < list.length) {
+            list.splice(index, 1);
+            contentData[catKey] = JSON.stringify(list);
+            renderSection('team');
+            showToast('Member removed. Click Save Changes to apply.', 'success');
+        }
+    }
+
+    function renderDynamicCategoryCards(catKey, catBadge, singleLabel) {
+        const list = getTeamCategoryList(catKey);
+        let html = '';
+        const fallbackSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 300' fill='%23e8edf5'><rect width='100%' height='100%'/><path d='M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z' fill='%231a3a6b'/></svg>";
+
+        list.forEach((m, idx) => {
+            const uniqueId = `${catKey}_${idx}`;
+            const displayImg = m.img || fallbackSvg;
+            const nameEscaped = (m.name || '').replace(/"/g, '&quot;');
+            const roleEscaped = (m.role || '').replace(/"/g, '&quot;');
+            const locEscaped = (m.location || 'Accra, Ghana').replace(/"/g, '&quot;');
+            const valImgEscaped = (m.img || '').replace(/"/g, '&quot;');
+
+            html += `
+                <div class="card" data-cat-card="${catKey}">
+                    <div class="card-header">
+                        <h3>${m.name || `${singleLabel} #${idx + 1}`}</h3>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span class="card-badge">${catBadge} #${idx + 1}</span>
+                            <button type="button" class="btn-delete-member" onclick="deleteTeamMember('${catKey}', ${idx})">
+                                <i class="fa-solid fa-trash"></i> Remove ${singleLabel}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Profile Picture</label>
+                        <div class="image-field-wrap">
+                            <div class="image-preview-box">
+                                <img id="preview_img_${uniqueId}" src="${displayImg}" onerror="this.onerror=null;this.src='${fallbackSvg}'" alt="Preview">
+                            </div>
+                            <div class="image-controls">
+                                <div class="btn-upload-wrap">
+                                    <label class="btn-file">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
+                                        <input type="file" accept="image/*" onchange="handleDynamicImageFileSelect(this, '${uniqueId}')">
+                                    </label>
+                                    <button type="button" class="btn-reset-img" onclick="resetDynamicImageField('${uniqueId}')"><i class="fa-solid fa-rotate-left"></i> Reset Photo</button>
+                                </div>
+                                <input type="text" data-member-field="img" id="input_${uniqueId}" value="${valImgEscaped}" placeholder="Or enter Image URL (e.g. img/team/photo.jpg)" oninput="updateDynamicImagePreview('${uniqueId}')">
+                                <div class="field-hint">Upload a JPG, PNG or WebP profile picture (max 10MB). Photos are automatically compressed.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Location Tag</label>
+                        <input type="text" data-member-field="location" value="${locEscaped}">
+                    </div>
+                    <div class="field">
+                        <label>Full Name</label>
+                        <input type="text" data-member-field="name" value="${nameEscaped}">
+                    </div>
+                    <div class="field">
+                        <label>Role & Titles</label>
+                        <input type="text" data-member-field="role" value="${roleEscaped}">
+                    </div>
+                    <div class="field">
+                        <label>Detailed Biography</label>
+                        <textarea data-member-field="bio">${m.bio || ''}</textarea>
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+            <div class="add-member-bar">
+                <button type="button" class="btn btn-outline" onclick="addTeamMember('${catKey}')">
+                    <i class="fa-solid fa-user-plus"></i> + Add New ${singleLabel}
+                </button>
+            </div>
+        `;
+        return html;
+    }
+
+    function updateDynamicImagePreview(uniqueId) {
+        const input = document.getElementById(`input_${uniqueId}`);
+        const preview = document.getElementById(`preview_img_${uniqueId}`);
+        if (input && preview) preview.src = input.value;
+    }
+
+    function resetDynamicImageField(uniqueId) {
+        const input = document.getElementById(`input_${uniqueId}`);
+        const preview = document.getElementById(`preview_img_${uniqueId}`);
+        const fallbackSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 300' fill='%23e8edf5'><rect width='100%' height='100%'/><path d='M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z' fill='%231a3a6b'/></svg>";
+        if (input) input.value = '';
+        if (preview) preview.src = fallbackSvg;
+        showToast('Photo reset', 'success');
+    }
+
+    function handleDynamicImageFileSelect(fileInput, uniqueId) {
+        const file = fileInput.files && fileInput.files[0];
+        if (!file) return;
+        if (file.size > 10 * 1024 * 1024) {
+            showToast('File size is too large. Under 10MB please.', 'error');
+            return;
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            const img = new Image();
+            img.onload = function() {
+                const canvas = document.createElement('canvas');
+                const maxDim = 800;
+                let width = img.width, height = img.height;
+                if (width > height) {
+                    if (width > maxDim) { height = Math.round((height * maxDim) / width); width = maxDim; }
+                } else {
+                    if (height > maxDim) { width = Math.round((width * maxDim) / height); height = maxDim; }
+                }
+                canvas.width = width; canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+                const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                const input = document.getElementById(`input_${uniqueId}`);
+                const preview = document.getElementById(`preview_img_${uniqueId}`);
+                if (input) input.value = dataUrl;
+                if (preview) preview.src = dataUrl;
+                showToast('Image uploaded & optimized successfully!', 'success');
+            };
+            img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
     // ═══ RENDER ═══
     function renderSection(sectionId) {
         const section = sections[sectionId];
         if (!section) return;
         let html = '';
+
+        if (section.isDynamicTeamSection) {
+            // 1. Team Banner Intro Card
+            const bannerCard = section.cards[0];
+            html += `<div class="card"><div class="card-header"><h3>${bannerCard.title}</h3><span class="card-badge">${bannerCard.badge}</span></div>`;
+            bannerCard.fields.forEach(f => {
+                const rawVal = getFieldValue(f.key);
+                html += `<div class="field"><label>${f.label}</label>`;
+                if (f.type === 'textarea') html += `<textarea data-key="${f.key}">${rawVal}</textarea>`;
+                else html += `<input type="text" data-key="${f.key}" value="${rawVal.replace(/"/g, '&quot;')}">`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+
+            // 2. Dynamic Partners Category
+            html += renderDynamicCategoryCards('team_partners_list', 'Partner', 'Partner');
+
+            // 3. External Consultants Intro Card
+            const consultCard = section.cards[1];
+            html += `<div class="card"><div class="card-header"><h3>${consultCard.title}</h3><span class="card-badge">${consultCard.badge}</span></div>`;
+            consultCard.fields.forEach(f => {
+                const rawVal = getFieldValue(f.key);
+                html += `<div class="field"><label>${f.label}</label>`;
+                if (f.type === 'textarea') html += `<textarea data-key="${f.key}">${rawVal}</textarea>`;
+                else html += `<input type="text" data-key="${f.key}" value="${rawVal.replace(/"/g, '&quot;')}">`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+
+            // 4. Dynamic External Consultants Category
+            html += renderDynamicCategoryCards('team_consultants_list', 'Consultant', 'External Consultant');
+
+            // 5. Para Legal Intro Card
+            const paralegalCard = section.cards[2];
+            html += `<div class="card"><div class="card-header"><h3>${paralegalCard.title}</h3><span class="card-badge">${paralegalCard.badge}</span></div>`;
+            paralegalCard.fields.forEach(f => {
+                const rawVal = getFieldValue(f.key);
+                html += `<div class="field"><label>${f.label}</label>`;
+                if (f.type === 'textarea') html += `<textarea data-key="${f.key}">${rawVal}</textarea>`;
+                else html += `<input type="text" data-key="${f.key}" value="${rawVal.replace(/"/g, '&quot;')}">`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+
+            // 6. Dynamic Para Legal Category
+            html += renderDynamicCategoryCards('team_paralegals_list', 'Paralegal', 'Paralegal');
+
+            document.getElementById('contentArea').innerHTML = html;
+            return;
+        }
+
+        // Static section rendering
         section.cards.forEach(card => {
             html += `<div class="card"><div class="card-header"><h3>${card.title}</h3><span class="card-badge">${card.badge}</span></div>`;
             card.fields.forEach(f => {
@@ -977,10 +1280,31 @@
                 html += `<div class="field"><label>${f.label}</label>`;
                 if (f.type === 'textarea') {
                     html += `<textarea data-key="${f.key}">${rawVal}</textarea>`;
+                } else if (f.type === 'image') {
+                    const defaultImg = f.defaultImg || '';
+                    const displayImg = rawVal || defaultImg;
+                    html += `
+                        <div class="image-field-wrap">
+                            <div class="image-preview-box" id="preview_box_${f.key}">
+                                <img id="preview_img_${f.key}" src="${displayImg}" onerror="this.onerror=null;this.src='${defaultImg}'" alt="Profile Preview">
+                            </div>
+                            <div class="image-controls">
+                                <div class="btn-upload-wrap">
+                                    <label class="btn-file">
+                                        <i class="fa-solid fa-cloud-arrow-up"></i> Upload Photo
+                                        <input type="file" accept="image/*" onchange="handleImageFileSelect(this, '${f.key}')">
+                                    </label>
+                                    <button type="button" class="btn-reset-img" onclick="resetImageField('${f.key}', '${defaultImg}')"><i class="fa-solid fa-rotate-left"></i> Reset Photo</button>
+                                </div>
+                                <input type="text" data-key="${f.key}" id="input_${f.key}" value="${valEscaped}" placeholder="Or enter Image URL (e.g. img/team/team-09.jpg)" oninput="updateImagePreview('${f.key}')">
+                                <div class="field-hint">Upload a JPG, PNG or WebP profile picture (max 10MB). Photos are automatically compressed and optimized for fast web display.</div>
+                            </div>
+                        </div>
+                    `;
                 } else {
                     html += `<input type="text" data-key="${f.key}" value="${valEscaped}">`;
                 }
-                if (f.hint) html += `<div class="field-hint">${f.hint}</div>`;
+                if (f.hint && f.type !== 'image') html += `<div class="field-hint">${f.hint}</div>`;
                 html += `</div>`;
             });
             html += `</div>`;
@@ -990,6 +1314,10 @@
 
     // ═══ SAVE ═══
     async function saveCurrentSection() {
+        if (currentSection === 'team') {
+            syncCurrentTeamDataFromDOM();
+        }
+
         const btn = document.getElementById('saveAllBtn');
         btn.innerHTML = '<span class="spinner"></span> Saving...';
         btn.disabled = true;
@@ -1004,6 +1332,15 @@
             const currentVal = getFieldValue(key);
             if (currentVal === val && contentData[key] !== undefined) continue;
             updates.push({ key, value: val });
+        }
+
+        // Add dynamic team category lists if section is team
+        if (currentSection === 'team') {
+            ['team_partners_list', 'team_consultants_list', 'team_paralegals_list'].forEach(catKey => {
+                if (contentData[catKey] !== undefined) {
+                    updates.push({ key: catKey, value: contentData[catKey] });
+                }
+            });
         }
 
         if (updates.length === 0) {

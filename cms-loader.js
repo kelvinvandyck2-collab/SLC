@@ -42,7 +42,49 @@ function wrapAmpersand(str) {
 }
 
 // ─── Core injector ────────────────────────────────────────────────────────────
+// Render dynamic team grid cards
+function renderTeamGrid(container, items) {
+    if (!Array.isArray(items)) return;
+    const fallbackSvg = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 300' fill='%23e8edf5'><rect width='100%' height='100%'/><path d='M120 140c22 0 40-18 40-40s-18-40-40-40-40 18-40 40 18 40 40 40zm0 20c-30 0-90 15-90 45v15h180v-15c0-30-60-45-90-45z' fill='%231a3a6b'/></svg>";
+    container.innerHTML = items.map(m => {
+        const imgSrc = m.img || fallbackSvg;
+        const location = m.location || 'Accra, Ghana';
+        const name = m.name || 'Team Member';
+        const role = m.role || '';
+        const bio = m.bio || '';
+        return `
+            <article class="team-card">
+                <div class="team-img-wrap">
+                    <img src="${imgSrc}" alt="${name}" onerror="this.onerror=null;this.src='${fallbackSvg}';">
+                </div>
+                <div class="team-info">
+                    <span class="team-location">${location}</span>
+                    <h3 class="serif team-name">${wrapAmpersand(decodeEntities(name))}</h3>
+                    <span class="team-role">${role}</span>
+                    <p class="team-bio">${bio}</p>
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
 function applyCMSData(data) {
+    // Dynamic grid containers (Team Members, External Consultants, Paralegals)
+    document.querySelectorAll('[data-cms-grid]').forEach(container => {
+        const gridKey = container.dataset.cmsGrid;
+        const listStr = data[gridKey];
+        if (listStr) {
+            try {
+                const list = typeof listStr === 'string' ? JSON.parse(listStr) : listStr;
+                if (Array.isArray(list)) {
+                    renderTeamGrid(container, list);
+                }
+            } catch(e) {
+                console.warn('Grid parse error for', gridKey, e);
+            }
+        }
+    });
+
     document.querySelectorAll('[data-cms]').forEach(el => {
         const key = el.dataset.cms;
         const val = data[key];
@@ -67,6 +109,12 @@ function applyCMSData(data) {
         if (key.endsWith('_bullets')) {
             const lines = val.split('\n').map(l => l.trim()).filter(l => l.length > 0);
             el.innerHTML = lines.map(line => `<li><i class="fa-solid fa-check"></i> ${line}</li>`).join('');
+            return;
+        }
+
+        // Image elements
+        if (el.tagName === 'IMG') {
+            el.src = val;
             return;
         }
 
