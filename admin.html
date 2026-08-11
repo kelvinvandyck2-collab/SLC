@@ -1337,6 +1337,7 @@
             window._savedStateSnapshot = Object.assign({}, DEFAULT_CMS_DATA, contentData);
         }
         const savedSnapshot = window._savedStateSnapshot;
+        const updatesMap = new Map();
 
         for (const el of fields) {
             const key = el.dataset.key;
