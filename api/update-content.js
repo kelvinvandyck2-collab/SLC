@@ -37,38 +37,62 @@ export default async function handler(req, res) {
   }
 
   // Apply updates
-  let saved = 0, errors = 0;
+  let saved = 0, errors = 0, lastErr = '';
   for (const { key, value } of updates) {
     if (key === 'admin_password') {
       errors++;
       continue;
     }
     try {
-      const r = await fetch(`${SUPABASE_URL}/rest/v1/site_content?on_conflict=section_key`, {
+      // 1. Try PATCH (update existing row)
+      const patchRes = await fetch(`${SUPABASE_URL}/rest/v1/site_content?section_key=eq.${encodeURIComponent(key)}`, {
+        method: 'PATCH',
+        headers: {
+          'apikey': SUPABASE_SERVICE_KEY,
+          'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
+          'Content-Type': 'application/json',
+          'Prefer': 'return=representation'
+        },
+        body: JSON.stringify({ content: String(value), updated_at: new Date().toISOString() })
+      });
+
+      if (patchRes.ok) {
+        const patchData = await patchRes.json().catch(() => []);
+        if (Array.isArray(patchData) && patchData.length > 0) {
+          saved++;
+          continue;
+        }
+      }
+
+      // 2. If row didn't exist yet, POST (insert new row)
+      const postRes = await fetch(`${SUPABASE_URL}/rest/v1/site_content`, {
         method: 'POST',
         headers: {
           'apikey': SUPABASE_SERVICE_KEY,
           'Authorization': `Bearer ${SUPABASE_SERVICE_KEY}`,
           'Content-Type': 'application/json',
-          'Prefer': 'resolution=merge-duplicates'
+          'Prefer': 'return=representation'
         },
         body: JSON.stringify({ section_key: key, content: String(value), updated_at: new Date().toISOString() })
       });
-      if (r.ok) {
+
+      if (postRes.ok) {
         saved++;
       } else {
-        const errText = await r.text();
-        console.error(`Supabase update failed for key ${key}:`, r.status, errText);
+        const errText = await postRes.text();
+        console.error(`Supabase insert failed for key ${key}:`, postRes.status, errText);
+        lastErr = errText;
         errors++;
       }
     } catch (e) {
       console.error(`Fetch exception for key ${key}:`, e);
+      lastErr = e.message;
       errors++;
     }
   }
 
   if (errors > 0 && saved === 0) {
-    return res.status(500).json({ error: 'Failed to write to cloud database', saved: 0, errors });
+    return res.status(500).json({ error: 'Failed to write to cloud database', details: lastErr, saved: 0, errors });
   }
 
   return res.status(200).json({ saved, errors });
