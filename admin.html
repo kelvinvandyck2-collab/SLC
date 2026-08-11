@@ -226,6 +226,19 @@
         @keyframes toastIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes toastOut { to { opacity: 0; transform: translateX(40px); } }
 
+        /* ── Back to Top ── */
+        #adminBackToTop {
+            position: fixed; bottom: 28px; right: 28px; z-index: 9000;
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 11px 20px; background: var(--pink); color: #fff;
+            border: none; border-radius: 50px; font: inherit; font-size: 0.82rem;
+            font-weight: 700; cursor: pointer; box-shadow: 0 6px 24px rgba(233,30,140,0.35);
+            opacity: 0; pointer-events: none; transform: translateY(10px);
+            transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+        }
+        #adminBackToTop.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+        #adminBackToTop:hover { background: var(--pink-dark); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(233,30,140,0.45); }
+
         /* ── Loading ── */
         .spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(233,30,140,0.2); border-top-color: var(--pink); border-radius: 50%; animation: spin 0.6s linear infinite; }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -448,6 +461,10 @@
 </div>
 
 <div class="toast-container" id="toastContainer"></div>
+
+<button id="adminBackToTop" title="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fa-solid fa-arrow-up"></i> Back to Top
+</button>
 
 <script>
     // ═══ CONFIG — No keys exposed, all requests go through server API ═══
@@ -1559,6 +1576,18 @@
     if (sidebarOverlay) {
         sidebarOverlay.addEventListener('click', closeMobileSidebar);
     }
+
+    // ═══ BACK TO TOP ═══
+    (function() {
+        const btn = document.getElementById('adminBackToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        }, { passive: true });
+    })();
 </script>
 </body>
 </html>
