@@ -126,41 +126,10 @@
         }
 
         /* ── Main ── */
-        .main { flex: 1; margin-left: 260px; padding: 0 40px 40px; }
-        .admin-page-banner {
-            position: relative; height: 160px; margin: 0 -40px 32px; overflow: hidden;
-        }
-        .admin-page-banner .banner-bg {
-            position: absolute; inset: 0;
-            background-image: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1400&q=80');
-            background-size: cover; background-position: center 30%;
-            filter: brightness(0.45);
-        }
-        .admin-page-banner .banner-content {
-            position: relative; z-index: 2; height: 100%;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 40px;
-        }
-        .admin-page-banner .banner-left { display: flex; flex-direction: column; gap: 4px; }
-        .admin-page-banner .banner-label {
-            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
-            color: var(--pink-light); opacity: 0.85;
-        }
-        .admin-page-banner .banner-title {
-            font-size: 1.9rem; font-weight: 800; color: #fff; line-height: 1.15;
-        }
-        .admin-page-banner .banner-right { display: flex; align-items: center; gap: 10px; }
-        .admin-page-banner .btn-live {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 9px 18px; background: rgba(255,255,255,0.12); color: #fff;
-            border: 1px solid rgba(255,255,255,0.3); border-radius: 10px;
-            font-size: 0.82rem; font-weight: 700; text-decoration: none;
-            transition: all 0.3s ease; backdrop-filter: blur(6px);
-        }
-        .admin-page-banner .btn-live:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); }
+        .main { flex: 1; margin-left: 260px; padding: 32px 40px; }
         .topbar {
             display: flex; align-items: center; justify-content: space-between;
-            margin-bottom: 32px; padding: 20px 0; border-bottom: 1px solid var(--border);
+            margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
         }
         .topbar h2 { font-size: 1.5rem; font-weight: 800; color: var(--text-bright); }
         .topbar-actions { display: flex; gap: 10px; }
@@ -464,22 +433,6 @@
     </aside>
 
     <div class="main">
-        <!-- Site-style page banner -->
-        <div class="admin-page-banner">
-            <div class="banner-bg"></div>
-            <div class="banner-content">
-                <div class="banner-left">
-                    <span class="banner-label">Spring Legal Consultancy — CMS</span>
-                    <span class="banner-title" id="adminBannerTitle">Navigation &amp; Logo</span>
-                </div>
-                <div class="banner-right">
-                    <a class="btn-live" href="https://www.springlegal.com.gh" target="_blank">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Live Site
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <div class="topbar">
             <h2 id="sectionTitle">Navigation &amp; Logo</h2>
             <div class="topbar-actions">
@@ -1549,8 +1502,6 @@
         }
 
         document.getElementById('sectionTitle').textContent = a.textContent.trim();
-        const bannerTitleEl = document.getElementById('adminBannerTitle');
-        if (bannerTitleEl) bannerTitleEl.textContent = a.textContent.trim();
         renderSection(currentSection);
         closeMobileSidebar();
     });
