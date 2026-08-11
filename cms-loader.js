@@ -163,13 +163,9 @@ async function fetchAndRefresh() {
         const data = {};
         rows.forEach(r => data[r.section_key] = r.content);
 
-        // Compare with cache — only update DOM and cache if something changed
-        const cached = localStorage.getItem(CMS_CACHE_KEY);
-        const fresh  = JSON.stringify(data);
-        if (cached !== fresh) {
-            applyCMSData(data);
-            localStorage.setItem(CMS_CACHE_KEY, fresh);
-        }
+        // Always apply fresh Supabase DB content to DOM and sync localStorage cache
+        applyCMSData(data);
+        localStorage.setItem(CMS_CACHE_KEY, JSON.stringify(data));
     } catch (e) {
         console.warn('CMS background refresh failed:', e.message);
     }
