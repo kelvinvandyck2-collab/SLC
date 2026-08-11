@@ -1190,19 +1190,23 @@
         showToast('Photo reset', 'success');
     }
 
-    function handleDynamicImageFileSelect(fileInput, uniqueId) {
+    async function handleDynamicImageFileSelect(fileInput, uniqueId) {
         const file = fileInput.files && fileInput.files[0];
         if (!file) return;
         if (file.size > 10 * 1024 * 1024) {
             showToast('File size is too large. Under 10MB please.', 'error');
             return;
         }
+
+        showToast('Uploading photo...', 'success');
+
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = async function(e) {
             const img = new Image();
-            img.onload = function() {
+            img.onload = async function() {
+                // Compress locally first
                 const canvas = document.createElement('canvas');
-                const maxDim = 800;
+                const maxDim = 900;
                 let width = img.width, height = img.height;
                 if (width > height) {
                     if (width > maxDim) { height = Math.round((height * maxDim) / width); width = maxDim; }
@@ -1210,16 +1214,41 @@
                     if (height > maxDim) { width = Math.round((width * maxDim) / height); height = maxDim; }
                 }
                 canvas.width = width; canvas.height = height;
-                const ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0, width, height);
+                canvas.getContext('2d').drawImage(img, 0, 0, width, height);
                 const dataUrl = canvas.toDataURL('image/jpeg', 0.85);
-                const input = document.getElementById(`input_${uniqueId}`);
-                const preview = document.getElementById(`preview_img_${uniqueId}`);
-                if (input) input.value = dataUrl;
-                if (preview) preview.src = dataUrl;
-                syncCurrentTeamDataFromDOM();
-                window._hasPendingImageUpload = true;
-                showToast('Image uploaded & optimized! Click Save Changes.', 'success');
+
+                // Show preview immediately
+                const previewEl = document.getElementById(`preview_img_${uniqueId}`);
+                if (previewEl) previewEl.src = dataUrl;
+
+                // Upload to Supabase Storage via API
+                try {
+                    const pw = sessionStorage.getItem('slc_pw') || 'SpringLegal2026!';
+                    const apiBase = (window.location.protocol === 'file:' || window.location.hostname === 'localhost')
+                        ? 'https://slc-beige.vercel.app'
+                        : '';
+                    const res = await fetch(`${apiBase}/api/upload-image`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ password: pw, imageData: dataUrl, filename: file.name })
+                    });
+
+                    if (res.ok) {
+                        const { url } = await res.json();
+                        const inputEl = document.getElementById(`input_${uniqueId}`);
+                        if (inputEl) inputEl.value = url;
+                        syncCurrentTeamDataFromDOM();
+                        window._hasPendingImageUpload = true;
+                        showToast('Photo uploaded to cloud! Click Save Changes.', 'success');
+                    } else {
+                        const err = await res.json().catch(() => ({}));
+                        console.error('Upload failed:', err);
+                        showToast('Upload failed: ' + (err.error || 'Unknown error'), 'error');
+                    }
+                } catch (e) {
+                    console.error('Upload error:', e);
+                    showToast('Network error during photo upload.', 'error');
+                }
             };
             img.src = e.target.result;
         };
