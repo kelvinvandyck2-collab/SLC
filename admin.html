@@ -1332,35 +1332,34 @@
         btn.disabled = true;
 
         const fields = document.querySelectorAll('#contentArea [data-key]');
-        const updatesMap = new Map();
+        // Ensure saved state snapshot exists
+        if (!window._savedStateSnapshot) {
+            window._savedStateSnapshot = Object.assign({}, DEFAULT_CMS_DATA, contentData);
+        }
+        const savedSnapshot = window._savedStateSnapshot;
 
         for (const el of fields) {
             const key = el.dataset.key;
             const val = el.value;
-            const currentVal = getFieldValue(key);
-            if (val !== currentVal) {
+            if (savedSnapshot[key] !== val) {
                 updatesMap.set(key, val);
             }
         }
 
-        // Add dynamic team category lists and individual keys if section is team
+        // Add dynamic team category lists and member keys if section is team
         if (currentSection === 'team') {
             ['team_partners_list', 'team_consultants_list', 'team_paralegals_list'].forEach(catKey => {
                 const newVal = contentData[catKey];
-                const storedVal = localStorage.getItem(`_saved_${catKey}`);
-                if (newVal && newVal !== storedVal) {
+                if (newVal && savedSnapshot[catKey] !== newVal) {
                     updatesMap.set(catKey, newVal);
-                    localStorage.setItem(`_saved_${catKey}`, newVal);
                 }
             });
 
             Object.keys(contentData).forEach(key => {
                 if (key.startsWith('team_') || key.startsWith('consultant_') || key.startsWith('paralegal_')) {
                     const newVal = contentData[key];
-                    const storedVal = localStorage.getItem(`_saved_${key}`);
-                    if (newVal && newVal !== storedVal) {
+                    if (newVal !== undefined && savedSnapshot[key] !== newVal) {
                         updatesMap.set(key, newVal);
-                        localStorage.setItem(`_saved_${key}`, newVal);
                     }
                 }
             });
@@ -1405,7 +1404,7 @@
             });
             if (res.ok) {
                 const result = await res.json();
-                savedCount = result.saved || updates.length;
+                savedCount = updates.length;
                 cloudSuccess = true;
             } else {
                 const errJson = await res.json().catch(() => ({}));
@@ -1419,6 +1418,8 @@
         btn.disabled = false;
 
         if (cloudSuccess) {
+            // Update snapshot with newly saved values
+            updates.forEach(u => window._savedStateSnapshot[u.key] = u.value);
             showToast(`${savedCount} change${savedCount > 1 ? 's' : ''} saved to cloud DB successfully!`, 'success');
         } else {
             showToast('Saved to local cache, but cloud DB sync failed. Check internet connection.', 'error');
