@@ -1217,7 +1217,9 @@
                 const preview = document.getElementById(`preview_img_${uniqueId}`);
                 if (input) input.value = dataUrl;
                 if (preview) preview.src = dataUrl;
-                showToast('Image uploaded & optimized successfully!', 'success');
+                syncCurrentTeamDataFromDOM();
+                window._hasPendingImageUpload = true;
+                showToast('Image uploaded & optimized! Click Save Changes.', 'success');
             };
             img.src = e.target.result;
         };
@@ -1364,6 +1366,24 @@
                     }
                 }
             });
+        }
+
+        // Force update if image upload is pending
+        if (window._hasPendingImageUpload) {
+            window._hasPendingImageUpload = false;
+            for (const el of fields) {
+                if (el.dataset.key && el.value) updatesMap.set(el.dataset.key, el.value);
+            }
+            if (currentSection === 'team') {
+                ['team_partners_list', 'team_consultants_list', 'team_paralegals_list'].forEach(catKey => {
+                    if (contentData[catKey]) updatesMap.set(catKey, contentData[catKey]);
+                });
+                Object.keys(contentData).forEach(key => {
+                    if ((key.startsWith('team_') || key.startsWith('consultant_') || key.startsWith('paralegal_')) && contentData[key]) {
+                        updatesMap.set(key, contentData[key]);
+                    }
+                });
+            }
         }
 
         const updates = Array.from(updatesMap.entries()).map(([key, value]) => ({ key, value }));
