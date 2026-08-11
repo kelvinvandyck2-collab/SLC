@@ -45,7 +45,7 @@ export default async function handler(req, res) {
     }
     try {
       if (SUPABASE_URL && SUPABASE_SERVICE_KEY) {
-        const r = await fetch(`${SUPABASE_URL}/rest/v1/site_content`, {
+        const r = await fetch(`${SUPABASE_URL}/rest/v1/site_content?on_conflict=section_key`, {
           method: 'POST',
           headers: {
             'apikey': SUPABASE_SERVICE_KEY,
@@ -53,15 +53,22 @@ export default async function handler(req, res) {
             'Content-Type': 'application/json',
             'Prefer': 'resolution=merge-duplicates'
           },
-          body: JSON.stringify({ section_key: key, content: value, updated_at: new Date().toISOString() })
+          body: JSON.stringify({ section_key: key, content: String(value), updated_at: new Date().toISOString() })
         });
         if (r.ok) {
           saved++;
-          continue;
+        } else {
+          const errText = await r.text();
+          console.error(`Supabase update failed for key ${key}:`, r.status, errText);
+          errors++;
         }
+      } else {
+        saved++;
       }
-    } catch (e) {}
-    saved++;
+    } catch (e) {
+      console.error(`Fetch exception for key ${key}:`, e);
+      errors++;
+    }
   }
 
   return res.status(200).json({ saved, errors: 0 });
