@@ -721,7 +721,7 @@
                     { key: 'external_consultants_subheading', label: 'Intro Paragraph', type: 'textarea' },
                 ]
             }, {
-                title: 'Para Legal Section Intro', badge: 'Section Intro',
+                title: 'Paralegal Section Intro', badge: 'Section Intro',
                 fields: [
                     { key: 'paralegal_heading', label: 'Section Heading', type: 'input' },
                     { key: 'paralegal_subheading', label: 'Intro Paragraph', type: 'textarea' },
@@ -967,7 +967,7 @@
         consultant_4_role: 'External Consultant',
         consultant_4_bio: 'External legal consultant providing counsel on corporate governance, dispute management, and strategic transaction structuring.',
 
-        paralegal_heading: 'Para Legal Team',
+        paralegal_heading: 'Paralegal Team',
         paralegal_subheading: 'Skilled paralegals and legal assistants supporting client cases, legal documentation, and research.',
         paralegal_1_img: '',
         paralegal_1_location: 'Accra, Ghana',
@@ -1267,7 +1267,7 @@
             // 4. Dynamic External Consultants Category
             html += renderDynamicCategoryCards('team_consultants_list', 'Consultant', 'External Consultant');
 
-            // 5. Para Legal Intro Card
+            // 5. Paralegal Intro Card
             const paralegalCard = section.cards[2];
             html += `<div class="card"><div class="card-header"><h3>${paralegalCard.title}</h3><span class="card-badge">${paralegalCard.badge}</span></div>`;
             paralegalCard.fields.forEach(f => {
@@ -1279,7 +1279,7 @@
             });
             html += `</div>`;
 
-            // 6. Dynamic Para Legal Category
+            // 6. Dynamic Paralegal Category
             html += renderDynamicCategoryCards('team_paralegals_list', 'Paralegal', 'Paralegal');
 
             document.getElementById('contentArea').innerHTML = html;
